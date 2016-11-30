@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 namespace ms_iot_community_samples_svc.Models
 {
     [Serializable]
-    public class BlogPost
+    public class IoTProject
     {
         private static int Count = 0;
         public int Id { get; set; }
@@ -77,14 +77,14 @@ namespace ms_iot_community_samples_svc.Models
 
         public static List<string> Fields;
 
-        public BlogPost()
+        public IoTProject()
         {
             //Tags = new List<string>();
             //Authors = new List<string>();
             //CodeLanguages = new List<string>();
-            if (BlogPostz == null)
+            if (IoTProjects == null)
             {
-                ClearBlogPostz();
+                ClearIoTProjects();
     //            Count = 0;
     //            var fields = typeof(BlogPost).GetFields(
     //BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
@@ -101,27 +101,23 @@ namespace ms_iot_community_samples_svc.Models
                 //            BlogPostz = new List<BlogPost>();
             }
             Id = Count++;
-            BlogPostz.Add(this);
+            IoTProjects.Add(this);
         }
 
         //This is the underlying collection of BlogPosts that gets filtered and sorted.
-        private static List<BlogPost> _BlogPostz = null;
-        public static List<BlogPost> BlogPostz {
-            get { return _BlogPostz;  }
+        private static List<IoTProject> _IoTProjects = null;
+        public static List<IoTProject> IoTProjects {
+            get { return _IoTProjects;  }
             set
             {
-                _BlogPostz = value;
+                _IoTProjects = value;
             }
         }
 
-  
-        /// <summary>
-        /// Use this in views
-        /// </summary>
-        public static List<BlogPost> ViewBlogPostz (string filtersStr)
+        public static List<IoTProject> ViewIoTProjects(string filtersStr)
         {
-            var blogs = from n in BlogPostz select n;
-            List<BlogPost> blogg = blogs.ToList<BlogPost>();
+            var projects = from n in IoTProjects select n;
+            List<IoTProject> projectList = projects.ToList<IoTProject>();
             if (filtersStr != "")
             {
                 JsonSerializerSettings set = new JsonSerializerSettings();
@@ -129,16 +125,43 @@ namespace ms_iot_community_samples_svc.Models
                 var filter = JsonConvert.DeserializeObject<FilterAndSortInfo>(filtersStr, set);
                 if (filter.Filters != null)
                 {
-                    blogg = Models.BlogPost.Filter(filter.Filters);
+                    //Filter on all IoTProjects
+                    projectList = Models.IoTProject.Filter(filter.Filters);
                 }
-                if (filter.SortString != "")
+                if (filter.SortExpressions != null)
                 {
-                    blogg = Sort(blogg, filter.SortString, filter.LastSort, filter.LastSortDirection);
+                    //Sort the sublist
+                    projectList = projectList.MultipleSort(filter.SortExpressions).ToList();
                 }
-                
+
             }
-            return blogg;
+            return projectList;
         }
+
+        /// <summary>
+        /// Use this in views
+        /// </summary>
+        ////public static List<IoTProject> ViewIoTProjectsy (string filtersStr)
+        ////{
+        ////    var blogs = from n in IoTProjects select n;
+        ////    List<IoTProject> blogg = blogs.ToList<IoTProject>();
+        ////    if (filtersStr != "")
+        ////    {
+        ////        JsonSerializerSettings set = new JsonSerializerSettings();
+        ////        set.MissingMemberHandling = MissingMemberHandling.Ignore;
+        ////        var filter = JsonConvert.DeserializeObject<FilterAndSortInfo>(filtersStr, set);
+        ////        if (filter.Filters != null)
+        ////        {
+        ////            blogg = Models.IoTProject.Filter(filter.Filters);
+        ////        }
+        ////        //if (filter.SortString != "")
+        ////        //{
+        ////        //    blogg = Sort(blogg, filter.SortString, filter.LastSort, filter.LastSortDirection);
+        ////        //}
+                
+        ////    }
+        ////    return blogg;
+        ////}
 
         ////Remove filtering and sotrting from views
         //public static void ResetBlogPostz()
@@ -148,9 +171,9 @@ namespace ms_iot_community_samples_svc.Models
         //    //LastSortDirection = "desc";
         //}
 
-        internal static BlogPost Get(string id)
+        internal static IoTProject Get(string id)
         {
-            var bp = from n in BlogPostz where n.Id.ToString() == id select n;
+            var bp = from n in IoTProjects where n.Id.ToString() == id select n;
             if (bp.Count() != 0)
                 return bp.First();
             else
@@ -159,21 +182,73 @@ namespace ms_iot_community_samples_svc.Models
 
 
         //Clear rhe collection and therefore the view
-        public static void ClearBlogPostz()
+        public static void ClearIoTProjects()
         {
             Count = 0;
-            var fields = typeof(BlogPost).GetFields(
+            var fields = typeof(IoTProject).GetFields(
 BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
 
             var names = Array.ConvertAll(fields, field => field.Name.Substring(1).Replace(">k__BackingField", ""));
 
             Fields = names.ToList<string>();
-            BlogPostz = new List<BlogPost>();
+            IoTProjects = new List<IoTProject>();
+        }
+
+        public static List<Tuple<string,string>> GetSort(string SortString, ref string LastSort, ref string LastSortDirection)
+        {
+            List<Tuple<string, string>> sortExpressions = new List<Tuple<string, string>>();
+            if (string.IsNullOrWhiteSpace(SortString))
+            {
+                // If no sorting string, give a message and return.
+                System.Diagnostics.Debug.WriteLine("Please submit in a sorting string.");
+                return sortExpressions;
+            }
+
+            try
+            {
+                // Prepare the sorting string into a list of Tuples
+                //var sortExpressions = new List<Tuple<string, string>>();
+                string[] terms = SortString.Split(',');
+                for (int i = 0; i < terms.Length; i++)
+                {
+                    string[] items = terms[i].Trim().Split('~');
+                    var fieldName = items[0].Trim();
+                    var sortOrder = (items.Length > 1)
+                              ? items[1].Trim().ToLower() : "";
+                    if ((sortOrder != "asc") && (sortOrder != "desc"))
+                    {
+                        //throw new ArgumentException("Invalid sorting order");
+                        if (LastSort == fieldName)
+                        {
+                            if (LastSortDirection == "desc")
+                                sortOrder = "asc";
+                            else
+                                sortOrder = "desc";
+                        }
+                        else
+                            sortOrder = "asc";
+
+                    }
+                    LastSort = fieldName;
+                    LastSortDirection = sortOrder;
+                    sortExpressions.Add(new Tuple<string, string>(fieldName, sortOrder));
+                }
+
+
+            }
+            catch (Exception e)
+            {
+                var msg = "There is an error in your sorting string.  Please correct it and try again - "
+              + e.Message;
+                System.Diagnostics.Debug.WriteLine(msg);
+                sortExpressions.Clear();
+            }
+            return sortExpressions;
         }
 
 
         //Sort the view on one field
-        public static List<BlogPost> Sort(List<BlogPost> viewBlogPostz, string SortString, string LastSort, string LastSortDirection)
+        public static List<IoTProject> Sort(List<IoTProject> viewBlogPostz, string SortString, string LastSort, string LastSortDirection)
         {
 
             if (string.IsNullOrWhiteSpace(SortString))
@@ -222,20 +297,20 @@ BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
                 var msg = "There is an error in your sorting string.  Please correct it and try again - "
               + e.Message;
                 System.Diagnostics.Debug.WriteLine(msg);
-                return BlogPostz;
+                return IoTProjects;
             }
         }
 
         //Filter the view on one field
-        public static List<BlogPost> Filter(List<Tuple<string, string>> filters)
+        public static List<IoTProject> Filter(List<Tuple<string, string>> filters)
         {
-            var lst = (from n in BlogPostz select n).ToList<BlogPost>();
+            var lst = (from n in IoTProjects select n).ToList<IoTProject>();
 
             for (int index = 0; index < filters.Count; index++)
             {
-                lst = FilterGen<BlogPost>(lst, filters[index].Item1, filters[index].Item2);
+                lst = FilterGen<IoTProject>(lst, filters[index].Item1, filters[index].Item2);
             }
-            return lst.ToList<BlogPost>();
+            return lst.ToList<IoTProject>();
         }
 
         public static List<T> FilterGen<T>(

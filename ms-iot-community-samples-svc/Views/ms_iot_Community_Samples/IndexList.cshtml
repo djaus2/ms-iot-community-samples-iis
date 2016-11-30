@@ -1,4 +1,4 @@
-﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<List<ms_iot_community_samples_svc.Models.BlogPost>>
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<List<ms_iot_community_samples_svc.Models.IoTProject>>
     <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
     <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -24,6 +24,10 @@
             }
         </style>
         <script type="text/javascript">
+            function OnFilter0() {
+                var windowlocation = "/ms_iot_Community_Samples/1";
+                window.location = windowlocation;
+            }
             function OnFilter1()
             {
                 
@@ -64,6 +68,7 @@
     <table
            style="border:0px; width:100%;">
         <tr>
+            <td style="width:30px"><input id="Submit0" type="button" value="Main Menu" onclick="OnFilter0()" /></td>
             <td style="width:30px"><input id="Submit1" type="button" value="Filter" onclick="OnFilter1()" /></td>
             <td style="width:30px"><input id="Submit2" type="button" value="Show All" onclick="OnFilter2()" /></td>
             <td>&nbsp;</td>
@@ -92,7 +97,7 @@
             <td><input id="txtsamplelink" type="text" /></td>
             <td><input id="txtkeyword" type="text" /></td>
         </tr>
-        @foreach (ms_iot_community_samples_svc.Models.BlogPost objUser in @Model) // msiotCommunitySamples.Models.BlogPost.ViewBlogPostz)
+        @foreach (ms_iot_community_samples_svc.Models.IoTProject objUser in @Model) // msiotCommunitySamples.Models.BlogPost.ViewBlogPostz)
         {
             <tr>
                 <td width="30px">@objUser.Id</td>
