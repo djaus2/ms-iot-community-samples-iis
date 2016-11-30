@@ -1,0 +1,25 @@
+﻿@using Orchard.Utility.Extensions;
+@{
+    var contentTypeClassName = ((string)Model.ContentItem.ContentType).HtmlClassify();
+}
+<article class="content-item @contentTypeClassName hentry">  
+     @Display(Model.Header)  
+    <footer class="post-info">
+		@if (Model.Meta != null) {
+            <abbr class="published" title="2005-10-10T14:07:00-07:00">
+                @Display(Model.Meta)
+            </abbr>
+        }
+	</footer><!-- /.post-info -->
+    
+    <div class="entry-content">
+        @Display(Model.Content)
+    </div>
+    
+    @if(Model.Footer != null) {
+    <footer>
+        @Display(Model.Footer)
+    </footer>
+    }
+</article>
+

@@ -1,0 +1,87 @@
+﻿
+
+@{
+    //Add Styles
+    Style.Include("site.css");
+    // Determine which zones are going to be shown
+    var displayHeader = (Model.Header != null);
+    
+    var displayTripelFirst = (Model.TripelFirst != null);
+    var displayTripelSecond = (Model.TripelSecond != null);
+    var displayTripelThird = (Model.TripelThird != null);
+    var displayFooter = (Model.Footer != null);
+    var displayNavigation = (Model.Navigation != null);
+    var displayBeforeContent = (Model.BeforeContent != null );
+     var displayAfterContent = (Model.AfterContent != null );
+    var displayContent = (Model.Content != null);
+    var IsHomepage = (Request.FilePath.CompareTo("/")== 0);
+    // Adds user sign in, dashboard links etc to the bottom of the page
+    WorkContext.Layout.BottomDweller.Add(New.User(), "1");
+}
+
+<header id="banner" >
+	<nav>
+		@Display(Model.Navigation)
+	</nav>
+	<h1>
+		<a href="/">Orchard Clean Theme </a>
+	</h1>	
+</header>
+	
+@if(displayBeforeContent){}
+	<section id="PreContent" class="body">
+		@Display(Model.BeforeContent)
+	</section>
+    
+}
+	
+@if(displayContent){
+	<section id="content" class="body">
+		<hgroup>
+			<h2>@Display(Model.Title)</h2>
+		
+		</hgroup>
+		<p>
+            @Display(Model.Content)
+        </p>
+			
+	</section><!-- /#content -->
+}
+@if(displayAfterContent){
+    <section id="aftercontent" class="body">
+		<p>
+            @Display(Model.AfterContent)
+        </p>
+			
+	</section>
+    
+}
+
+@if(displayTripelFirst || displayTripelSecond || displayTripelThird){
+	<section id="extras" class="body">
+		<div class="blogroll">
+            <ul>
+				<li>
+                    @if(displayTripelFirst ){
+                        @Display(Model.TripelFirst)
+                    }
+                 </li>
+                <li>
+                    @if(displayTripelSecond){
+                        @Display(Model.TripelSecond)
+                    }
+                    
+                </li>
+                <li>
+    
+                    @if(displayTripelThird){
+                        @Display(Model.TripelThird)
+                    }
+                </li>
+            </ul>
+
+		</div>
+		
+		
+	</section>
+ }

@@ -1,0 +1,114 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<List<ms_iot_community_samples_svc.Models.BlogPost>>
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title></title>
+        <style>
+            table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            th, td {
+                text-align: left;
+                padding: 8px;
+            }
+
+            tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+
+            th {
+                background-color:yellow;
+                color: blue;
+            }
+        </style>
+        <script type="text/javascript">
+            function OnFilter1()
+            {
+                
+                var SearchIdtxt = "Id~" + document.getElementById("txtId").value;
+                var SearchTitletxt = "title~" + document.getElementById("txttitle").value;
+                var SearchSummarytxt = "description~" + document.getElementById("txtdescription").value;
+                var SearchCodetxt = "permalink~" + document.getElementById("txtpermalink").value;
+                SearchCodetxt = SearchCodetxt.replace("/", "Y");
+                var SearchTagstxt = "samplelink~" + document.getElementById("txtsamplelink").value;
+                SearchTagstxt = SearchTagstxt.replace("/", "Y");
+                var SearchTagstxt2 = "keyword~" + document.getElementById("txtkeyword").value;
+                var Searchtxt = SearchIdtxt + "/" + SearchTitletxt + "/" + SearchSummarytxt + "/" + SearchCodetxt + "/" + SearchTagstxt + "/" + SearchTagstxt2;
+                //C#
+                Searchtxt = Searchtxt.replace("#", "%23");
+                //C++
+                Searchtxt = Searchtxt.replace("+", "Z");
+                Searchtxt = Searchtxt.replace("+", "Z");
+                var windowlocation = "/ms_iot_Community_Samples/Filter/" + Searchtxt;
+                window.location = windowlocation;
+            }
+            function OnFilter2() {
+                var windowlocation = "/ms_iot_Community_Samples/Reset/";
+                window.location = windowlocation;
+            }
+            function OnFilter3() {
+                var windowlocation = "/ms_iot_Community_Samples/Login/1";
+                window.location = windowlocation;
+            }
+            function OnFilter4() {
+                var windowlocation = "/ms_iot_Community_Samples/Logout/1";
+                window.location = windowlocation;
+            }
+        </script>
+    </head>
+    <body>
+        <form>
+
+    <table
+           style="border:0px; width:100%;">
+        <tr>
+            <td style="width:30px"><input id="Submit1" type="button" value="Filter" onclick="OnFilter1()" /></td>
+            <td style="width:30px"><input id="Submit2" type="button" value="Show All" onclick="OnFilter2()" /></td>
+            <td>&nbsp;</td>
+            <td style="width:30px"><input id="Submit3" type="button" value="Login" onclick="OnFilter3()" /></td>
+            <td style="width:30px"><input id="Submit4" type="button" value="Logout" onclick="OnFilter4()" /></td>
+        </tr>
+    </table>
+
+
+    <table
+        style="border:0px; width:100%;">
+        <tr>
+            <th style="width:30px"><a href="/ms_iot_Community_Sample/Sort/Id">Id</a></th>
+            <th><a href="/ms_iot_Community_Samples/Sort/Title">title</a></th>
+            <th><a href="/ms_iot_Community_Samples/Sort/description">description</a></th>
+            <th><a href="/ms_iot_Community_Samples/Sort/permalink">permalink</a></th>
+            <th><a href="/ms_iot_Community_Samples/Sort/samplelink">samplelink</a></th>
+            <th><a href="/ms_iot_Community_Samples/Sort/keyword">keyword</a></th>
+        </tr>
+
+        <tr>
+            <td style="width:30px"><input id="txtId" type="number" style="width:30px" /></td>
+            <td><input id="txttitle" type="text" /></td>
+            <td><input id="txtdescription" type="text" /></td>
+            <td><input id="txtpermalink" type="text" /></td>
+            <td><input id="txtsamplelink" type="text" /></td>
+            <td><input id="txtkeyword" type="text" /></td>
+        </tr>
+        @foreach (ms_iot_community_samples_svc.Models.BlogPost objUser in @Model) // msiotCommunitySamples.Models.BlogPost.ViewBlogPostz)
+        {
+            <tr>
+                <td width="30px">@objUser.Id</td>
+                <td><a href=@objUser.TitleId>@objUser.title</a></td>
+                <td>@objUser.SummarySub</td>
+                <td>@objUser.permalink</td>
+                <td>@objUser.samplelink</td>
+                <td>@objUser.keyword</td>
+
+            </tr>
+        }
+    </table>
+
+    </form>
+
+
+
+    </body>
+</html>

@@ -1,0 +1,77 @@
+﻿@{
+    //Add Styles
+    Style.Include("site.css");
+    // Determine which zones are going to be shown
+    var displayFooter = (Model.Footer != null);
+    var displaySlide = (Model.Slide != null);
+    var displayNavigation = (Model.Navigation != null);
+    var displayHighlight = (Model.Highlight != null);
+    var displayContent = (Model.Content != null);
+    var IsHomepage = (Request.FilePath.CompareTo("/")== 0);
+    // Adds user sign in, dashboard links etc to the bottom of the page
+    WorkContext.Layout.BottomDweller.Add(New.User(), "1");
+}
+
+<p>@Display(Model.BottomDweller)</p>
+
+   
+
+<div id="wrapper">
+    @if(IsHomepage) {
+        <div id="header"> 
+            @if(displaySlide){
+                @Display(Model.Slide)
+            }
+        </div>
+        
+    }
+    @if(false == IsHomepage){
+        <div id="header2"> 
+            @if(displaySlide){
+                @Display(Model.Slide)
+            }
+        </div>
+    }
+	<div>
+		<div id="left">
+		  <div id="logo">
+			<h1>Orchard</h1>
+			<p>City Theme</p>
+		 </div>
+		<div id="nav">
+			@Display(Model.Navigation);
+		  </div>
+          
+          @if(displayHighlight){
+            <div id="news">
+              @Display( Model.Highlight)
+            </div>
+          }
+		  
+		</div>
+        @if(displayContent && IsHomepage){
+              @Html.Partial("_Home") 
+            
+            <div class="clear"> </div>
+        }
+        @if(displayContent && false == IsHomepage){
+              @Html.Partial("_Inner")
+           
+            <div class="clear"> </div>
+        }
+   </div>
+    @if(displayFooter){
+       <div id="footerList">
+		 
+		    @Display(Model.Footer)
+	   </div>
+    
+    
+    }
+    
+
+    
+   <div id="footerline"></div>
+  
+	
+  </div>

@@ -1,0 +1,75 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<ms_iot_community_samples_svc.Models.BlogPost>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>@Model.title</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+ 
+
+        th {
+            background-color: yellow;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <colgroup>
+            <col style="font-weight:bold;" />
+            <col />
+        </colgroup>
+        <tr>
+            <td>Id:</td>
+            <td>@Model.Id</a></td>
+        </tr>
+        <tr>
+            <td>Title:</td>
+            <td><a href=@Model.filenameDisp>@Model.title</a></td>
+        </tr>
+        <tr>
+            <td>description:</td>
+            <td>@Model.description</td>
+        </tr>
+        <tr>
+            <td>lang:</td>
+            <td>@Model.lang</td>
+        </tr>
+        <tr>
+            <td>Language:</td>
+            <td>@Model.permalink</td>
+        </tr>
+        <tr>
+            <td>samplelink:</td>
+            <td>@Model.samplelink</td>
+        </tr>
+        <tr>
+            <td>keyword:</td>
+            <td>@Model.keyword</td>
+        </tr>
+        @*<tr>
+            <td>Code:</td>
+            <td>@string.Join(", ", Model.CodeLanguages)</td>
+        </tr>
+        <tr>
+            <td>Tags:</td>
+            <td>@string.Join(", ", Model.Tags)</td>
+        </tr>*@
+    </table>
+    <p>
+        <a href="/ms_iot_Community_Samples/List">Show list</a>
+    </p>
+</body>
+</html>

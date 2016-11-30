@@ -1,0 +1,45 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase <ms_iot_community_samples_svc.Models.Errors >
+<html>
+<head>
+    <title>MS-IoT Community Samples</title>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <h1>MS-IoT Community Samples</h1>
+    <table>
+        <colgroup>
+            <col style="font-weight:bold;" />
+            <col />
+        </colgroup>
+        
+        <tr>
+            <td><a href="/ms_iot_Community_Samples/list">View list of Sample Projects</a></td>
+        </tr>
+        <tr>
+            <td><a href="/ms_iot_Community_Samples/reset">Show all</a></td>
+        </tr>
+        <tr>
+            <td><a href="/ms_iot_Community_Samples/load">Reload list of Samples Projects</a></td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td><a href=@Model.LogLink>@Model.LogLabel</a></td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td><h3>Admin</h3></td>
+        </tr>
+        <tr>
+            <td>* <a href="/ms_iot_Community_Samples/convert">Convert</a></td>
+        </tr>
+        <tr>
+            <td>* <a href="/ms_iot_Community_Samples/GitHub">Sync with GitHub</a></td>
+        </tr>
+
+    </table>
+</body>
+</html>

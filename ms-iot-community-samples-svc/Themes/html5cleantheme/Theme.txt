@@ -1,0 +1,7 @@
+﻿Name: HTML 5 Orchard Clean Theme
+Author: Alexandre Marreiros, Innovagency
+Description: Is a multizone Orchard Theme Lists Posts and Pages
+Version: 1.0
+Tags: Theme, HTML5, CSS 3
+Website: http://orchardproject.net
+Zones: Header, Navigation, Messages, BeforeContent, Content, AfterContent,TripelFirst, TripelSecond, TripelThird, Footer

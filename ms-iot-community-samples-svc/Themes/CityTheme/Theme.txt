@@ -1,0 +1,6 @@
+Name: CityTheme
+Author: Alexandre Marreiros, Innovagency
+Website: 
+Description: Based on a free website Template aviable on The Web
+Version: 1.0
+Zones: Navigation,Slide,Highlight,Content,Footer,Head
