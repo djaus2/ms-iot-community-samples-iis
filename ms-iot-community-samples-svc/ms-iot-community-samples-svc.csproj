@@ -106,13 +106,14 @@
     <Compile Include="IndexModule.cs" />
     <Compile Include="IndexModule1.cs" />
     <Compile Include="IndexModule2.cs" />
-    <Compile Include="Models\BlogPost.cs" />
+    <Compile Include="Models\IoTProject.cs" />
     <Compile Include="Models\Errors.cs" />
     <Compile Include="Models\filter.cs" />
     <Compile Include="Models\layout.cs" />
     <Compile Include="Models\login.cs" />
     <Compile Include="Models\views.cs" />
-    <Compile Include="MultiSort.cs" />
+    <Compile Include="Utilities\MultiFilter.cs" />
+    <Compile Include="Utilities\MultiSort.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>

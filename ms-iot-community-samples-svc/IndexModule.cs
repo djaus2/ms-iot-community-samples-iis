@@ -12,6 +12,7 @@
     using Octokit;
     using System.Configuration;
     using System.Collections.Specialized;
+    using System.Web;
 
     public class IndexModule : NancyModule
     {
@@ -47,12 +48,17 @@
        *
        ***************************************************************************/
         //Running from filesystem
-        private const string dirr = @"C:\Users\david\Documents\Visual Studio 2015\Projects\NancBlog2\NancBlog2";
-        private const string jsonFile = @"Data.json";
-        private const string jsonDirr = dirr + @"\Json\";
-        private const string MDDB = jsonDirr + jsonFile;
-        private const string MD2 = dirr + @"\MD2\";
-        private const string MD = dirr + @"\MD\";
+        //C:\Users\david\Documents\GitHub\ms-io-community-samples-svc\ms-iot-community-samples-svc\ms-iot-community-samples-svc
+
+        private string projectName;//= Assembly.GetCallingAssembly().GetName().Name;
+        private string projectDir;// = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+        private string projLocn;// = @"C:/Users/" + me + @"/Documents/GitHub/ms-io-community-samples-svc/";
+        private string dirr;
+        private string jsonFile;
+        private string jsonDirr;
+        private string MDDB;
+        private string MD2;
+        private string MD;
 
         //When deployed on server
         //private const string jsonFile = @"Data.json";
@@ -61,12 +67,28 @@
         //private const string MD2 = @"~/MD2/";
         //private const string MD = @"~/MD/";
 
+        private void DoStrings()
+        {
+            string me = "David";
+            string gh = HttpContext.Current.ApplicationInstance.GetType().Assembly.Location;//..GetName().Name;
+            string jk = HttpContext.Current.ApplicationInstance.GetType().BaseType.Assembly.GetName().Name;
+            projectName = Assembly.GetCallingAssembly().GetName().Name;
+        projectDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+        dirr = @"C:\Users\david\Documents\GitHub\ms-io-community-samples-svc\ms-iot-community-samples-svc\ms-iot-community-samples-svc\";
+        //dirr = projectDir + projectName + @"\" + projectName + @"\";
+        jsonFile = "Data.json";
+        jsonDirr = Path.Combine ( dirr , @"Json\");
+        MDDB = Path.Combine(jsonDirr , jsonFile);
+        MD2 = Path.Combine(dirr , @"MD2\");
+        MD = Path.Combine(dirr , @"MD\");
+        }
+
 
         public IndexModule()
         {
             //async syntax
             //Get["/aa", true] = async (parameters, ct) => "Hello World!";
-
+            
             Models.Errors errorMsg = new Models.Errors();
 
             //var ses = Request.Session;
@@ -80,13 +102,21 @@
             };
             Get["/ms_iot_Community_Samples"] = _ =>
             {
+                DoStrings();
                 bool getList = false;
                 if (Models.IoTProject.IoTProjects == null)
                     getList = true;
                 else if (Models.IoTProject.IoTProjects.Count() == 0)
                     getList = true;
-                if (getList)
+                if (getList)    
                 {
+                    if (!Directory.Exists(jsonDirr))
+                        Directory.CreateDirectory(jsonDirr);
+                    if (!File.Exists(MDDB))
+                    {
+                        errorMsg.LoggedInStatus = (bool)Request.Session["LoggedInStatus"];
+                        return View["/ms_iot_Community_Samples/ms_iot_Community_Samples", errorMsg];
+                    }
                     string[] files1 = Directory.GetFiles(jsonDirr, jsonFile);
                     if (files1.Length != 1)
                         return View["IndexList"];
@@ -182,21 +212,42 @@
 
             Get["/ms_iot_Community_Samples/convert"] = _ =>
             {
+                DoStrings();
                 if (!(bool)Request.Session["LoggedInStatus"])
                 {
                     errorMsg.Message = "Not logged in!";
                     errorMsg.Source = "/Convert";
+                    errorMsg.LoggedInStatus = (bool)Request.Session["LoggedInStatus"];
                     return View["/ms_iot_Community_Samples/ErrorPage", errorMsg];
                 }
-                string[] files0= Directory.GetFiles(jsonDirr, "*.*");
 
+                if (!Directory.Exists(MD))
+                {
+                    errorMsg.Message = "No files to convert./r/nRun 'Sync with GitHub' first";
+                    errorMsg.Source = "/Convert";
+                    errorMsg.LoggedInStatus = (bool)Request.Session["LoggedInStatus"];
+                    return View["/ms_iot_Community_Samples/ErrorPage", errorMsg];
+                }
+
+                if ((Directory.GetFiles(MD, "*.MD")).Length==0)
+                {
+                    errorMsg.Message = "No files to convert./r/nRun  'Sync with GitHub' first";
+                    errorMsg.Source = "/Convert";
+                    errorMsg.LoggedInStatus = (bool)Request.Session["LoggedInStatus"];
+                    return View["/ms_iot_Community_Samples/ErrorPage", errorMsg];
+                }
+
+                if (!Directory.Exists(jsonDirr))
+                    Directory.CreateDirectory(jsonDirr);
+                string[] files0= Directory.GetFiles(jsonDirr, "*.*");
                 foreach (string file in files0)
                 {
                     File.Delete(file);
                 }
 
+                if (!Directory.Exists(MD2))
+                    Directory.CreateDirectory(MD2);
                 string[] files1 = Directory.GetFiles(MD2, "*.*");
-
                 foreach (string file in files1)
                 {
                     File.Delete(file);
@@ -264,7 +315,7 @@
                             break;
                         }
                         string name = Path.GetFileName(file);
-                        File.WriteAllText(MD2 + name, fileTxt);
+                        File.WriteAllText(Path.Combine(MD2 , name), fileTxt);
                     }
                     catch (Exception ex)
                     {
@@ -297,6 +348,15 @@
                     errorMsg.Source = "/GitHub";
                     return View["/ms_iot_Community_Samples/ErrorPage", errorMsg];
                 }
+                DoStrings();
+                if (!Directory.Exists(MD))
+                    Directory.CreateDirectory(MD);
+                string[] files0 = Directory.GetFiles(MD, "*.*");
+                foreach (string file in files0)
+                {
+                    File.Delete(file);
+                }
+
 #if ISDEPLOYED
                 NameValueCollection secureAppSettings =
                         (NameValueCollection)ConfigurationManager.GetSection("secureAppSettings");
@@ -328,15 +388,30 @@
                 //http://stackoverflow.com/questions/24830617/reading-code-from-repository
                 var repos = await client3.Repository.GetAllForCurrent();
                 var repo = from n in repos where n.Name== githubRepo select n;
+                int count = 0;
                 if (repo.Count() == 1)
                 {
-                    var AllContent = await client.Repository.Content.GetAllContents(repo.First().Id);//.GetAllContent(repos[0].Owner.Login, repos[0].Name);
-                    var textOfFirstFile = AllContent[0].Content;
-                    var textOfFirstFileName = AllContent[0].Name;
-                    var AllContent2 = await client.Repository.Content.GetAllContents(repo.First().Id, textOfFirstFileName);
-                    var textOfFirstFile2 = AllContent[1].Content;
-                    var textOfFirstFile2Name = AllContent[1].Name;
-                    var AllContent3 = await client.Repository.Content.GetAllContents(repo.First().Id, textOfFirstFile2Name);
+                    var theRepo = repo.First();
+                    var AllContent = await client.Repository.Content.GetAllContents(theRepo.Id);//.GetAllContent(repos[0].Owner.Login, repos[0].Name);
+                    foreach (var file in AllContent)
+                    {
+                        string textOfFirstFileName = file.Name;
+                        var content = await client.Repository.Content.GetAllContents(theRepo.Id, textOfFirstFileName);
+                        if (content.Count() != 0)
+                        {
+                            var fileContent = content[0].Content; 
+                            File.AppendAllText(Path.Combine(MD , file.Name), fileContent);
+                        }
+                    }
+
+                    count = (Directory.GetFiles(MD)).Length;
+                    
+                    //var textOfFirstFile = AllContent[0].Content;
+                    //var textOfFirstFileName = AllContent[0].Name;
+                    //var AllContent2 = await client.Repository.Content.GetAllContents(repo.First().Id, textOfFirstFileName);
+                    //var textOfFirstFile2 = AllContent[1].Content;
+                    //var textOfFirstFile2Name = AllContent[1].Name;
+                    //var AllContent3 = await client.Repository.Content.GetAllContents(repo.First().Id, textOfFirstFile2Name);
                 }
 
                 //var pull = await client3.PullRequest.GetAllForRepository("djaus2", "ms-iot-community-samples");
@@ -348,7 +423,12 @@
                 //Request.Session["LoggedInStatus"] = false;
                 Request.Session["filter"] = "";
                 errorMsg.LoggedInStatus = (bool) Request.Session["LoggedInStatus"];
-                return View["/ms_iot_Community_Samples/ms_iot_Community_Samples", errorMsg];
+                if (count !=0)
+                    errorMsg.Message = "Retrieved " + count.ToString() + ".MD files from GitHub\r\nNow run 'Convert' to process the downloaded files.";
+                else
+                    errorMsg.Message = "No .MD files retreived from GitHub";
+                errorMsg.Source = "/GitHub";
+                return View["/ms_iot_Community_Samples/ErrorPage", errorMsg];
             };
            
 
@@ -373,7 +453,7 @@
                 //For filter remove any pre-existing sorting (but for sort don't remove pre-existing sorting).
                 string lastSort = fi.LastSort;
                 string lastSortDirection = fi.LastSortDirection;
-                fi.SortExpressions = Models.IoTProject.GetSort(sortString, ref lastSort, ref lastSortDirection);
+                fi.SortExpressions = Utilities.LinqDynamicMultiSortingUtility.GetSort(sortString, ref lastSort, ref lastSortDirection);
                 fi.LastSort = lastSort;
                 fi.LastSortDirection = lastSortDirection;
 

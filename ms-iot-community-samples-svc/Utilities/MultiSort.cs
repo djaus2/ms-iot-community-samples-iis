@@ -10,6 +10,58 @@ namespace ms_iot_community_samples_svc.Utilities
 {
     public static class LinqDynamicMultiSortingUtility
     {
+        public static List<Tuple<string, string>> GetSort(string SortString, ref string LastSort, ref string LastSortDirection)
+        {
+            List<Tuple<string, string>> sortExpressions = new List<Tuple<string, string>>();
+            if (string.IsNullOrWhiteSpace(SortString))
+            {
+                // If no sorting string, give a message and return.
+                System.Diagnostics.Debug.WriteLine("Please submit in a sorting string.");
+                return sortExpressions;
+            }
+
+            try
+            {
+                // Prepare the sorting string into a list of Tuples
+                //var sortExpressions = new List<Tuple<string, string>>();
+                string[] terms = SortString.Split(',');
+                for (int i = 0; i < terms.Length; i++)
+                {
+                    string[] items = terms[i].Trim().Split('~');
+                    var fieldName = items[0].Trim();
+                    var sortOrder = (items.Length > 1)
+                              ? items[1].Trim().ToLower() : "";
+                    if ((sortOrder != "asc") && (sortOrder != "desc"))
+                    {
+                        //throw new ArgumentException("Invalid sorting order");
+                        if (LastSort == fieldName)
+                        {
+                            if (LastSortDirection == "desc")
+                                sortOrder = "asc";
+                            else
+                                sortOrder = "desc";
+                        }
+                        else
+                            sortOrder = "asc";
+
+                    }
+                    LastSort = fieldName;
+                    LastSortDirection = sortOrder;
+                    sortExpressions.Add(new Tuple<string, string>(fieldName, sortOrder));
+                }
+
+
+            }
+            catch (Exception e)
+            {
+                var msg = "There is an error in your sorting string.  Please correct it and try again - "
+              + e.Message;
+                System.Diagnostics.Debug.WriteLine(msg);
+                sortExpressions.Clear();
+            }
+            return sortExpressions;
+        }
+
         /// <summary>
         /// 1. The sortExpressions is a list of Tuples, the first item of the 
         ///    tuples is the field name,
@@ -46,24 +98,26 @@ namespace ms_iot_community_samples_svc.Utilities
                                 .GetValue(item, null);
 
                 if (sortExpressions[index].Item2 == "asc")
-                {
-                    orderedQuery = query.OrderBy(expression);
-                }
-                else
-                {
-                    orderedQuery = query.OrderByDescending(expression);
- 
-                }
                 //{
-                //    orderedQuery = (index == 0) ? query.OrderBy(expression)
-                //      : orderedQuery.ThenBy(expression);
+                //    orderedQuery = query.OrderBy(expression);
                 //}
                 //else
                 //{
-                //    orderedQuery = (index == 0) ? query.OrderByDescending(expression)
-                //             : orderedQuery.ThenByDescending(expression);
+                //    orderedQuery = query.OrderByDescending(expression);
                 //}
-            }
+
+
+                {
+                    orderedQuery = (index == 0) ? query.OrderBy(expression)
+                      : orderedQuery.ThenBy(expression);
+                }
+                else
+                {
+                    orderedQuery = (index == 0) ? query.OrderByDescending(expression)
+                             : orderedQuery.ThenByDescending(expression);
+                }
+           
+        }
 
             query = orderedQuery;
 
