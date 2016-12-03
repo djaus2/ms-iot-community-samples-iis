@@ -32,13 +32,13 @@
             {
                 
                 var SearchIdtxt = "Id~" + document.getElementById("txtId").value;
-                var SearchTitletxt = "title~" + document.getElementById("txttitle").value;
-                var SearchSummarytxt = "description~" + document.getElementById("txtdescription").value;
+                var SearchTitletxt = "Title~" + document.getElementById("txttitle").value;
+                var SearchSummarytxt = "Description~" + document.getElementById("txtdescription").value;
                 var SearchCodetxt = "permalink~" + document.getElementById("txtpermalink").value;
                 SearchCodetxt = SearchCodetxt.replace("/", "Y");
                 var SearchTagstxt = "samplelink~" + document.getElementById("txtsamplelink").value;
                 SearchTagstxt = SearchTagstxt.replace("/", "Y");
-                var SearchTagstxt2 = "keyword~" + document.getElementById("txtkeyword").value;
+                var SearchTagstxt2 = "Tags~" + document.getElementById("txtkeyword").value;
                 var Searchtxt = SearchIdtxt + "/" + SearchTitletxt + "/" + SearchSummarytxt + "/" + SearchCodetxt + "/" + SearchTagstxt + "/" + SearchTagstxt2;
                 //C#
                 Searchtxt = Searchtxt.replace("#", "%23");
@@ -82,11 +82,11 @@
         style="border:0px; width:100%;">
         <tr>
             <th style="width:30px"><a href="/ms_iot_Community_Samples/Sort/Id">Id</a></th>
-            <th><a href="/ms_iot_Community_Samples/Sort/title">title</a></th>
-            <th><a href="/ms_iot_Community_Samples/Sort/description">description</a></th>
-            <th><a href="/ms_iot_Community_Samples/Sort/permalink">permalink</a></th>
-            <th><a href="/ms_iot_Community_Samples/Sort/samplelink">samplelink</a></th>
-            <th><a href="/ms_iot_Community_Samples/Sort/keyword">keyword</a></th>
+            <th><a href="/ms_iot_Community_Samples/Sort/title">Title</a></th>
+            <th><a href="/ms_iot_Community_Samples/Sort/description">Description</a></th>
+            <th><a href="/ms_iot_Community_Samples/Sort/permalink">Github</a></th>
+            <th><a href="/ms_iot_Community_Samples/Sort/samplelink">CodeLanguages</a></th>
+            <th><a href="/ms_iot_Community_Samples/Sort/keyword">Tags</a></th>
         </tr>
 
         <tr>
@@ -101,11 +101,11 @@
         {
             <tr>
                 <td width="30px">@objUser.Id</td>
-                <td><a href=@objUser.TitleId>@objUser.title</a></td>
+                <td><a href=@objUser.TitleId>@objUser.Title</a></td>
                 <td>@objUser.SummarySub</td>
-                <td>@objUser.permalink</td>
-                <td>@objUser.samplelink</td>
-                <td>@objUser.keyword</td>
+                <td><a href="@objUser.GitHubUrl">@objUser.GitHub</td>
+                <td>@string.Join(", ", objUser.CodeLanguages)</td>
+                <td>@string.Join(", ", objUser.Tags)</td>
 
             </tr>
         }

@@ -106,6 +106,8 @@
     <Compile Include="IndexModule.cs" />
     <Compile Include="IndexModule1.cs" />
     <Compile Include="IndexModule2.cs" />
+    <Content Include="json\Data.json" />
+    <None Include="MD\iotbluetoothserial.md" />
     <Compile Include="Models\IoTProject.cs" />
     <Compile Include="Models\Errors.cs" />
     <Compile Include="Models\filter.cs" />
@@ -131,29 +133,12 @@
     <Content Include="Views\ms_iot_Community_Samples\IndexList.cshtml" />
     <Content Include="Views\ms_iot_Community_Samples\login.cshtml" />
     <Content Include="Views\ms_iot_Community_Samples\ms_iot_Community_Samples.cshtml" />
-    <Content Include="MD\3DPrintServer.md" />
-    <Content Include="MD\AllJoynDSB.md" />
-    <Content Include="MD\AllJoynDSBCS.md" />
-    <Content Include="MD\AlljoynDSBSample.md" />
-    <Content Include="MD\AlljoynDSBSample_Managed.md" />
-    <Content Include="MD\AllJoynJS.md" />
-    <Content Include="MD\AllJoynMockAdapter.md" />
-    <Content Include="MD\AppInstaller.md" />
-    <Content Include="MD\Appx.md" />
-    <Content Include="MD\AzureDataUploader.md" />
-    <Content Include="MD\BACnetAdapter.md" />
-    <Content Include="MD\BACnetAdapterTutorial.md" />
-    <Content Include="MD\BLEGatt.md" />
-    <Content Include="MD\BLEGatt2.md" />
-    <Content Include="MD\BLEGattDump.md" />
-    <Content Include="MD\BlinkyContent.md" />
-    <Content Include="MD\BlinkyIntro.md" />
-    <Content Include="MD\BlinkyMBM.md" />
     <Content Include="Themes\Web.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Content Include="Views\ms_iot_Community_Samples\token.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -162,7 +147,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="json\" />
     <Folder Include="MD2\" />
   </ItemGroup>
   <PropertyGroup>

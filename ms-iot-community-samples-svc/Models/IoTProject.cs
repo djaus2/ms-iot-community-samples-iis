@@ -10,7 +10,34 @@ using Newtonsoft.Json;
 namespace ms_iot_community_samples_svc.Models
 {
     [Serializable]
-    public class IoTProject
+    public class Project
+    {
+        public string Filename { get; set; } = "";
+        public string Title { get; set; } = "";
+
+        public string Description { get; set; } = "";
+
+        public List<string> Developers { get; set; } = new List<string>();
+
+        public string Blog { get; set; } = "";
+
+        public List<string> CodeLanguages { get; set; } = new List<string>();
+
+        public List<string> Targets { get; set; } = new List<string>();
+
+        public string Language { get; set; } = "en-us";
+
+        public string GitHub { get; set; } = "";
+
+        public string HacksterIO { get; set; } = "";
+
+        public string Codeplex { get; set; } = "";
+
+        public List<string> Tags { get; set; } = new List<string>();
+    }
+
+    [Serializable]
+    public class IoTProject: Project
     {
         private static int Count = 0;
         public int Id { get; set; }
@@ -28,11 +55,89 @@ namespace ms_iot_community_samples_svc.Models
         {
             get
             {
-                string ret = "/ms_iot_Community_Samples/display/" + filename;
+                string ret = "/ms_iot_Community_Samples/display/" + Filename;
+                return ret;
+            }
+        }
+
+        public string GitHubUrl
+        {
+            get
+            {
+                if (GitHub == "")
+                    return "";
+                string ret = "https://github.com/" + GitHub;
                 return ret;
             }
         }
         
+        public string OtherGitHub
+        {
+            get
+            {
+                if (GitHub == "")
+                    return "";
+                return "Developer's Other GitHub Projects";
+            }
+        }
+
+        public string OtherGitHubProjectsUrl
+        {
+            get
+            {
+                if (GitHub == "")
+                    return "";
+
+                string[] parts = GitHub.Split(new char[] { '/' });
+                string developer = parts[0].Trim();
+                if (developer == "")
+                    return "";
+
+                string ret = "https://github.com/" + developer + "?tab=repositories";
+                return ret;
+            }
+        }
+
+        public string HacksterIOUrl
+        {
+            get
+            {
+                if (HacksterIO == "")
+                    return "";
+                string ret = "https://www.hackster.io/" + HacksterIO;
+                return ret;
+            }
+        }
+
+        public string OtherHacksterIO
+        {
+            get
+            {
+                if (HacksterIO == "")
+                    return "";
+                return "Developer's Other HacksterIO Projects";
+            }
+        }
+
+        public string OtherHacksterIOProjectsUrl
+        {
+            get
+            {
+                if (HacksterIO == "")
+                    return "";
+
+                string[] parts = HacksterIO.Split(new char[] { '/' });
+                string developer = parts[0].Trim();
+                if (developer == "")
+                    return "";
+
+                string ret = "https://www.hackster.io/" + developer + "/projects?ref=topnav";
+                return ret;
+            }
+        }
+
+        
+
 
         //public string Title { get; set; }
         //public string Summary { get; set; }
@@ -44,26 +149,31 @@ namespace ms_iot_community_samples_svc.Models
             get
             {
 
-                if (description.Length > SummarySubLength)
-                    return description.Substring(0, SummarySubLength) + " ...";
+                if (Description.Length > SummarySubLength)
+                    return Description.Substring(0, SummarySubLength) + " ...";
                 else
-                    return description;
+                    return Description;
 
             }
         }
 
-        public string layout { get; set; } = "";
-        public string filename { get; set; } = "";
-        public string title { get; set; } = "";
-        public string description { get; set; } = "";
-        public string keyword { get; set; } = "";
-        public string permalink { get; set; } = "";
-        public string samplelink { get; set; } = "";
-        public string lang { get; set; } = "en-us";
+        //public string layout { get; set; } = "";
+        //public string filename { get; set; } = "";
+        //public string title { get; set; } = "";
+        //public string description { get; set; } = "";
+        //public string keyword { get; set; } = "";
+        //public string permalink { get; set; } = "";
+        //public string samplelink { get; set; } = "";
+        //public string lang { get; set; } = "en-us";
+
+        //public string Filename { get; set; } = "";
+        //public string Title { get; set; } = "";
 
         //public string Description { get; set; }
 
         //public List<string> Authors { get; set; }
+
+        //public string Blog { get; set; }
 
         //public List<string> CodeLanguages { get; set; }
 
@@ -85,20 +195,6 @@ namespace ms_iot_community_samples_svc.Models
             if (IoTProjects == null)
             {
                 ClearIoTProjects();
-    //            Count = 0;
-    //            var fields = typeof(BlogPost).GetFields(
-    //BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
-
-                //            var names = Array.ConvertAll(fields, field => field.Name.Substring(1).Replace(">k__BackingField",""));
-                //            Fields = names.ToList<string>();
-                //            //Type myType = typeof(BlogPost);
-                //            //var myField = myType.GetFields();
-                //            //Fields = new List<string>();
-                //            //for (int i = 0; i < myField.Length; i++)
-                //            //{
-                //            //    Fields.Add(myField[i].Name);
-                //            //}
-                //            BlogPostz = new List<BlogPost>();
             }
             Id = Count++;
             IoTProjects.Add(this);
