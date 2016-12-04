@@ -4,6 +4,7 @@
     using Nancy;
     using Nancy.Bootstrapper;
     using Nancy.Bootstrappers.Autofac;
+    using Nancy.Conventions;
     using Nancy.Session;
     using Nancy.TinyIoc;
 
@@ -45,5 +46,29 @@
                 builder.RegisterType<IndexModule>();
             });
         }
+
+        public class CustomRootPathProvider : IRootPathProvider
+        {
+            public string GetRootPath()
+            {
+                return @"C:\Users\david\Documents\GitHub\ms-io-community-samples-svc\ms-iot-community-samples-svc\ms-iot-community-samples-svc";
+            }
+        }
+
+        protected override IRootPathProvider RootPathProvider
+        {
+            get { return new CustomRootPathProvider(); }
+        }
+
+
+        //https://github.com/NancyFx/Nancy/wiki/Managing-static-content
+        //protected override void ConfigureConventions(NancyConventions conventions)
+        //{
+        //    base.ConfigureConventions(conventions);
+
+        //    conventions.StaticContentsConventions.Add(
+        //        StaticContentConventionBuilder.AddDirectory("assets", @"contentFolder/subFolder")
+        //    );
+        //}
     }
 }

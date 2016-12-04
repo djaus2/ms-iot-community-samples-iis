@@ -1,5 +1,8 @@
 ﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<List<ms_iot_community_samples_svc.Models.IoTProject>>
-    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+@{
+//Themes.Initialize("~/Themes/", "CityTheme");
+} 
+   <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
     <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <title></title>
@@ -85,7 +88,7 @@
             <th><a href="/ms_iot_Community_Samples/Sort/title">Title</a></th>
             <th><a href="/ms_iot_Community_Samples/Sort/description">Description</a></th>
             <th><a href="/ms_iot_Community_Samples/Sort/permalink">Github</a></th>
-            <th><a href="/ms_iot_Community_Samples/Sort/samplelink">CodeLanguages</a></th>
+            <th><a href="/ms_iot_Community_Samples/Sort/samplelink">Code Language/s</a></th>
             <th><a href="/ms_iot_Community_Samples/Sort/keyword">Tags</a></th>
         </tr>
 

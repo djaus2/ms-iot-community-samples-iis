@@ -49,44 +49,51 @@
                return document.Content;
        *
        ***************************************************************************/
-        //Running from filesystem
-        //C:\Users\david\Documents\GitHub\ms-io-community-samples-svc\ms-iot-community-samples-svc\ms-iot-community-samples-svc
+        private string jsonFile = "Data.json";
+        private const string srcDirName = "MD";//.MD files from GitHub are synced with this folder
+        private const string destDirName = "MD2";//Files from MD are stripped of "db" at top (used to create json db) and placed here.
+        private const string jsonDirName = "Json";
+        private const string MyGitHubRepositories = @"C:\Users\David\Documents\GitHub";
+      
+        private string siteName;
 
-        private string projectName;//= Assembly.GetCallingAssembly().GetName().Name;
-        private string projectDir;// = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-        private string projLocn;// = @"C:/Users/" + me + @"/Documents/GitHub/ms-io-community-samples-svc/";
-        private string dirr;
-        private string jsonFile;
-        private string jsonDirr;
-        private string MDDB;
+        //Folder paths
+        private string SiteDir;
         private string MD2;
         private string MD;
+        private string jsonDirr;
 
-        //When deployed on server
-        //private const string jsonFile = @"Data.json";
-        //private const string jsonDirr = @"~/Json/";
-        //private const string MDDB = jsonDirr + jsonFile;
-        //private const string MD2 = @"~/MD2/";
-        //private const string MD = @"~/MD/";
+        //The json file path
+        private string MDDB;
 
-        private void DoStrings()
+        private void DoStrings(IRootPathProvider pathProvider)
         {
-            string me = "David";
-            string gh = HttpContext.Current.ApplicationInstance.GetType().Assembly.Location;//..GetName().Name;
-            string jk = HttpContext.Current.ApplicationInstance.GetType().BaseType.Assembly.GetName().Name;
-            projectName = Assembly.GetCallingAssembly().GetName().Name;
-        projectDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-        dirr = @"C:\Users\david\Documents\GitHub\ms-io-community-samples-svc\ms-iot-community-samples-svc\ms-iot-community-samples-svc\";
-        //dirr = projectDir + projectName + @"\" + projectName + @"\";
-        jsonFile = "Data.json";
-        jsonDirr = Path.Combine ( dirr , @"Json\");
-        MDDB = Path.Combine(jsonDirr , jsonFile);
-        MD2 = Path.Combine(dirr , @"MD2\");
-        MD = Path.Combine(dirr , @"MD\");
+            siteName = Assembly.GetCallingAssembly().GetName().Name;
+//#if ISDEPLOYED
+            //When deployed on server
+            //var uploadDirectory = Path.Combine(pathProvider.GetRootPath(), "json");//, "uploads");
+
+            //jsonDirr = @"~/Json/";
+            //MDDB = Path.Combine(jsonDirr, jsonFile);
+            //MD2 = @"~/MD2/";
+            //MD = @"~/MD/";
+
+            jsonDirr = Path.Combine(pathProvider.GetRootPath(), "json");
+            MDDB = Path.Combine(pathProvider.GetRootPath(), jsonDirr, jsonFile);
+            MD2 = Path.Combine(pathProvider.GetRootPath(), "MD2");
+            MD = Path.Combine(pathProvider.GetRootPath(), "MD");
+
+//#else
+//            SiteDir = MyGitHubRepositories + @"\ms-io-community-samples-svc\ms-iot-community-samples-svc\ms-iot-community-samples-svc\";
+//            jsonDirr = Path.Combine ( SiteDir , @"Json\");
+//            MDDB = Path.Combine(jsonDirr , jsonFile);
+//            MD2 = Path.Combine(SiteDir , @"MD2\");
+//            MD = Path.Combine(SiteDir , @"MD\");
+//#endif
         }
 
 
-        public IndexModule()
+        public IndexModule(IRootPathProvider pathProvider)
         {
             //async syntax
             //Get["/aa", true] = async (parameters, ct) => "Hello World!";
@@ -102,9 +109,17 @@
 
                 return View["default"];
             };
+            Get["/Default"] = _ =>
+            {
+                Request.Session["filter"] = "";
+                Request.Session["LoggedInStatus"] = false;
+
+
+                return View["default"];
+            };
             Get["/ms_iot_Community_Samples"] = _ =>
             {
-                DoStrings();
+                DoStrings(pathProvider);
                 bool getList = false;
                 if (Models.IoTProject.IoTProjects == null)
                     getList = true;
@@ -182,16 +197,10 @@
                 string referer = parameters.referer;
                 Request.Session["filter"] = "";
                 Request.Session["LoggedInStatus"] = false;
-#if ISDEPLOYED
-                //http://www.dotnetprofessional.com/blog/post/2008/03/03/Encrypt-sections-of-WebConfig-or-AppConfig.aspx
-                NameValueCollection secureAppSettings =
-                        (NameValueCollection)ConfigurationManager.GetSection("secureAppSettings");
-                string admin = (string)secureAppSettings["Admin.UserName"];
-                string adminPwd = (string)secureAppSettings["Admin.Pwd"];
-#else
+
                 string admin = (string)ConfigurationManager.AppSettings["Admin.UserName"];
                 string adminPwd = (string)ConfigurationManager.AppSettings["Admin.Pwd"];
-#endif
+
                 user = user.Trim();
                 pwd = pwd.Trim();
                 if ((user == admin) && (pwd == adminPwd))
@@ -218,7 +227,7 @@
 
             Get["/ms_iot_Community_Samples/convert"] = _ =>
             {
-                DoStrings();
+                DoStrings(pathProvider);
                 if (!(bool)Request.Session["LoggedInStatus"])
                 {
                     errorMsg.Message = "Not logged in!";
@@ -402,7 +411,7 @@
 
             Get["/ms_iot_Community_Samples/display/{name}"] = parameters =>
             {
-                DoStrings();
+                DoStrings(pathProvider);
                 var contentProvider = new FileContentProvider(MD2, null);
                 var converter = new MarkdownService(contentProvider);
                 var document = converter.GetDocument(parameters.name);
@@ -418,29 +427,28 @@
                      errorMsg.Source = "/GitHub";
                      return View["/ms_iot_Community_Samples/ErrorPage", errorMsg];
                  }
-                 DoStrings();
+                 DoStrings(pathProvider);
 
 
-#if ISDEPLOYED
+#if ISENCRYPTED
                 NameValueCollection secureAppSettings =
-                        (NameValueCollection)ConfigurationManager.GetSection("secureAppSettings");
+                    (NameValueCollection)ConfigurationManager.GetSection("secureAppSettings");
                 string githuUrl =  (string)secureAppSettings["GitHub.Url"];
                 string githubRepo = (string)secureAppSettings["GitHub.Repository"];
                 string githubUsr = (string)secureAppSettings["GitHub.UserName"];
                 string githubPwd = (string)secureAppSettings["GitHub.Pwd"];
-                 ClientId = (string)secureAppSettings["ClientId"];
-                 ClientSecret = (string)secureAppSettings["ClientSecret"];
+                string githubLatestCommitSha = (string)secureAppSettings["GitHub.LatestCommitSha"];
+                ClientId = (string)secureAppSettings["GitHub.ClientId"];
+                ClientSecret = (string)secureAppSettings["GitHub.ClientSecret"];
 #else
                  string githuUrl = (string)ConfigurationManager.AppSettings["GitHub.Url"];
                  string githubRepo = (string)ConfigurationManager.AppSettings["GitHub.MDsRepository"];
                  string githubUsr = (string)ConfigurationManager.AppSettings["GitHub.UserName"];
                  string githubPwd = (string)ConfigurationManager.AppSettings["GitHub.Pwd"];
                  string githubLatestCommitSha = (string)ConfigurationManager.AppSettings["GitHub.LatestCommitSha"];
-                 if (githubLatestCommitSha == null)
-                     githubLatestCommitSha = "";
+                 ClientId = (string)ConfigurationManager.AppSettings["GitHub.ClientId"];
+                 ClientSecret = (string)ConfigurationManager.AppSettings["GitHub.ClientSecret"];
 
-                 ClientId = (string)ConfigurationManager.AppSettings["ClientId"];
-                 ClientSecret = (string)ConfigurationManager.AppSettings["ClientSecret"];
                  //string githubLatestCommitCountStr = (string)ConfigurationManager.AppSettings["GitHub.LatestCommitCountStrStr"];
                  //int githubLatestCommitCount = 0;
                  //bool res = int.TryParse(githubLatestCommitCountStr, out githubLatestCommitCount);
@@ -450,6 +458,8 @@
                  //    ConfigurationManager.AppSettings["GitHub.LatestCommitCountStrStr"] = "0";
                  //}
 #endif
+                 if (githubLatestCommitSha == null)
+                     githubLatestCommitSha = "";
                  //http://haacked.com/archive/2014/04/24/octokit-oauth/
                  //string clientId = "2c0baac7c20dd4fb52b5";
                  // string clientSecret = "f14d3e9055a292128abe472ab0b000a2a8c87166";//f14d3e9055a292128abe472ab0b000a2a8c87166
@@ -808,4 +818,7 @@
     }
 
 
+
 }
+
+//http://www.jhovgaard.com/from-aspnet-mvc-to-nancy-part-2/
