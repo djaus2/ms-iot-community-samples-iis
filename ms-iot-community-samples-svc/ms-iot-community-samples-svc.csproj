@@ -107,7 +107,7 @@
     <Compile Include="IndexModule1.cs" />
     <Compile Include="IndexModule2.cs" />
     <Content Include="json\Data.json" />
-    <None Include="MD\iotbluetoothserial.md" />
+    <Content Include="MD\BlinkyMBM.md" />
     <Compile Include="Models\IoTProject.cs" />
     <Compile Include="Models\Errors.cs" />
     <Compile Include="Models\filter.cs" />

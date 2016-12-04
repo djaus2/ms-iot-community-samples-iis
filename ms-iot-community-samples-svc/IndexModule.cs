@@ -15,9 +15,11 @@
     using System.Web;
     using System.Web.Security;
     using System.Threading.Tasks;
+    using System.Collections.ObjectModel;
 
     public class IndexModule : NancyModule
     {
+        private    List<string> IgnoreMDS = new  List <string> {"readme", "template" };
         private const string DBSep = "---";
         /******************************************************************************************
                //Sportronics View
@@ -281,6 +283,8 @@
                     try
                     {
                         string filename = Path.GetFileNameWithoutExtension(file);
+                        if (IgnoreMDS.Contains(filename.ToLower()))
+                            continue;
                         count--;
                         string fileTxt = File.ReadAllText(file);
 
@@ -310,11 +314,19 @@
                                 if (parts.Length == 1)
                                 {
                                     vname = parts[0].Trim();
+                                    if (vname == "")
+                                        continue;
+                                    else if ((vname == "GitHub") || (vname == "HacksterIO") || (vname == "Codeplex") ||(vname== "Blog"))
+                                        continue;
                                     vvalue = "";
                                 }
                                 else if (parts.Length == 2)
                                 {
                                     vname = parts[0].Trim();
+                                    if (vname == "")
+                                        continue;
+                                    else if ((vname == "GitHub") || (vname == "HacksterIO") || (vname == "Codeplex") || (vname=="Blog"))
+                                        continue;
                                     vvalue = parts[1].Trim();
                                 }
                                 else
@@ -324,30 +336,51 @@
                                     //Actually just remove parts[0] and : at start of line.
                                     vname = parts[0].Trim();
                                     vvalue = newLine.Substring(vname.Length+1).Trim();
-                                    if (vname == "GitHub")
+                                    if (vname == "")
+                                        continue;
+                                    else if (vname == "GitHub")
                                     {
-                                        if (vvalue.IndexOf("https://github.com/") == 0)
+                                        if (vvalue.ToLower().IndexOf("https://github.com/") == 0)
                                         {
                                             vvalue = vvalue.Substring("https://github.com/".Length);
                                         }
+                                        else
+                                            continue;
                                     }
                                     else if (vname == "HacksterIO")
                                     {
-                                        if (vvalue.IndexOf("https://www.hackster.io/") == 0)
+                                        if (vvalue.ToLower().IndexOf("https://www.hackster.io/") == 0)
                                         {
                                             vvalue = vvalue.Substring("https://www.hackster.io/".Length);
                                         }
+                                        else
+                                            continue;
                                     }
+
                                 }
                                 if ((vname=="") || (vvalue==""))
                                 {
-                                    break;
+                                    continue;
+                                }
+                                if (vname == "Codeplex")
+                                {
+                                    //^(https\:\/\/[0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*(:(0-9)*)*(\/?)([a-zA-Z0-9\-\.\?\,\'\/\\\+&amp;%\$#_]*)?$
+                                    if (vvalue.IndexOf("https://") == 0)
+                                    {
+                                        int codp = vvalue.ToLower().IndexOf(".codeplex.com") + ".codeplex.com".Length;
+                                        if (vvalue.Length != codp)
+                                        {
+                                            continue;
+                                        }
+                                    }
+                                    else
+                                        continue;
                                 }
                                 try
                                 {
                                     var fields = typeof(Models.Project).GetFields(
                                         BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
-                                    var field = from n in fields where n.Name.Substring(1).Replace(">k__BackingField", "") == vname select n;
+                                    var field = from n in fields where n.Name.Substring(1).Replace(">k__BackingField", "").ToLower() == vname.ToLower() select n;
                                     if (field.Count() == 1)
                                     {
                                         var fld = field.First();
@@ -392,8 +425,19 @@
                             //Abort this db record
                             break;
                         }
-                        string name = Path.GetFileName(file);
-                        File.WriteAllText(Path.Combine(MD2, name), fileTxt);
+                        bool gotFile = false;
+                        //Tests for an empty project
+                        if (iotProject.Title != "")
+                        if ( (iotProject.HacksterIO+iotProject.GitHub + iotProject.Codeplex).Trim() != "")
+                        {
+                            string name = Path.GetFileName(file);
+                            File.WriteAllText(Path.Combine(MD2, name), fileTxt);
+                            gotFile = true;
+                        }
+                        if (!gotFile)
+                        {
+                            Models.IoTProject.IoTProjects.Remove(iotProject);
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -430,17 +474,7 @@
                  DoStrings(pathProvider);
 
 
-#if ISENCRYPTED
-                NameValueCollection secureAppSettings =
-                    (NameValueCollection)ConfigurationManager.GetSection("secureAppSettings");
-                string githuUrl =  (string)secureAppSettings["GitHub.Url"];
-                string githubRepo = (string)secureAppSettings["GitHub.Repository"];
-                string githubUsr = (string)secureAppSettings["GitHub.UserName"];
-                string githubPwd = (string)secureAppSettings["GitHub.Pwd"];
-                string githubLatestCommitSha = (string)secureAppSettings["GitHub.LatestCommitSha"];
-                ClientId = (string)secureAppSettings["GitHub.ClientId"];
-                ClientSecret = (string)secureAppSettings["GitHub.ClientSecret"];
-#else
+
                  string githuUrl = (string)ConfigurationManager.AppSettings["GitHub.Url"];
                  string githubRepo = (string)ConfigurationManager.AppSettings["GitHub.MDsRepository"];
                  string githubUsr = (string)ConfigurationManager.AppSettings["GitHub.UserName"];
@@ -457,7 +491,7 @@
                  //    githubLatestCommitCount = 0;
                  //    ConfigurationManager.AppSettings["GitHub.LatestCommitCountStrStr"] = "0";
                  //}
-#endif
+
                  if (githubLatestCommitSha == null)
                      githubLatestCommitSha = "";
                  //http://haacked.com/archive/2014/04/24/octokit-oauth/
@@ -555,6 +589,8 @@
                                      if (++cntr > 3)
                                          break;
                                      string textOfFirstFileName = file.Name;
+                                     if (IgnoreMDS.Contains(textOfFirstFileName.ToLower().Replace(".md","")))
+                                         continue;
                                      var content = await basicGitHubClient.Repository.Content.GetAllContents(theRepo.Id, textOfFirstFileName);
                                      if (content.Count() != 0)
                                      {
