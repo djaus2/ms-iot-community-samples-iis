@@ -12,6 +12,7 @@ namespace ms_iot_community_samples_svc.Models
     [Serializable]
     public class Project
     {
+        public string Version { get; set; } = "";
         public string Filename { get; set; } = "";
         public string Title { get; set; } = "";
 

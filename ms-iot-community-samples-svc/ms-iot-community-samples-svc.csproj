@@ -34,7 +34,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>TRACE;ISDEPLOYED</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -106,8 +106,6 @@
     <Compile Include="IndexModule.cs" />
     <Compile Include="IndexModule1.cs" />
     <Compile Include="IndexModule2.cs" />
-    <Content Include="json\Data.json" />
-    <Content Include="MD\BlinkyMBM.md" />
     <Compile Include="Models\IoTProject.cs" />
     <Compile Include="Models\Errors.cs" />
     <Compile Include="Models\filter.cs" />
@@ -134,11 +132,16 @@
     <Content Include="Views\ms_iot_Community_Samples\login.cshtml" />
     <Content Include="Views\ms_iot_Community_Samples\ms_iot_Community_Samples.cshtml" />
     <Content Include="Themes\Web.config" />
+    <None Include="Properties\PublishProfiles\SportronicsIoT - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\SportronicsIoT - Web Deploy.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <Content Include="Views\ms_iot_Community_Samples\token.cshtml" />
+    <Content Include="Views\AList.cshtml" />
+    <Content Include="Views\ms_iot_Community_Samples\Test1.cshtml" />
+    <Content Include="Views\Test2.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -147,7 +150,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="json\" />
     <Folder Include="MD2\" />
+    <Folder Include="MD\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

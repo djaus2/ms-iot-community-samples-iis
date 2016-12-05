@@ -68,41 +68,148 @@
         //The json file path
         private string MDDB;
 
-        private void DoStrings(IRootPathProvider pathProvider)
+        private void DoStrings() //(IRootPathProvider pathProvider)
         {
             siteName = Assembly.GetCallingAssembly().GetName().Name;
-//#if ISDEPLOYED
+            //#if ISDEPLOYED
             //When deployed on server
             //var uploadDirectory = Path.Combine(pathProvider.GetRootPath(), "json");//, "uploads");
 
-            //jsonDirr = @"~/Json/";
-            //MDDB = Path.Combine(jsonDirr, jsonFile);
-            //MD2 = @"~/MD2/";
-            //MD = @"~/MD/";
+            //            jsonDirr = @"/Json/";
+            //           MDDB = @"/Json/db.data";
+            ////// Path.Combine(jsonDirr, jsoMD2/";
+            //            MD nFile);
+            //            MD2 = @"~/= @"~/MD/";
 
-            jsonDirr = Path.Combine(pathProvider.GetRootPath(), "json");
-            MDDB = Path.Combine(pathProvider.GetRootPath(), jsonDirr, jsonFile);
-            MD2 = Path.Combine(pathProvider.GetRootPath(), "MD2");
-            MD = Path.Combine(pathProvider.GetRootPath(), "MD");
+            //jsonDirr = Path.Combine(pathProvider.GetRootPath(), "json");
+            //MDDB = Path.Combine(pathProvider.GetRootPath(), jsonDirr, jsonFile);
+            //MD2 = Path.Combine(pathProvider.GetRootPath(), "MD2");
+            //MD = Path.Combine(pathProvider.GetRootPath(), "MD");
 
-//#else
-//            SiteDir = MyGitHubRepositories + @"\ms-io-community-samples-svc\ms-iot-community-samples-svc\ms-iot-community-samples-svc\";
-//            jsonDirr = Path.Combine ( SiteDir , @"Json\");
-//            MDDB = Path.Combine(jsonDirr , jsonFile);
-//            MD2 = Path.Combine(SiteDir , @"MD2\");
-//            MD = Path.Combine(SiteDir , @"MD\");
-//#endif
+            string path = "";
+            //if (!string.IsNullOrEmpty(Environment.GetEnvironmentVariable("HOME")))
+            //    path = Environment.GetEnvironmentVariable("HOME") + "\\site\\wwwroot\\bin";
+            //else
+            //    path = ".";
+            MDDB = @"D:\home\Site\wwwroot\json\Data.json";
+            jsonDirr = @"D:\home\Site\wwwroot\json";
+            MD2 = @"D:\home\Site\wwwroot\MD2";
+            MD = @"D:\home\Site\wwwroot\MD";
+
+            ////#else
+            //            //SiteDir = MyGitHubRepositories + @"\ms-io-community-samples-svc\ms-iot-community-samples-svc\ms-iot-community-samples-svc\";
+            //            jsonDirr = Path.Combine(SiteDir, @"Json\");
+            //            MDDB = Path.Combine(jsonDirr, jsonFile);
+            //            MD2 = Path.Combine(SiteDir, @"MD2\");
+            //            MD = Path.Combine(SiteDir, @"MD\");
+            ////#endif
         }
 
 
-        public IndexModule(IRootPathProvider pathProvider)
+        public IndexModule()//(IRootPathProvider pathProvider)
         {
+           //IRootPathProvider pathProvider = null;
             //async syntax
             //Get["/aa", true] = async (parameters, ct) => "Hello World!";
 
             Models.Errors errorMsg = new Models.Errors();
 
-            //var ses = Request.Session;
+            Get["/Dirs"] = _ =>
+            {
+                string appRoot = Environment.GetEnvironmentVariable("Home");
+                //appRoot = Path.Combine(appRoot, "Site\\wwwroot");
+                string [] dirs = Directory.GetDirectories(appRoot);
+                List<string> directories = dirs.ToList < string>();
+                return View["AList", directories];
+            };
+            Get["/Dirs/{SubDir1}"] = parameters =>
+            {
+                string appRoot = Environment.GetEnvironmentVariable("Home");
+                appRoot = Path.Combine(appRoot, parameters.SubDir1);
+                string[] dirs = Directory.GetDirectories(appRoot);
+                List<string> directories = dirs.ToList<string>();
+                return View["AList", directories];
+            };
+            Get["/Dirs/{SubDir1}/{SubDir2}"] = parameters =>
+            {
+                string appRoot = Environment.GetEnvironmentVariable("Home");
+                appRoot = Path.Combine(appRoot, parameters.SubDir1 + "/" + parameters.SubDir2);
+                string[] dirs = Directory.GetDirectories(appRoot);
+                List<string> directories = dirs.ToList<string>();
+                return View["AList", directories];
+            };
+            Get["/Dirs/{SubDir1}/{SubDir2}/{SubDir3}"] = parameters =>
+            {
+                string appRoot = Environment.GetEnvironmentVariable("Home");
+                appRoot = Path.Combine(appRoot, parameters.SubDir1 + "/" + parameters.SubDir2 + "/" + parameters.SubDir3);
+                string[] dirs = Directory.GetDirectories(appRoot);
+                List<string> directories = dirs.ToList<string>();
+                return View["AList", directories];
+            };
+            Get["/Dirs/{SubDir1}/{SubDir2}/{SubDir3}/{SubDir4}"] = parameters =>
+            {
+                string appRoot = Environment.GetEnvironmentVariable("Home");
+                appRoot = Path.Combine(appRoot, parameters.SubDir1 + "/" + parameters.SubDir2 + "/" + parameters.SubDir3 + "/" + parameters.SubDir4);
+                string[] dirs = Directory.GetDirectories(appRoot);
+                List<string> directories = dirs.ToList<string>();
+                return View["AList", directories];
+            };
+            Get["/Dirs/{SubDir1}/{SubDir2}/{SubDir3}/{SubDir4}/{SubDir5}"] = parameters =>
+            {
+                string appRoot = Environment.GetEnvironmentVariable("Home");
+                appRoot = Path.Combine(appRoot, parameters.SubDir1 + "/" + parameters.SubDir2 + "/" + parameters.SubDir3 + "/" + parameters.SubDir4 + "/" + parameters.SubDir5);
+                string[] dirs = Directory.GetDirectories(appRoot);
+                List<string> directories = dirs.ToList<string>();
+                return View["AList", directories];
+            };
+            Get["/Files/{SubDir1}"] = parameters =>
+            {
+                string appRoot = Environment.GetEnvironmentVariable("Home");
+                appRoot = Path.Combine(appRoot, parameters.SubDir1);
+                string[] dirs = Directory.GetFiles(appRoot);
+                List<string> directories = dirs.ToList<string>();
+                return View["AList", directories];
+            };
+            Get["/Files/{SubDir1}/{SubDir2}"] = parameters =>
+            {
+                string appRoot = Environment.GetEnvironmentVariable("Home");
+                appRoot = Path.Combine(appRoot, parameters.SubDir1 + "\\" + parameters.SubDir2);
+                string[] dirs = Directory.GetFiles(appRoot);
+                List<string> directories = dirs.ToList<string>();
+                return View["AList", directories];
+            };
+            Get["/Files/{SubDir1}/{SubDir2}/{SubDir3}"] = parameters =>
+            {
+                string appRoot = Environment.GetEnvironmentVariable("Home");
+                appRoot = Path.Combine(appRoot, parameters.SubDir1 + "\\" + parameters.SubDir2 + "\\" + parameters.SubDir3);
+                string[] dirs = Directory.GetFiles(appRoot);
+                List<string> directories = dirs.ToList<string>();
+                return View["AList", directories];
+            };
+            Get["/Files/{SubDir1}/{SubDir2}/{SubDir3}/{SubDir4}"] = parameters =>
+            {
+                string appRoot = Environment.GetEnvironmentVariable("Home");
+                appRoot = Path.Combine(appRoot, parameters.SubDir1 + "\\" + parameters.SubDir2 + "\\" + parameters.SubDir3 + "\\" + parameters.SubDir4);
+                string[] dirs = Directory.GetFiles(appRoot);
+                List<string> directories = dirs.ToList<string>();
+                return View["AList", directories];
+            };
+            Get["/Files/{SubDir1}/{SubDir2}/{SubDir3}/{SubDir4}/{SubDir5}"] = parameters =>
+            {
+                string appRoot = Environment.GetEnvironmentVariable("Home");
+                appRoot = Path.Combine(appRoot, parameters.SubDir1 + "\\" + parameters.SubDir2 + "\\" + parameters.SubDir3 + "\\" + parameters.SubDir4 + "\\" + parameters.SubDir5);
+                string[] dirs = Directory.GetFiles(appRoot);
+                List<string> directories = dirs.ToList<string>();
+                return View["AList", directories];
+            };
+            Get["/ms_iot_Community_Samples/Test2"] = _ =>
+            {
+                return View["Test2"];
+            };
+            Get["/ms_iot_Community_Samples/Test1"] = _ =>
+            {
+                return View["ms_iot_Community_Samples/Test1"];
+            };
             Get["/"] = _ =>
             {
                 Request.Session["filter"] = "";
@@ -121,38 +228,58 @@
             };
             Get["/ms_iot_Community_Samples"] = _ =>
             {
-                DoStrings(pathProvider);
+
+                DoStrings();
                 bool getList = false;
                 if (Models.IoTProject.IoTProjects == null)
                     getList = true;
                 else if (Models.IoTProject.IoTProjects.Count() == 0)
                     getList = true;
+                
                 if (getList)
                 {
                     if (!Directory.Exists(jsonDirr))
+                    {
                         Directory.CreateDirectory(jsonDirr);
+                    }
+                    if (!Directory.Exists(MD))
+                    {
+                        Directory.CreateDirectory(MD);
+                    }
+                    if (!Directory.Exists(MD2))
+                    {
+                        Directory.CreateDirectory(MD2);
+                    }
+
                     if (!File.Exists(MDDB))
                     {
+                        errorMsg.Message = "No Json File.Do Github and Convert first.";
                         errorMsg.LoggedInStatus = (bool)Request.Session["LoggedInStatus"];
-                        return View["/ms_iot_Community_Samples/ms_iot_Community_Samples", errorMsg];
+                        return View["ms_iot_Community_Samples/ms_iot_Community_Samples", errorMsg];
                     }
+                    
                     string[] files1 = Directory.GetFiles(jsonDirr, jsonFile);
                     if (files1.Length != 1)
+                    {
+                        
                         return View["IndexList"];
+                    }
                     string document = "";
                     document = File.ReadAllText(MDDB);
-
+                    
                     JsonSerializerSettings set = new JsonSerializerSettings();
                     set.MissingMemberHandling = MissingMemberHandling.Ignore;
                     Models.IoTProject[] md = JsonConvert.DeserializeObject<Models.IoTProject[]>(document, set);
-
+                    
                     var mdd = from n in md select n;
                     //Objects.BlogPost.BlogPostz = md.Select(data => data)).ToList()
                     Models.IoTProject.IoTProjects = md.ToList<Models.IoTProject>();
+                    
                     Request.Session["filter"] = "";
                 }
                 errorMsg.LoggedInStatus = (bool)Request.Session["LoggedInStatus"];
-                return View["/ms_iot_Community_Samples/ms_iot_Community_Samples", errorMsg];
+                //return View["ms_iot_Community_Samples/Test1"];
+                return View["ms_iot_Community_Samples/ms_iot_Community_Samples", errorMsg];
             };
 
             Get["/ms_iot_Community_Samples/default"] = _ =>
@@ -169,7 +296,7 @@
                     referer = "ms_iot_Community_Samples";
                 else
                     referer = "IndexList";
-                return View["/ms_iot_Community_Samples/login", referer];
+                return View["ms_iot_Community_Samples/login", referer];
             };
 
             Get["/ms_iot_Community_Samples/logout/{referer}"] = parameters =>
@@ -186,10 +313,10 @@
                 errorMsg.Source = "/Logout";
                 errorMsg.LoggedInStatus = false;
                 if (referer == "ms_iot_Community_Samples")
-                    return View["/ms_iot_Community_Samples/" + referer, errorMsg];
+                    return View["ms_iot_Community_Samples/" + referer, errorMsg];
                 else
                 {
-                    return View["/ms_iot_Community_Samples/" + referer, Models.IoTProject.ViewIoTProjects((string)Request.Session["filter"])];
+                    return View["ms_iot_Community_Samples/" + referer, Models.IoTProject.ViewIoTProjects((string)Request.Session["filter"])];
                 }
             };
             Get["/ms_iot_Community_Samples/onlogin/{referer}/{user}/{pwd}"] = parameters =>
@@ -218,40 +345,40 @@
                     errorMsg.Message = "Login failed!";
                     errorMsg.Source = "/OnLogin";
                     errorMsg.LoggedInStatus = false;
-                    return View["/ms_iot_Community_Samples/ErrorPage", errorMsg];
+                    return View["ms_iot_Community_Samples/ErrorPage", errorMsg];
                 }
                 if (referer == "ms_iot_Community_Samples")
-                    return View["/ms_iot_Community_Samples/ms_iot_Community_Samples", errorMsg];
+                    return View["ms_iot_Community_Samples/ms_iot_Community_Samples", errorMsg];
                 else
-                    return View["/ms_iot_Community_Samples/IndexList", Models.IoTProject.ViewIoTProjects((string)Request.Session["filter"])];
+                    return View["ms_iot_Community_Samples/IndexList", Models.IoTProject.ViewIoTProjects((string)Request.Session["filter"])];
             };
 
 
             Get["/ms_iot_Community_Samples/convert"] = _ =>
             {
-                DoStrings(pathProvider);
+                DoStrings();
                 if (!(bool)Request.Session["LoggedInStatus"])
                 {
                     errorMsg.Message = "Not logged in!";
                     errorMsg.Source = "/Convert";
                     errorMsg.LoggedInStatus = (bool)Request.Session["LoggedInStatus"];
-                    return View["/ms_iot_Community_Samples/ErrorPage", errorMsg];
+                    return View["ms_iot_Community_Samples/ErrorPage", errorMsg];
                 }
 
                 if (!Directory.Exists(MD))
                 {
-                    errorMsg.Message = "No files to convert./r/nRun 'Sync with GitHub' first";
+                    errorMsg.Message = "No files to convert...No MD Dir/r/nRun 'Sync with GitHub' first";
                     errorMsg.Source = "/Convert";
                     errorMsg.LoggedInStatus = (bool)Request.Session["LoggedInStatus"];
-                    return View["/ms_iot_Community_Samples/ErrorPage", errorMsg];
+                    return View["ms_iot_Community_Samples/ErrorPage", errorMsg];
                 }
 
                 if ((Directory.GetFiles(MD, "*.MD")).Length == 0)
                 {
-                    errorMsg.Message = "No files to convert./r/nRun  'Sync with GitHub' first";
+                    errorMsg.Message = "No files to convert... No files in MD dir./r/nRun  'Sync with GitHub' first";
                     errorMsg.Source = "/Convert";
                     errorMsg.LoggedInStatus = (bool)Request.Session["LoggedInStatus"];
-                    return View["/ms_iot_Community_Samples/ErrorPage", errorMsg];
+                    return View["ms_iot_Community_Samples/ErrorPage", errorMsg];
                 }
 
                 if (!Directory.Exists(jsonDirr))
@@ -272,8 +399,7 @@
 
                 char[] lineSep = new char[] { '\r', '\n' };
                 string[] files = Directory.GetFiles(MD, "*.MD");
-                //File.AppendAllText(MDDB, "[\r\n");
-
+                
                 int count = files.Length;
                 bool abortFile = false;
                 Models.IoTProject.ClearIoTProjects();
@@ -409,11 +535,12 @@
                                     }
                                     else
                                     {
-
+                                        
                                     }
                                 }
                                 catch (Exception ex)
                                 {
+                                    
                                     //Abort lines loop
                                     abortFile = true;
                                     break;
@@ -422,6 +549,7 @@
                         }
                         if (abortFile)
                         {
+                            
                             //Abort this db record
                             break;
                         }
@@ -441,6 +569,7 @@
                     }
                     catch (Exception ex)
                     {
+                        
                         //Skip this file and continue with next
                         continue;
                     }
@@ -450,12 +579,12 @@
 
                 File.AppendAllText(MDDB, json);
                 Request.Session["filter"] = "";
-                return View["/ms_iot_Community_Samples/IndexList", Models.IoTProject.ViewIoTProjects((string)Request.Session["filter"])];
+                return View["ms_iot_Community_Samples/IndexList", Models.IoTProject.ViewIoTProjects((string)Request.Session["filter"])];
             };
 
             Get["/ms_iot_Community_Samples/display/{name}"] = parameters =>
             {
-                DoStrings(pathProvider);
+                DoStrings();
                 var contentProvider = new FileContentProvider(MD2, null);
                 var converter = new MarkdownService(contentProvider);
                 var document = converter.GetDocument(parameters.name);
@@ -471,7 +600,7 @@
                      errorMsg.Source = "/GitHub";
                      return View["/ms_iot_Community_Samples/ErrorPage", errorMsg];
                  }
-                 DoStrings(pathProvider);
+                 DoStrings();
 
 
 
@@ -535,12 +664,13 @@
                  ////////    return View["ErrorPage", errorMsg];
                  ////////}
 
-
+                 
                  basicGitHubClient =
                         new GitHubClient(new ProductHeaderValue(githubRepo), new Uri(githuUrl));
+                
                  //https://github.com/octokit/octokit.net
-                 GitHubClient github = new GitHubClient(new ProductHeaderValue(githubRepo));
-                 var user = await github.User.Get(githubUsr);
+                 //GitHubClient github = new GitHubClient(new ProductHeaderValue(githubRepo));
+                 var user = await basicGitHubClient.User.Get(githubUsr);
                  
                  //var client = new GitHubClient(new ProductHeaderValue(githubRepo));
                  var basicAuth = new Credentials(githubUsr, githubPwd); // NOTE: not real credentials
@@ -618,7 +748,7 @@
                  else
                      errorMsg.Message = "No .MD files retreived from GitHub. Either the repository had no .MD files, or there was an error.";
                  errorMsg.Source = "/GitHub";
-                 return View["/ms_iot_Community_Samples/ErrorPage", errorMsg];
+                 return View["ms_iot_Community_Samples/ErrorPage", errorMsg];
              };
 
 
@@ -650,7 +780,7 @@
 
                 string json = JsonConvert.SerializeObject(fi);
                 Request.Session["filter"] = json;
-                return View["/ms_iot_Community_Samples/IndexList", Models.IoTProject.ViewIoTProjects((string)Request.Session["filter"])];
+                return View["ms_iot_Community_Samples/IndexList", Models.IoTProject.ViewIoTProjects((string)Request.Session["filter"])];
             };
 
             Get["/ms_iot_Community_Samples/ClearSort"] = _ =>
@@ -661,7 +791,7 @@
                 //    {
                 //        ((Models.FilterAndSortInfo)Request.Session["filter"]).SortExpressions = new List<Tuple<string, string>>();
                 //    }
-                return View["/ms_iot_Community_Samples/IndexList", Models.IoTProject.ViewIoTProjects((string)Request.Session["filter"])];
+                return View["ms_iot_Community_Samples/IndexList", Models.IoTProject.ViewIoTProjects((string)Request.Session["filter"])];
             };
 
 
@@ -670,32 +800,32 @@
                 string id = parameters.id;
                 Models.IoTProject blogPost = Models.IoTProject.Get(id);
                 if (blogPost != null)
-                    return View["/ms_iot_Community_Samples/Index", blogPost];
+                    return View["ms_iot_Community_Samples/Index", blogPost];
                 else
-                    return View["/ms_iot_Community_Samples/IndexList", Models.IoTProject.ViewIoTProjects((string)Request.Session["filter"])];
+                    return View["ms_iot_Community_Samples/IndexList", Models.IoTProject.ViewIoTProjects((string)Request.Session["filter"])];
             };
             Get["/ms_iot_Community_Samples/reset"] = _ =>
             {
                 Request.Session["filter"] = "";
-                return View["/ms_iot_Community_Samples/IndexList", Models.IoTProject.ViewIoTProjects((string)Request.Session["filter"])];
+                return View["ms_iot_Community_Samples/IndexList", Models.IoTProject.ViewIoTProjects((string)Request.Session["filter"])];
             };
             Get["/ms_iot_Community_Samples/clear"] = _ =>
             {
                 Request.Session["filter"] = "";
                 Models.IoTProject.ClearIoTProjects();
-                return View["/ms_iot_Community_Samples/IndexList", Models.IoTProject.ViewIoTProjects((string)Request.Session["filter"])];
+                return View["ms_iot_Community_Samples/IndexList", Models.IoTProject.ViewIoTProjects((string)Request.Session["filter"])];
             };
             Get["/ms_iot_Community_Samples/list"] = _ =>
             {
                 string filter = (string)Request.Session["filter"];
-                return View["/ms_iot_Community_Samples/IndexList", Models.IoTProject.ViewIoTProjects((string)Request.Session["filter"])];
+                return View["ms_iot_Community_Samples/IndexList", Models.IoTProject.ViewIoTProjects((string)Request.Session["filter"])];
             };
 
             Get["/ms_iot_Community_Samples/ClearFilter"] = _ =>
             {
                 //Same as reset
                 Request.Session["filter"] = "";
-                return View["/ms_iot_Community_Samples/IndexList", Models.IoTProject.ViewIoTProjects((string)Request.Session["filter"])];
+                return View["ms_iot_Community_Samples/IndexList", Models.IoTProject.ViewIoTProjects((string)Request.Session["filter"])];
             };
             Get["/ms_iot_Community_Samples/Filter/{idfilter}/{titlefilter}/{summaryfilter}/{codefilter}/{tagsfilter}/{tagsfilter2}"] = parameters =>
             {
@@ -804,7 +934,7 @@
                 Request.Session["filter"] = json;
 
 
-                return View["/ms_iot_Community_Samples/IndexList", Models.IoTProject.ViewIoTProjects((string)Request.Session["filter"])];
+                return View["ms_iot_Community_Samples/IndexList", Models.IoTProject.ViewIoTProjects((string)Request.Session["filter"])];
             };
         }
 

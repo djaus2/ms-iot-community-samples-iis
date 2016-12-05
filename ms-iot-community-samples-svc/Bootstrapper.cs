@@ -20,11 +20,12 @@
 
         protected override void ApplicationStartup(ILifetimeScope container, IPipelines pipelines)
         {
+            StaticConfiguration.DisableErrorTraces = false;
             // No registrations should be performed in here, however you may
             // resolve things that are needed during application startup.
             CookieBasedSessions.Enable(pipelines, Nancy.Cryptography.CryptographyConfiguration.Default);
         }
-    
+
 
         protected override void ConfigureApplicationContainer(ILifetimeScope existingContainer)
         {
@@ -47,28 +48,39 @@
             });
         }
 
-        public class CustomRootPathProvider : IRootPathProvider
-        {
-            public string GetRootPath()
-            {
-                return @"C:\Users\david\Documents\GitHub\ms-io-community-samples-svc\ms-iot-community-samples-svc\ms-iot-community-samples-svc";
-            }
-        }
+        //public class CustomRootPathProvider : IRootPathProvider
+        //{
+        //    public string GetRootPath()
+        //    {
+        //        return @"C:\inetpub\wwwroot";
 
-        protected override IRootPathProvider RootPathProvider
-        {
-            get { return new CustomRootPathProvider(); }
-        }
+        //    }
+        //}
+
+        //protected override IRootPathProvider RootPathProvider
+        //{
+        //    get { return new CustomRootPathProvider(); }
+        //}
 
 
         //https://github.com/NancyFx/Nancy/wiki/Managing-static-content
-        //protected override void ConfigureConventions(NancyConventions conventions)
-        //{
-        //    base.ConfigureConventions(conventions);
+        ////protected override void ConfigureConventions(NancyConventions conventions)
+       // {
+            //    base.ConfigureConventions(conventions);
+            //
+            //Conventions.StaticContentsConventions.Add(
+            //       Nancy.Conventions.StaticContentConventionBuilder.AddDirectory("/Json")
+            //       );
+            //
+            //     nancyConventions.StaticContentsConventions.Add( 
+            //           Nancy.Conventions.StaticContentConventionBuilder.AddFile("/Default.html", "Default.html") 
+            //         ); 
 
-        //    conventions.StaticContentsConventions.Add(
-        //        StaticContentConventionBuilder.AddDirectory("assets", @"contentFolder/subFolder")
-        //    );
+
+            //    conventions.StaticContentsConventions.Add(
+            //        StaticContentConventionBuilder.AddDirectory("assets", @"contentFolder/subFolder")
+            //    );
+            //}
         //}
     }
 }
