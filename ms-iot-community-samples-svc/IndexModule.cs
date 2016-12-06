@@ -17,8 +17,9 @@
     using System.Threading.Tasks;
     using System.Collections.ObjectModel;
 
-    public class IndexModule : NancyModule
+    public partial class IndexModule : NancyModule
     {
+
         private    List<string> IgnoreMDS = new  List <string> {"readme", "template" };
         private const string DBSep = "---";
         /******************************************************************************************
@@ -71,38 +72,18 @@
         private void DoStrings() //(IRootPathProvider pathProvider)
         {
             siteName = Assembly.GetCallingAssembly().GetName().Name;
-            //#if ISDEPLOYED
-            //When deployed on server
-            //var uploadDirectory = Path.Combine(pathProvider.GetRootPath(), "json");//, "uploads");
 
-            //            jsonDirr = @"/Json/";
-            //           MDDB = @"/Json/db.data";
-            ////// Path.Combine(jsonDirr, jsoMD2/";
-            //            MD nFile);
-            //            MD2 = @"~/= @"~/MD/";
-
-            //jsonDirr = Path.Combine(pathProvider.GetRootPath(), "json");
-            //MDDB = Path.Combine(pathProvider.GetRootPath(), jsonDirr, jsonFile);
-            //MD2 = Path.Combine(pathProvider.GetRootPath(), "MD2");
-            //MD = Path.Combine(pathProvider.GetRootPath(), "MD");
-
-            string path = "";
-            //if (!string.IsNullOrEmpty(Environment.GetEnvironmentVariable("HOME")))
-            //    path = Environment.GetEnvironmentVariable("HOME") + "\\site\\wwwroot\\bin";
-            //else
-            //    path = ".";
-            MDDB = @"D:\home\Site\wwwroot\json\Data.json";
-            jsonDirr = @"D:\home\Site\wwwroot\json";
-            MD2 = @"D:\home\Site\wwwroot\MD2";
-            MD = @"D:\home\Site\wwwroot\MD";
-
-            ////#else
-            //            //SiteDir = MyGitHubRepositories + @"\ms-io-community-samples-svc\ms-iot-community-samples-svc\ms-iot-community-samples-svc\";
-            //            jsonDirr = Path.Combine(SiteDir, @"Json\");
-            //            MDDB = Path.Combine(jsonDirr, jsonFile);
-            //            MD2 = Path.Combine(SiteDir, @"MD2\");
-            //            MD = Path.Combine(SiteDir, @"MD\");
-            ////#endif
+#if ISDEPLOYED
+            string appRoot = Environment.GetEnvironmentVariable("Home");
+            string Home = Path.Combine(appRoot,@"\Site\wwwroot");
+#else
+            string Home = @"C:\Users\,avid\Documents\GitHub\ms-io-community-samples-svc\ms-iot-community-samples-svc\ms-iot-community-samples-svc";
+#endif
+            Home = @"D:\Home\Site\wwwroot";
+            MDDB = Home + @"\json\Data.json";
+            jsonDirr = Home + @"\json";
+            MD2 = Home + @"\MD2";
+            MD = Home + @"\MD";
         }
 
 
@@ -389,6 +370,8 @@
                     File.Delete(file);
                 }
 
+
+
                 if (!Directory.Exists(MD2))
                     Directory.CreateDirectory(MD2);
                 string[] files1 = Directory.GetFiles(MD2, "*.*");
@@ -397,15 +380,19 @@
                     File.Delete(file);
                 }
 
+
                 char[] lineSep = new char[] { '\r', '\n' };
                 string[] files = Directory.GetFiles(MD, "*.MD");
                 
                 int count = files.Length;
+                
                 bool abortFile = false;
                 Models.IoTProject.ClearIoTProjects();
                 foreach (string file in files)
                 {
+
                     abortFile = false;
+                    Models.IoTProject iotProject=null;
                     try
                     {
                         string filename = Path.GetFileNameWithoutExtension(file);
@@ -426,9 +413,11 @@
                         string DB2 = fileTxt.Substring(startIndex, endIndex - startIndex + DBSep.Length) + "\r\n";
                         string DB = fileTxt.Substring(startIndex + DBSep.Length, endIndex - startIndex - DBSep.Length).Trim();
                         fileTxt = fileTxt.Substring(endIndex + DBSep.Length);
+                        
                         string[] lines = DB.Split(lineSep);
-                        Models.IoTProject iotProject = new Models.IoTProject();
+                        iotProject = new Models.IoTProject();
                         iotProject.Filename = filename;
+
                         foreach (string line in lines)
                         {
                             string newLine = line.Trim();
@@ -549,7 +538,7 @@
                         }
                         if (abortFile)
                         {
-                            
+                            Models.IoTProject.IoTProjects.Remove(iotProject);
                             //Abort this db record
                             break;
                         }
@@ -565,18 +554,20 @@
                         if (!gotFile)
                         {
                             Models.IoTProject.IoTProjects.Remove(iotProject);
+                            continue;
                         }
                     }
                     catch (Exception ex)
                     {
-                        
+                        if (iotProject!=null)
+                            Models.IoTProject.IoTProjects.Remove(iotProject);
                         //Skip this file and continue with next
                         continue;
                     }
                 }
+
                 Request.Session["filter"] = "";
                 string json = JsonConvert.SerializeObject(Models.IoTProject.IoTProjects);
-
                 File.AppendAllText(MDDB, json);
                 Request.Session["filter"] = "";
                 return View["ms_iot_Community_Samples/IndexList", Models.IoTProject.ViewIoTProjects((string)Request.Session["filter"])];
@@ -592,13 +583,21 @@
             };
 
 
-            Get["/ms_iot_Community_Samples/GitHub", true] = async (parameters, ct) =>
+            Get["/ms_iot_Community_Samples/GitHub/{Mode}", true] = async (parameters, ct) =>
              {
+                 
                  if (!(bool)Request.Session["LoggedInStatus"])
                  {
                      errorMsg.Message = "Not logged in!";
                      errorMsg.Source = "/GitHub";
                      return View["/ms_iot_Community_Samples/ErrorPage", errorMsg];
+                 }
+
+                 string mode = parameters.Mode;
+                 if (mode=="1")
+                 {
+                    //Reget repository
+                    ConfigurationManager.AppSettings["GitHub.LatestCommitSha"] = "";
                  }
                  DoStrings();
 

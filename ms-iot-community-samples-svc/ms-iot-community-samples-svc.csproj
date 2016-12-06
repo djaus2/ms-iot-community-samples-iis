@@ -98,14 +98,19 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\nancy-logo.png" />
+    <Content Include="Content\sportronics.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\WP_20150920_12_30_23_Pro.jpg" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="IndexModel_GitHub2.cs" />
     <Compile Include="IndexModule.cs" />
     <Compile Include="IndexModule1.cs" />
     <Compile Include="IndexModule2.cs" />
+    <Compile Include="IndexModule_Convert.cs" />
     <Compile Include="Models\IoTProject.cs" />
     <Compile Include="Models\Errors.cs" />
     <Compile Include="Models\filter.cs" />
