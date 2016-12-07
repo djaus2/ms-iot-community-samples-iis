@@ -1,10 +1,29 @@
-﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase <ms_iot_community_samples_svc.Models.Errors >
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<ms_iot_community_samples_svc.Models.Errors >
 <html>
 <head>
     <title>MS-IoT Community Samples</title>
 	<meta charset="utf-8" />
+    <script type="text/javascript">
+        function OnBodyLoad( )
+        {
+            var txt = '@Model.Message';
+
+            var ch = txt.charAt(0);
+            if (ch == '$') {
+                txt = txt.split("&lt;").join("<");
+                txt = txt.split("&gt;").join(">");
+                txt = txt.substr(1, txt.length - 1);
+                document.getElementById("tdAbout").innerHTML = txt;
+            }
+            else
+                document.getElementById("TextAreaAbout").value = txt;
+
+        }
+    </script>
 </head>
-<body>
+
+<body onload="OnBodyLoad()">
+
     <h1>MS-IoT Community Samples</h1>
     <table>
         <colgroup>
@@ -15,25 +34,22 @@
             <td><a href="/Default">Sportronics</a></td>
         </tr>
         <tr>
-            <td><a href="/ms_iot_Community_Samples/list">View list of Sample Projects</a></td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td><a href="/ms_iot_Community_Samples/list">View (filtered) list of Sample Projects</a></td>
         </tr>
         <tr>
             <td><a href="/ms_iot_Community_Samples/reset">Show all</a></td>
         </tr>
         <tr>
-            <td><a href="/ms_iot_Community_Samples/load">Reload list of Samples Projects</a></td>
-        </tr>
-        <tr>
             <td>&nbsp;</td>
         </tr>
         <tr>
-            <td><h3>Admin</h3></td>
+            <td><h2>Admin</h2></td>
         </tr>
         <tr>
             <td><a href=@Model.LogLink>@Model.LogLabel</a></td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
         </tr>
         <tr>
             <td>* <a href="/ms_iot_Community_Samples/convert">Convert</a></td>
@@ -44,6 +60,19 @@
         <tr>
             <td>* <a href="/ms_iot_Community_Samples/GitHub/1">ReSync with GitHub</a></td>
         </tr>
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td id="tdAbout"><input readonly type="text" id="TextAreaAbout" width="800"></td>
+        </tr>
+
+        <tr>
+            <td><iframe id="iframeAbout" src="/ms_iot_Community_Samples_Content/ms_iot_Community_Samples_About" width="800" height="300" scrolling="auto" frameborder="0" /></td>
+        </tr>
+
+
+
 
     </table>
 </body>

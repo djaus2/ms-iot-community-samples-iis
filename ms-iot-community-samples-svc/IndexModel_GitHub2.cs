@@ -164,9 +164,9 @@ namespace ms_iot_community_samples_svc
                 return errorMsg;
             }
 
-            if (!Directory.Exists(jsonDirr))
-                Directory.CreateDirectory(jsonDirr);
-            string[] files0 = Directory.GetFiles(jsonDirr, "*.*");
+            if (!Directory.Exists(JsonDir))
+                Directory.CreateDirectory(JsonDir);
+            string[] files0 = Directory.GetFiles(JsonDir, "*.*");
             foreach (string file in files0)
             {
                 File.Delete(file);

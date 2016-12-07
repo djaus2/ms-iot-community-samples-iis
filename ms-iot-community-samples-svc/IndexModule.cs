@@ -59,12 +59,13 @@
         private const string MyGitHubRepositories = @"C:\Users\David\Documents\GitHub";
       
         private string siteName;
-
+        
         //Folder paths
         private string SiteDir;
         private string MD2;
         private string MD;
-        private string jsonDirr;
+        private string JsonDir;
+        private string ContentDir;
 
         //The json file path
         private string MDDB;
@@ -76,14 +77,16 @@
 #if ISDEPLOYED
             string appRoot = Environment.GetEnvironmentVariable("Home");
             string Home = Path.Combine(appRoot,@"\Site\wwwroot");
-#else
-            string Home = @"C:\Users\,avid\Documents\GitHub\ms-io-community-samples-svc\ms-iot-community-samples-svc\ms-iot-community-samples-svc";
-#endif
             Home = @"D:\Home\Site\wwwroot";
+#else
+            string Home = @"C:\Users\David\Documents\GitHub\ms-io-community-samples-svc\ms-iot-community-samples-svc\ms-iot-community-samples-svc";
+#endif
+
             MDDB = Home + @"\json\Data.json";
-            jsonDirr = Home + @"\json";
+            JsonDir = Home + @"\json";
             MD2 = Home + @"\MD2";
             MD = Home + @"\MD";
+            ContentDir = Home + @"\Content";
         }
 
 
@@ -199,6 +202,10 @@
 
                 return View["default"];
             };
+            Get["ms_iot_Community_Samples/About"] = _ =>
+            {
+                return View["ms_iot_Community_Samples/About"];
+            };
             Get["/Default"] = _ =>
             {
                 Request.Session["filter"] = "";
@@ -210,18 +217,19 @@
             Get["/ms_iot_Community_Samples"] = _ =>
             {
 
+
                 DoStrings();
                 bool getList = false;
                 if (Models.IoTProject.IoTProjects == null)
                     getList = true;
                 else if (Models.IoTProject.IoTProjects.Count() == 0)
                     getList = true;
-                
+                var cnt = 0;
                 if (getList)
                 {
-                    if (!Directory.Exists(jsonDirr))
+                    if (!Directory.Exists(JsonDir))
                     {
-                        Directory.CreateDirectory(jsonDirr);
+                        Directory.CreateDirectory(JsonDir);
                     }
                     if (!Directory.Exists(MD))
                     {
@@ -234,12 +242,17 @@
 
                     if (!File.Exists(MDDB))
                     {
-                        errorMsg.Message = "No Json File.Do Github and Convert first.";
+                        errorMsg.Message = "No Json File.Do Github and Convert first.<br/>Admin moed required.";
                         errorMsg.LoggedInStatus = (bool)Request.Session["LoggedInStatus"];
+                        string emptyJsonArray = "[]";
+                        File.WriteAllText(MDDB, emptyJsonArray);
+                        Models.IoTProject.IoTProjects = new List<Models.IoTProject>();
+
+                        Request.Session["filter"] = "";
                         return View["ms_iot_Community_Samples/ms_iot_Community_Samples", errorMsg];
                     }
                     
-                    string[] files1 = Directory.GetFiles(jsonDirr, jsonFile);
+                    string[] files1 = Directory.GetFiles(JsonDir, jsonFile);
                     if (files1.Length != 1)
                     {
                         
@@ -258,6 +271,8 @@
                     
                     Request.Session["filter"] = "";
                 }
+                cnt = Models.IoTProject.IoTProjects.Count();
+                errorMsg.Message = "Loaded " + cnt.ToString() + " project/s";
                 errorMsg.LoggedInStatus = (bool)Request.Session["LoggedInStatus"];
                 //return View["ms_iot_Community_Samples/Test1"];
                 return View["ms_iot_Community_Samples/ms_iot_Community_Samples", errorMsg];
@@ -362,9 +377,9 @@
                     return View["ms_iot_Community_Samples/ErrorPage", errorMsg];
                 }
 
-                if (!Directory.Exists(jsonDirr))
-                    Directory.CreateDirectory(jsonDirr);
-                string[] files0 = Directory.GetFiles(jsonDirr, "*.*");
+                if (!Directory.Exists(JsonDir))
+                    Directory.CreateDirectory(JsonDir);
+                string[] files0 = Directory.GetFiles(JsonDir, "*.*");
                 foreach (string file in files0)
                 {
                     File.Delete(file);
@@ -573,10 +588,20 @@
                 return View["ms_iot_Community_Samples/IndexList", Models.IoTProject.ViewIoTProjects((string)Request.Session["filter"])];
             };
 
+            //Render .md project files in browser
             Get["/ms_iot_Community_Samples/display/{name}"] = parameters =>
             {
                 DoStrings();
                 var contentProvider = new FileContentProvider(MD2, null);
+                var converter = new MarkdownService(contentProvider);
+                var document = converter.GetDocument(parameters.name);
+                return document.Content;
+            };
+            //Render about information from (from .MD file) on ms_iot_Community_Samples.cshtml
+            Get["/ms_iot_Community_Samples_Content/{name}"] = parameters =>
+            {
+                DoStrings();
+                var contentProvider = new FileContentProvider(ContentDir, null);
                 var converter = new MarkdownService(contentProvider);
                 var document = converter.GetDocument(parameters.name);
                 return document.Content;
@@ -795,6 +820,15 @@
 
 
             Get["/ms_iot_Community_Samples/Show/{id}"] = parameters =>
+            {
+                string id = parameters.id;
+                Models.IoTProject blogPost = Models.IoTProject.Get(id);
+                if (blogPost != null)
+                    return View["ms_iot_Community_Samples/Index", blogPost];
+                else
+                    return View["ms_iot_Community_Samples/IndexList", Models.IoTProject.ViewIoTProjects((string)Request.Session["filter"])];
+            };
+            Get["/ms_iot_Community_Samples/Content/{id}"] = parameters =>
             {
                 string id = parameters.id;
                 Models.IoTProject blogPost = Models.IoTProject.Get(id);
