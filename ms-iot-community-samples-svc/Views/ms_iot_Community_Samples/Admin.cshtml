@@ -1,0 +1,50 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<ms_iot_community_samples_svc.Models.Errors>
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script type="text/javascript">
+        function OnBodyLoad( )
+        {
+            var txt = '@Model.Message';
+        }
+    </script>
+</head>
+<body onload="OnBodyLoad()">
+
+    <h1>Admin</h1>
+    <table>
+        <colgroup>
+            <col style="font-weight:bold;" />
+            <col />
+        </colgroup>
+        <tr>
+            <td><a href="/Default">Sportronics</a></td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            @if (Model.LoggedInStatus) { 
+                <td>Logged in:&nbsp;<a href=@Model.LogLink>@Model.LogLabel</a></td>
+            }
+            else{            
+                <td>Not logged in:&nbsp;<a href=@Model.LogLink>@Model.LogLabel</a></td>
+            }            
+        </tr>
+        <tr>
+            <td><hr/></td>
+        </tr>
+        <tr>
+            <td>* <a href="/ms_iot_Community_Samples/convert">Convert</a></td>
+        </tr>
+        <tr>
+            <td>* <a href="/ms_iot_Community_Samples/GitHub/0">Sync with GitHub</a></td>
+        </tr>
+        <tr>
+            <td>* <a href="/ms_iot_Community_Samples/GitHub/1">ReSync with GitHub</a></td>
+        </tr>
+    </table>
+</body>
+</html>

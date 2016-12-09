@@ -47,6 +47,26 @@
       <HintPath>..\packages\ColorCode.1.0.1\lib\ColorCode.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="FourRoads.Common, Version=3.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FourRoads.Common.TelligentCommunity.1.0.4.20\lib\FourRoads.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FourRoads.Common.Sql, Version=3.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FourRoads.Common.TelligentCommunity.1.0.4.20\lib\FourRoads.Common.Sql.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FourRoads.Common.TelligentCommunity, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FourRoads.Common.TelligentCommunity.1.0.4.20\lib\FourRoads.Common.TelligentCommunity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FourRoads.Common.Templates, Version=3.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FourRoads.Common.TelligentCommunity.1.0.4.20\lib\FourRoads.Common.Templates.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FourRoads.Common.Web, Version=3.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FourRoads.Common.TelligentCommunity.1.0.4.20\lib\FourRoads.Common.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Kiwi.Markdown, Version=0.8.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Kiwi.Markdown.0.8.2\lib\net40\Kiwi.Markdown.dll</HintPath>
       <Private>True</Private>
@@ -76,6 +96,14 @@
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Ninject, Version=2.3.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\FourRoads.Common.TelligentCommunity.1.0.4.20\lib\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Extensions.Xml, Version=2.1.0.1, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\FourRoads.Common.TelligentCommunity.1.0.4.20\lib\Ninject.Extensions.Xml.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Octokit, Version=0.22.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Octokit.0.22.0\lib\net45\Octokit.dll</HintPath>
       <Private>True</Private>
@@ -101,16 +129,13 @@
     <Content Include="Content\sportronics.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\WP_20150920_12_30_23_Pro.jpg" />
-    <Content Include="MD\BlinkyMBM.md">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\ms_iot_Community_Samples_About.md">
+    <Content Include="Content\ms_iot_Community_Samples\ReadMe.md">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Views\ms_iot_Community_Samples\About.cshtml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Content Include="Views\ms_iot_Community_Samples\MDTemplate.cshtml" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -145,7 +170,6 @@
     <Content Include="Views\ms_iot_Community_Samples\IndexList.cshtml" />
     <Content Include="Views\ms_iot_Community_Samples\login.cshtml" />
     <Content Include="Views\ms_iot_Community_Samples\ms_iot_Community_Samples.cshtml" />
-    <Content Include="Themes\Web.config" />
     <None Include="Properties\PublishProfiles\SportronicsIoT - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\SportronicsIoT - Web Deploy.pubxml" />
     <None Include="Properties\Settings.settings">
@@ -156,6 +180,7 @@
     <Content Include="Views\AList.cshtml" />
     <Content Include="Views\ms_iot_Community_Samples\Test1.cshtml" />
     <Content Include="Views\Test2.cshtml" />
+    <Content Include="Views\ms_iot_Community_Samples\Admin.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -166,6 +191,7 @@
   <ItemGroup>
     <Folder Include="json\" />
     <Folder Include="MD2\" />
+    <Folder Include="MD\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

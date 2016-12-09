@@ -35,13 +35,13 @@
             {
                 
                 var SearchIdtxt = "Id~" + document.getElementById("txtId").value;
-                var SearchTitletxt = "Title~" + document.getElementById("txttitle").value;
-                var SearchSummarytxt = "Description~" + document.getElementById("txtdescription").value;
-                var SearchCodetxt = "permalink~" + document.getElementById("txtpermalink").value;
+                var SearchTitletxt = "Title~" + document.getElementById("txtTitle").value;
+                var SearchSummarytxt = "Description~" + document.getElementById("txtDescription").value;
+                var SearchCodetxt = "CodeLanguages~" + document.getElementById("txtCodeLanguages").value;
                 SearchCodetxt = SearchCodetxt.replace("/", "Y");
-                var SearchTagstxt = "samplelink~" + document.getElementById("txtsamplelink").value;
+                var SearchTagstxt = "GitHub~" + document.getElementById("txtGitHub").value;
                 SearchTagstxt = SearchTagstxt.replace("/", "Y");
-                var SearchTagstxt2 = "Tags~" + document.getElementById("txtkeyword").value;
+                var SearchTagstxt2 = "Tags~" + document.getElementById("txtTags").value;
                 var Searchtxt = SearchIdtxt + "/" + SearchTitletxt + "/" + SearchSummarytxt + "/" + SearchCodetxt + "/" + SearchTagstxt + "/" + SearchTagstxt2;
                 //C#
                 Searchtxt = Searchtxt.replace("#", "%23");
@@ -49,6 +49,7 @@
                 Searchtxt = Searchtxt.replace("+", "Z");
                 Searchtxt = Searchtxt.replace("+", "Z");
                 var windowlocation = "/ms_iot_Community_Samples/Filter/" + Searchtxt;
+
                 window.location = windowlocation;
             }
             function OnFilter2() {
@@ -94,11 +95,11 @@
 
         <tr>
             <td style="width:30px"><input id="txtId" type="number" style="width:30px" /></td>
-            <td><input id="txttitle" type="text" /></td>
-            <td><input id="txtdescription" type="text" /></td>
-            <td><input id="txtpermalink" type="text" /></td>
-            <td><input id="txtsamplelink" type="text" /></td>
-            <td><input id="txtkeyword" type="text" /></td>
+            <td><input id="txtTitle" type="text" /></td>
+            <td><input id="txtDescription" type="text" /></td>
+            <td><input id="txtGitHub" type="text" /></td>
+            <td><input id="txtCodeLanguages" type="text" /></td>
+            <td><input id="txtTags" type="text" /></td>
         </tr>
         @foreach (ms_iot_community_samples_svc.Models.IoTProject objUser in @Model) // msiotCommunitySamples.Models.BlogPost.ViewBlogPostz)
         {

@@ -66,6 +66,7 @@
         private string MD;
         private string JsonDir;
         private string ContentDir;
+        private string ContentCommunityDir;
 
         //The json file path
         private string MDDB;
@@ -74,7 +75,7 @@
         {
             siteName = Assembly.GetCallingAssembly().GetName().Name;
 
-#if ISDEPLOYED
+#if !DEBUG
             string appRoot = Environment.GetEnvironmentVariable("Home");
             string Home = Path.Combine(appRoot,@"\Site\wwwroot");
             Home = @"D:\Home\Site\wwwroot";
@@ -87,6 +88,7 @@
             MD2 = Home + @"\MD2";
             MD = Home + @"\MD";
             ContentDir = Home + @"\Content";
+            ContentCommunityDir = Home + @"\Content\ms_iot_Community_Samples";
         }
 
 
@@ -97,6 +99,11 @@
             //Get["/aa", true] = async (parameters, ct) => "Hello World!";
 
             Models.Errors errorMsg = new Models.Errors();
+
+            Get["ms_iot_Community_Samples/MDFileTemplate"] = _ =>
+            {
+                return View["ms_iot_Community_Samples/MDTemplate"];
+            };
 
             Get["/Dirs"] = _ =>
             {
@@ -285,11 +292,19 @@
                 return View["default"];
             };
 
+            Get["/ms_iot_Community_Samples/Admin"] = _ =>
+            {
+                errorMsg.Message = "Logging in";
+                errorMsg.LoggedInStatus = (bool)Request.Session["LoggedInStatus"];
+                errorMsg.Source = "/ms_iot_Community_Samples/Admin";
+                return View["ms_iot_Community_Samples/Admin", errorMsg];
+            };
+
             Get["/ms_iot_Community_Samples/login/{referer}"] = parameters =>
             {
                 string referer = parameters.referer;
                 if (referer == "0")
-                    referer = "ms_iot_Community_Samples";
+                    referer = "ms_iot_Community_Samples_Admin";
                 else
                     referer = "IndexList";
                 return View["ms_iot_Community_Samples/login", referer];
@@ -299,7 +314,7 @@
             {
                 string referer = parameters.referer;
                 if (referer == "0")
-                    referer = "ms_iot_Community_Samples";
+                    referer = "ms_iot_Community_Samples_Admin";
                 else
                     referer = "IndexList";
                 //Models.Errors.LoggedInStatus = false;
@@ -308,8 +323,8 @@
                 errorMsg.Message = "Logged out.";
                 errorMsg.Source = "/Logout";
                 errorMsg.LoggedInStatus = false;
-                if (referer == "ms_iot_Community_Samples")
-                    return View["ms_iot_Community_Samples/" + referer, errorMsg];
+                if (referer == "ms_iot_Community_Samples_Admin")
+                    return View["ms_iot_Community_Samples/" + "ms_iot_Community_Samples", errorMsg];
                 else
                 {
                     return View["ms_iot_Community_Samples/" + referer, Models.IoTProject.ViewIoTProjects((string)Request.Session["filter"])];
@@ -343,8 +358,8 @@
                     errorMsg.LoggedInStatus = false;
                     return View["ms_iot_Community_Samples/ErrorPage", errorMsg];
                 }
-                if (referer == "ms_iot_Community_Samples")
-                    return View["ms_iot_Community_Samples/ms_iot_Community_Samples", errorMsg];
+                if (referer == "ms_iot_Community_Samples_Admin")
+                    return View["ms_iot_Community_Samples/Admin" , errorMsg];
                 else
                     return View["ms_iot_Community_Samples/IndexList", Models.IoTProject.ViewIoTProjects((string)Request.Session["filter"])];
             };
@@ -412,7 +427,9 @@
                     {
                         string filename = Path.GetFileNameWithoutExtension(file);
                         if (IgnoreMDS.Contains(filename.ToLower()))
+                        {
                             continue;
+                        }
                         count--;
                         string fileTxt = File.ReadAllText(file);
 
@@ -597,8 +614,24 @@
                 var document = converter.GetDocument(parameters.name);
                 return document.Content;
             };
+            Get["/ms_iot_Community_Samples/display/{dir}/{name}"] = parameters =>
+            {
+                DoStrings();
+                var contentProvider = new FileContentProvider(MD2, null);
+                var converter = new MarkdownService(MD2 + @"\" + parameters.dir);
+                var document = converter.GetDocument(parameters.name);
+                return document.Content;
+            };
             //Render about information from (from .MD file) on ms_iot_Community_Samples.cshtml
-            Get["/ms_iot_Community_Samples_Content/{name}"] = parameters =>
+            Get["/Site_Content/{dir}/{name}"] = parameters =>
+            {
+                DoStrings();
+                var contentProvider = new FileContentProvider(ContentDir + @"\" + parameters.dir, null);
+                var converter = new MarkdownService(contentProvider);
+                var document = converter.GetDocument(parameters.name);
+                return document.Content;
+            };
+            Get["/Site_Content/{name}"] = parameters =>
             {
                 DoStrings();
                 var contentProvider = new FileContentProvider(ContentDir, null);
@@ -740,11 +773,29 @@
                                  int cntr = 0;
                                  foreach (var file in AllContent)
                                  {
-                                     if (++cntr > 3)
-                                         break;
+                                     //if (++cntr > 3)
+                                     //    break;
                                      string textOfFirstFileName = file.Name;
-                                     if (IgnoreMDS.Contains(textOfFirstFileName.ToLower().Replace(".md","")))
+                                     if (IgnoreMDS.Contains(textOfFirstFileName.ToLower().Replace(".md", "")))
+                                     {
+                                         if (textOfFirstFileName.ToLower() == "readme.md")
+                                         {
+                                             var contentRM = await basicGitHubClient.Repository.Content.GetAllContents(theRepo.Id, textOfFirstFileName);
+                                             if (contentRM.Count() != 0)
+                                             {
+                                                 if (!Directory.Exists(ContentCommunityDir))
+                                                     Directory.CreateDirectory(ContentCommunityDir);
+                                                 string[] ReadMeMDs = Directory.GetFiles(ContentCommunityDir, "ReadMe.MD");
+                                                 foreach (string ReadMeMD in ReadMeMDs)
+                                                 {
+                                                     File.Delete(ReadMeMD);
+                                                 }
+                                                 var fileContent = contentRM[0].Content;
+                                                 File.AppendAllText(Path.Combine(ContentCommunityDir, textOfFirstFileName), fileContent);
+                                             }
+                                         }
                                          continue;
+                                     }
                                      var content = await basicGitHubClient.Repository.Content.GetAllContents(theRepo.Id, textOfFirstFileName);
                                      if (content.Count() != 0)
                                      {
@@ -768,7 +819,7 @@
                  if (count ==-1)
                      errorMsg.Message = "No .MD files retreived from GitHub as local copy is in Sync.";
                  else if (count != 0)
-                     errorMsg.Message = "Retrieved " + count.ToString() + ".MD files from GitHub\r\nNow run 'Convert' to process the downloaded files.";
+                     errorMsg.Message = "Retrieved " + count.ToString() + ".MD files from GitHub\r\nNow run 'Convert' on Admin page to process the downloaded files.";
                  else
                      errorMsg.Message = "No .MD files retreived from GitHub. Either the repository had no .MD files, or there was an error.";
                  errorMsg.Source = "/GitHub";
@@ -862,6 +913,16 @@
             };
             Get["/ms_iot_Community_Samples/Filter/{idfilter}/{titlefilter}/{summaryfilter}/{codefilter}/{tagsfilter}/{tagsfilter2}"] = parameters =>
             {
+                var fields = typeof(Models.Project).GetFields(
+                        BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+                Models.IoTProject.Fields = new List<string>();
+                foreach (var fld in fields)
+                {
+                    
+                    string fldName = fld.Name.Substring(1).Replace(">k__BackingField", "");
+                    Models.IoTProject.Fields.Add(fldName);
+                }
+
                 char[] sep = new char[] { '~' };
                 string[] tupl;
                 var filters = new List<Tuple<string, string>>();

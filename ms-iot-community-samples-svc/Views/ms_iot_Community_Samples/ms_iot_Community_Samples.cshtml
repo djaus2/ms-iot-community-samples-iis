@@ -1,7 +1,7 @@
 ﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<ms_iot_community_samples_svc.Models.Errors >
 <html>
 <head>
-    <title>MS-IoT Community Samples</title>
+    <title>Microsoft IoT Community Samples</title>
 	<meta charset="utf-8" />
     <script type="text/javascript">
         function OnBodyLoad( )
@@ -24,51 +24,44 @@
 
 <body onload="OnBodyLoad()">
 
-    <h1>MS-IoT Community Samples</h1>
+    <h1>Microsoft IoT Community Samples</h1>
     <table>
         <colgroup>
             <col style="font-weight:bold;" />
             <col />
         </colgroup>
         <tr>
-            <td><a href="/Default">Sportronics</a></td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
+            <td><h2>Samples Menu</h2></td>
+            <td><h2>Other Links</h2></td>
         </tr>
         <tr>
             <td><a href="/ms_iot_Community_Samples/list">View (filtered) list of Sample Projects</a></td>
+            <td><a href="https://github.com/ms-iot/Samples">[GitHub]ms-iot/Samples</a></td>
         </tr>
         <tr>
             <td><a href="/ms_iot_Community_Samples/reset">Show all</a></td>
+            <td><a href="https://github.com/djaus2/ms-iot-Community-Samples">[GitHub]ms-iot-Community-Samples</a></td>
         </tr>
         <tr>
-            <td>&nbsp;</td>
+            <td><a href="/ms_iot_Community_Samples/Admin">Admin</a></td>
+            <td><a href="https://developer.microsoft.com/en-US/windows/iot">Windows IoT Dev Center</a></td>
         </tr>
+            
         <tr>
-            <td><h2>Admin</h2></td>
-        </tr>
-        <tr>
-            <td><a href=@Model.LogLink>@Model.LogLabel</a></td>
-        </tr>
-        <tr>
-            <td>* <a href="/ms_iot_Community_Samples/convert">Convert</a></td>
-        </tr>
-        <tr>
-            <td>* <a href="/ms_iot_Community_Samples/GitHub/0">Sync with GitHub</a></td>
-        </tr>
-        <tr>
-            <td>* <a href="/ms_iot_Community_Samples/GitHub/1">ReSync with GitHub</a></td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td id="tdAbout"><input readonly type="text" id="TextAreaAbout" width="800"></td>
+            <td><a href="/ms_iot_Community_Samples/MDFileTemplate">MD File Template</a></td>          
+            <td><a href="https://www.hackster.io">Hackster.IO</a></td>
         </tr>
 
         <tr>
-            <td><iframe id="iframeAbout" src="/ms_iot_Community_Samples_Content/ms_iot_Community_Samples_About" width="800" height="300" scrolling="auto" frameborder="0" /></td>
+            <td><a href="/Default">Sportronics</a></td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td id="tdAbout" colspan="2" width="800"><input readonly type="text" id="TextAreaAbout" width="800" ></td>
+        </tr>
+         
+        <tr>
+            <td colspan="2"><iframe id="iframeAbout" src="/Site_Content/ms_iot_Community_Samples/ReadMe" width="800" height="1000" scrolling="no" frameborder="0" /></td>
         </tr>
 
 
