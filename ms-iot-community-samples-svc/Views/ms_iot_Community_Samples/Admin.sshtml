@@ -1,17 +1,15 @@
-﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<ms_iot_community_samples_svc.Models.Errors>
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
+﻿@Master['master.sshtml']
+
+@Section['Header']
+    <title>Admin</title>
 	<meta charset="utf-8" />
-    <script type="text/javascript">
-        function OnBodyLoad( )
-        {
+@EndSection
+
+@Section['Onload']
             var txt = '@Model.Message';
-        }
-    </script>
-</head>
-<body onload="OnBodyLoad()">
+@EndSection
+
+@Section['Content']
 
     <h1>Admin</h1>
     <table>
@@ -26,15 +24,21 @@
             <td>&nbsp;</td>
         </tr>
         <tr>
-            @if (Model.LoggedInStatus) { 
+            @If.LoggedInStatus
                 <td>Logged in:&nbsp;<a href=@Model.LogLink>@Model.LogLabel</a></td>
-            }
-            else{            
+            @EndIf
+            @IfNot.LoggedInStatus
                 <td>Not logged in:&nbsp;<a href=@Model.LogLink>@Model.LogLabel</a></td>
-            }            
+            @EndIf            
         </tr>
         <tr>
             <td><hr/></td>
+        </tr>
+        <tr>
+            <td>* <a href="/ms_iot_Community_Samples/">Main Menu</a></td>
+        </tr>
+        <tr>
+            <td>* <a href="/ms_iot_Community_Samples/list">View (filtered) list of Sample Projects</a></td>
         </tr>
         <tr>
             <td>* <a href="/ms_iot_Community_Samples/convert">Convert</a></td>
@@ -46,5 +50,4 @@
             <td>* <a href="/ms_iot_Community_Samples/GitHub/1">ReSync with GitHub</a></td>
         </tr>
     </table>
-</body>
-</html>
+@EndSection

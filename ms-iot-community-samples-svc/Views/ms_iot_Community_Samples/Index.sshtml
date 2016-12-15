@@ -1,7 +1,6 @@
-﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<ms_iot_community_samples_svc.Models.IoTProject>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
+﻿@Master['master.sshtml']
+
+@Section['Header']
     <title>@Model.Title</title>
     <style>
         table {
@@ -24,8 +23,38 @@
             color: blue;
         }
     </style>
-</head>
-<body>
+    <script type="text/javascript">
+            function Previous() {
+                var windowlocation = "/ms_iot_Community_Samples/Previous/@Model.Id";
+                window.location = windowlocation;
+            }
+            function Next()
+            {
+                var windowlocation = "/ms_iot_Community_Samples/Next/@Model.Id";
+                window.location = windowlocation;
+            }
+            function OnFilter2() {
+                var windowlocation = "/ms_iot_Community_Samples/Reset/@Model.Id";
+                window.location = windowlocation;
+            }
+    </script>
+@EndSection
+
+@Section['HeaderNavs']
+                <ul>
+                    <li>
+                        <a href="/ms_iot_Community_Samples/Previous/@Model.Id" >Prev</a>
+                    </li>
+                    <li>
+                        <a href="/ms_iot_Community_Samples/Next/@Model.Id" >Next</a>
+                    </li>
+                    <li>
+                        <a href="/ms_iot_Community_Samples/list" >List</a>
+                    </li>
+                </ul>
+@EndSection
+
+@Section['Content']
     <table>
         <colgroup>
             <col style="font-weight:bold;" />
@@ -45,19 +74,19 @@
         </tr>
         <tr>
             <td>Target/s</td>
-            <td>@string.Join(", ", Model.Targets)</td>
+            <td>@Model.Targetz</td>
         </tr>
         <tr>
             <td>Code Language/s</td>
-            <td>@string.Join(", ", Model.CodeLanguages)</td>
+            <td>@Model.CodeLanguagez</td>
         </tr>
         <tr>
             <td>Tags</td>
-            <td>@string.Join(", ", Model.Tags)</td>
+            <td>@Model.Tagz</td>
         </tr>
         <tr>
             <td>Developer/s</td>
-            <td>@string.Join(", ", Model.Developers)</td>
+            <td>Model.Developerz</td>
         </tr>
         <tr>
             <td>Blog</td>
@@ -101,5 +130,4 @@
     <p>
         <a href="/ms_iot_Community_Samples/List">Show list</a>
     </p>
-</body>
-</html>
+@EndSection

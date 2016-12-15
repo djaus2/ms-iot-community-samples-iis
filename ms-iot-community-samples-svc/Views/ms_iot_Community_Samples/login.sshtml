@@ -1,0 +1,52 @@
+﻿@Master['master.sshtml']
+
+@Section['Header']
+    <title>login</title>
+	<meta charset="utf-8" />
+    <script type="text/javascript">
+    function OnLogin()
+    {
+
+        var user = document.getElementById("txtuser").value;
+        var pwd = document.getElementById("txtpwd").value;
+        var referer = "@Model"; 
+        var windowlocation = "/ms_iot_Community_Samples/onlogin/" + referer + "/" + user +"/" + pwd;
+        window.location = windowlocation;
+    }
+    function OnCancel()
+    {
+        var referer = "@Model";
+        var windowlocation = "/ms_iot_Community_Samples/";
+        window.location = windowlocation;
+    }
+    </script>
+@EndSection
+
+
+@Section['Content']
+    <h1>Login</h1>
+    <form>
+        <table>
+            <colgroup>
+                <col style="font-weight:bold;" />
+                <col />
+            </colgroup>
+            <tr>
+                <td>User:</td>
+                <td><input type="text" id="txtuser" value="2a2cf9ae-1c35-4949-a965-2a56cda6f309" /></td>
+            </tr>
+            <tr>
+                <td>Password:</td>
+                <td><input type="password" id="txtpwd" value="6117003c-c79a-4187-8811-ad23a4657e59" /></td>
+            </tr>
+            <tr>
+                <td><input type="button"  value="Login" id="btnlogin" onclick="OnLogin()" /></td>
+                <td><input type="button" value="Cancel" id="btncancel" onclick="OnCancel()" /></td>
+            </tr>
+            <tr>
+                <td><a href="/ms_iot_Community_Samples/Reset">Reset</a></td>
+            </tr>
+
+        </table>
+    </form>
+@EndSection

@@ -210,6 +210,28 @@ namespace ms_iot_community_samples_svc.Models
                 _IoTProjects = value;
             }
         }
+        
+        public string Tagz
+        {
+            get
+            {
+                string res="";
+                res = String.Join(",", Tags);
+
+                return res;
+            }
+        }
+
+        public string CodeLanguagez
+        {
+            get
+            {
+                string res = "";
+                res = String.Join(",", CodeLanguages);
+
+                return res;
+            }
+        }
 
         public static List<IoTProject> ViewIoTProjects(string filtersStr)
         {
@@ -277,6 +299,43 @@ namespace ms_iot_community_samples_svc.Models
                 return bp.First();
             else
                 return null;
+        }
+
+
+        internal static IoTProject PreviousFiltered(string idStr, string filterStr)
+        {
+            var curProj = Get(idStr);
+            if (curProj != null)
+            {
+                var lst = ViewIoTProjects(filterStr);
+                int index = lst.IndexOf(curProj);
+                if (index >-1)
+                {
+                    if (index >0)
+                    {
+                        return lst[index - 1];
+                    }
+                }
+            }
+            return curProj;
+        }
+
+        internal static IoTProject NextFiltered(string idStr, string filterStr)
+        {
+            var curProj = Get(idStr);
+            if (curProj != null)
+            {
+                var lst = ViewIoTProjects(filterStr);
+                int index = lst.IndexOf(curProj);
+                if (index > -1)
+                {
+                    if (index < (lst.Count()-1))
+                    {
+                        return lst[index + 1];
+                    }
+                }
+            }
+            return curProj;
         }
 
 

@@ -48,6 +48,19 @@
             });
         }
 
+        protected override void ConfigureConventions(NancyConventions nancyConventions)
+        {
+            base.ConfigureConventions(nancyConventions);
+
+            nancyConventions.StaticContentsConventions.Add(
+                StaticContentConventionBuilder.AddDirectory("/assets")
+            );
+
+            nancyConventions.StaticContentsConventions.Add(
+            StaticContentConventionBuilder.AddDirectory("/", "/_root", new[] { ".png", ".txt" })
+            );
+        }
+
         //public class CustomRootPathProvider : IRootPathProvider
         //{
         //    public string GetRootPath()
@@ -65,22 +78,22 @@
 
         //https://github.com/NancyFx/Nancy/wiki/Managing-static-content
         ////protected override void ConfigureConventions(NancyConventions conventions)
-       // {
-            //    base.ConfigureConventions(conventions);
-            //
-            //Conventions.StaticContentsConventions.Add(
-            //       Nancy.Conventions.StaticContentConventionBuilder.AddDirectory("/Json")
-            //       );
-            //
-            //     nancyConventions.StaticContentsConventions.Add( 
-            //           Nancy.Conventions.StaticContentConventionBuilder.AddFile("/Default.html", "Default.html") 
-            //         ); 
+        // {
+        //    base.ConfigureConventions(conventions);
+        //
+        //Conventions.StaticContentsConventions.Add(
+        //       Nancy.Conventions.StaticContentConventionBuilder.AddDirectory("/Json")
+        //       );
+        //
+        //     nancyConventions.StaticContentsConventions.Add( 
+        //           Nancy.Conventions.StaticContentConventionBuilder.AddFile("/Default.html", "Default.html") 
+        //         ); 
 
 
-            //    conventions.StaticContentsConventions.Add(
-            //        StaticContentConventionBuilder.AddDirectory("assets", @"contentFolder/subFolder")
-            //    );
-            //}
+        //    conventions.StaticContentsConventions.Add(
+        //        StaticContentConventionBuilder.AddDirectory("assets", @"contentFolder/subFolder")
+        //    );
+        //}
         //}
     }
 }

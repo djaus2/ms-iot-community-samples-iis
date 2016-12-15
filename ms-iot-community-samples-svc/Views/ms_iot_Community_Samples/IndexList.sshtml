@@ -1,11 +1,7 @@
-﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<List<ms_iot_community_samples_svc.Models.IoTProject>>
-@{
-//Themes.Initialize("~/Themes/", "CityTheme");
-} 
-   <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-    <html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title></title>
+﻿@Master['master.sshtml']
+
+@Section['Header']
+        <title>ms-IoT Community Samples List</title>
         <style>
             table {
                 border-collapse: collapse;
@@ -65,23 +61,22 @@
                 window.location = windowlocation;
             }
         </script>
-    </head>
-    <body>
-        <form>
+@EndSection
 
-    <table
-           style="border:0px; width:100%;">
-        <tr>
-            <td style="width:30px"><input id="Submit0" type="button" value="Main Menu" onclick="OnFilter0()" /></td>
-            <td style="width:30px"><input id="Submit1" type="button" value="Filter" onclick="OnFilter1()" /></td>
-            <td style="width:30px"><input id="Submit2" type="button" value="Clear Filters and Sort" onclick="OnFilter2()" /></td>
-            <td>&nbsp;</td>
-            <td style="width:30px"><input id="Submit3" type="button" value="Login" onclick="OnFilter3()" /></td>
-            <td style="width:30px"><input id="Submit4" type="button" value="Logout" onclick="OnFilter4()" /></td>
-        </tr>
-    </table>
+@Section['HeaderNavs']
+                <ul>
+                    <li>				
+                        <a href="javascript:OnFilter1();">Filter</a>
+                    </li>
+                    <li>
+                        <a href="/ms_iot_Community_Samples/Reset" >Clear</a>
+                    </li>
+                </ul>
+@EndSection
 
 
+@Section['Content']
+ <form>
     <table
         style="border:0px; width:100%;">
         <tr>
@@ -100,24 +95,17 @@
             <td><input id="txtGitHub" type="text" /></td>
             <td><input id="txtCodeLanguages" type="text" /></td>
             <td><input id="txtTags" type="text" /></td>
-        </tr>
-        @foreach (ms_iot_community_samples_svc.Models.IoTProject objUser in @Model) // msiotCommunitySamples.Models.BlogPost.ViewBlogPostz)
-        {
+        </tr>		
+        @Each
             <tr>
-                <td width="30px">@objUser.Id</td>
-                <td><a href=@objUser.TitleId>@objUser.Title</a></td>
-                <td>@objUser.SummarySub</td>
-                <td><a href="@objUser.GitHubUrl">@objUser.GitHub</td>
-                <td>@string.Join(", ", objUser.CodeLanguages)</td>
-                <td>@string.Join(", ", objUser.Tags)</td>
-
+                <td width="30px">@Current.Id</td>
+                <td><a href=@Current.TitleId>@Current.Title</a></td>
+                <td>@Current.SummarySub</td>
+                <td><a href="@Current.GitHubUrl">@Current.GitHub</td>
+                <td>@Current.CodeLanguagez</td>
+                <td>@Current.Tagz</td>
             </tr>
-        }
+        @EndEach
     </table>
-
     </form>
-
-
-
-    </body>
-</html>
+@EndSection

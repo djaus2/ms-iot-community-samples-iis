@@ -104,6 +104,14 @@
             {
                 return View["ms_iot_Community_Samples/MDTemplate"];
             };
+            Get["/Template"] = _ =>
+            {
+                return View["Template"];
+            };
+            Get["/12"] = _ =>
+            {
+                return View["onetwo"];
+            };
 
             Get["/Dirs"] = _ =>
             {
@@ -308,6 +316,15 @@
                 else
                     referer = "IndexList";
                 return View["ms_iot_Community_Samples/login", referer];
+            };
+            Get["/ms_iot_Community_Samples/login2/{referer}"] = parameters =>
+            {
+                string referer = parameters.referer;
+                if (referer == "0")
+                    referer = "ms_iot_Community_Samples_Admin";
+                else
+                    referer = "IndexList";
+                return View["ms_iot_Community_Samples/login2", referer];
             };
 
             Get["/ms_iot_Community_Samples/logout/{referer}"] = parameters =>
@@ -872,13 +889,151 @@
 
             Get["/ms_iot_Community_Samples/Show/{id}"] = parameters =>
             {
-                string id = parameters.id;
-                Models.IoTProject blogPost = Models.IoTProject.Get(id);
+                string idStr = parameters.id;
+                Models.IoTProject blogPost = Models.IoTProject.Get(idStr);
                 if (blogPost != null)
                     return View["ms_iot_Community_Samples/Index", blogPost];
                 else
                     return View["ms_iot_Community_Samples/IndexList", Models.IoTProject.ViewIoTProjects((string)Request.Session["filter"])];
             };
+            //Get["/ms_iot_Community_Samples/Previous/{id}"] = parameters =>
+            //{
+            //    string idStr = parameters.id;
+            //    int id;
+            //    bool res = int.TryParse(idStr, out id);
+            //    if (res)
+            //    {
+            //        id--;
+            //        if (id > -1)
+            //        {
+            //            idStr = id.ToString();
+            //            Models.IoTProject blogPost = Models.IoTProject.Get(idStr);
+            //            if (blogPost != null)
+            //                return View["ms_iot_Community_Samples/Index", blogPost];
+            //        }
+            //    }
+
+            //    return View["ms_iot_Community_Samples/IndexList", Models.IoTProject.ViewIoTProjects((string)Request.Session["filter"])];
+            //};
+
+
+
+
+            //Get["/ms_iot_Community_Samples/Next/{id}"] = parameters =>
+            //{
+            //    string filter = (string)Request.Session["filter"];
+            //    string idStr = parameters.id;
+            //    int id;
+            //    bool res = int.TryParse(idStr, out id);
+            //    Models.IoTProject blogPost = null;
+            //    if (res)
+            //    {
+            //        if (filter != "")
+            //        {
+            //            blogPost = Models.IoTProject.NextFiltered(idStr, filter);
+            //            if (blogPost != null)
+            //                return View["ms_iot_Community_Samples/Index", blogPost];
+            //        }
+            //        else
+            //        {
+            //            id++;
+            //            if (id < Models.IoTProject.IoTProjects.Count())
+            //            {
+            //                idStr = id.ToString();
+            //                blogPost = Models.IoTProject.Get(idStr);
+            //                if (blogPost != null)
+            //                    return View["ms_iot_Community_Samples/Index", blogPost];
+            //            }
+            //        }
+            //    }
+            //    //If no next previous return current
+            //    blogPost = Models.IoTProject.Get(idStr);
+            //    if (blogPost != null)
+            //        return View["ms_iot_Community_Samples/Index", blogPost];
+            //    else
+            //        return View["ms_iot_Community_Samples/IndexList", Models.IoTProject.ViewIoTProjects((string)Request.Session["filter"])];
+            //};
+
+            Get["/ms_iot_Community_Samples/Previous/{id}"] = parameters =>
+            {
+                string filter = (string)Request.Session["filter"];
+                string idStr = parameters.id;
+                int id;
+                bool res = int.TryParse(idStr, out id);
+                Models.IoTProject blogPost = null;
+                if (res)
+                {
+                    if ((id < Models.IoTProject.IoTProjects.Count() ) && (id > 0))
+                    {
+                        if (filter != "")
+                        {
+                            blogPost = Models.IoTProject.PreviousFiltered(idStr, filter);
+                            if (blogPost != null)
+                                return View["ms_iot_Community_Samples/Index", blogPost];
+                        }
+                        else
+                        {
+                            id--;
+                            if (id > -1)
+                            {
+                                if (id < Models.IoTProject.IoTProjects.Count())
+                                {
+                                    idStr = id.ToString();
+                                    blogPost = Models.IoTProject.Get(idStr);
+                                    if (blogPost != null)
+                                        return View["ms_iot_Community_Samples/Index", blogPost];
+                                }
+                            }
+                        }
+                    }
+                }
+                //If no next previous return current
+                blogPost = Models.IoTProject.Get(idStr);
+                if (blogPost != null)
+                    return View["ms_iot_Community_Samples/Index", blogPost];
+                else
+                    return View["ms_iot_Community_Samples/IndexList", Models.IoTProject.ViewIoTProjects((string)Request.Session["filter"])];
+            };
+
+            Get["/ms_iot_Community_Samples/Next/{id}"] = parameters =>
+            {
+                string filter = (string)Request.Session["filter"];
+                string idStr = parameters.id;
+                int id;
+                bool res = int.TryParse(idStr, out id);
+                Models.IoTProject blogPost = null;
+                if (res)
+                { 
+                    if ( (id < Models.IoTProject.IoTProjects.Count() - 1) && (id>-1))
+                    {
+                        if (filter != "")
+                        {
+                            blogPost = Models.IoTProject.NextFiltered(idStr, filter);
+                            if (blogPost != null)
+                                return View["ms_iot_Community_Samples/Index", blogPost];
+                        }
+                        else
+                        {
+                            id++;
+                            if (id < Models.IoTProject.IoTProjects.Count())
+                            {
+                                idStr = id.ToString();
+                                blogPost = Models.IoTProject.Get(idStr);
+                                if (blogPost != null)
+                                    return View["ms_iot_Community_Samples/Index", blogPost];
+                            }
+                        }
+                    }
+                }
+                //If no next previous return current
+                blogPost = Models.IoTProject.Get(idStr);
+                if (blogPost!=null)
+                    return View["ms_iot_Community_Samples/Index", blogPost];
+                else
+                    return View["ms_iot_Community_Samples/IndexList", Models.IoTProject.ViewIoTProjects((string)Request.Session["filter"])];
+            };
+
+
             Get["/ms_iot_Community_Samples/Content/{id}"] = parameters =>
             {
                 string id = parameters.id;
@@ -888,10 +1043,21 @@
                 else
                     return View["ms_iot_Community_Samples/IndexList", Models.IoTProject.ViewIoTProjects((string)Request.Session["filter"])];
             };
-            Get["/ms_iot_Community_Samples/reset"] = _ =>
+            Get["/ms_iot_Community_Samples/Reset"] = _ =>
             {
                 Request.Session["filter"] = "";
                 return View["ms_iot_Community_Samples/IndexList", Models.IoTProject.ViewIoTProjects((string)Request.Session["filter"])];
+            };
+
+            Get["/ms_iot_Community_Samples/Reset/{Id}"] = parameters =>
+            {
+                Request.Session["filter"] = "";
+                string id = parameters.Id;
+                Models.IoTProject blogPost = Models.IoTProject.Get(id);
+                if (blogPost != null)
+                    return View["ms_iot_Community_Samples/Index", blogPost];
+                else
+                    return View["ms_iot_Community_Samples/IndexList", Models.IoTProject.ViewIoTProjects((string)Request.Session["filter"])];
             };
             Get["/ms_iot_Community_Samples/clear"] = _ =>
             {
@@ -902,7 +1068,8 @@
             Get["/ms_iot_Community_Samples/list"] = _ =>
             {
                 string filter = (string)Request.Session["filter"];
-                return View["ms_iot_Community_Samples/IndexList", Models.IoTProject.ViewIoTProjects((string)Request.Session["filter"])];
+                List<Models.IoTProject> IoTProjs = Models.IoTProject.ViewIoTProjects((string)Request.Session["filter"]);
+                return View["ms_iot_Community_Samples/IndexList", IoTProjs];
             };
 
             Get["/ms_iot_Community_Samples/ClearFilter"] = _ =>

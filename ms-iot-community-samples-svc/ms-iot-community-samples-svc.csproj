@@ -76,6 +76,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Nancy, Version=1.4.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Nancy.1.4.3\lib\net40\Nancy.dll</HintPath>
       <Private>True</Private>
@@ -115,16 +119,48 @@
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\404.html" />
+    <Content Include="assets\apple-touch-icon.png" />
+    <Content Include="assets\browserconfig.xml" />
+    <Content Include="assets\css\mainAzure.css" />
+    <Content Include="assets\css\mainLimeGreen.css" />
+    <Content Include="assets\css\normalize.min.css" />
+    <Content Include="assets\css\normalize.css" />
+    <Content Include="assets\favicon.ico" />
+    <Content Include="assets\humans.txt" />
+    <None Include="assets\template.cshtml" />
+    <Content Include="assets\js\main.js" />
+    <Content Include="assets\js\vendor\jquery-1.11.2.min.js" />
+    <Content Include="assets\js\vendor\modernizr-2.8.3-respond-1.4.2.min.js" />
+    <Content Include="assets\robots.txt" />
+    <Content Include="assets\tile-wide.png" />
+    <Content Include="assets\tile.png" />
     <Content Include="Content\nancy-logo.png" />
     <Content Include="Content\sportronics.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -132,9 +168,25 @@
     <Content Include="Content\ms_iot_Community_Samples\ReadMe.md">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Views\master.sshtml" />
     <None Include="Views\ms_iot_Community_Samples\About.cshtml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Content Include="assets_initializr\404.html" />
+    <Content Include="assets_initializr\apple-touch-icon.png" />
+    <Content Include="assets_initializr\browserconfig.xml" />
+    <Content Include="assets_initializr\css\main.css" />
+    <Content Include="assets_initializr\css\normalize.css" />
+    <Content Include="assets_initializr\css\normalize.min.css" />
+    <Content Include="assets_initializr\favicon.ico" />
+    <Content Include="assets_initializr\humans.txt" />
+    <Content Include="assets_initializr\index.html" />
+    <Content Include="assets_initializr\js\main.js" />
+    <Content Include="assets_initializr\js\vendor\jquery-1.11.2.min.js" />
+    <Content Include="assets_initializr\js\vendor\modernizr-2.8.3-respond-1.4.2.min.js" />
+    <Content Include="assets_initializr\robots.txt" />
+    <Content Include="assets_initializr\tile-wide.png" />
+    <Content Include="assets_initializr\tile.png" />
     <Content Include="Views\ms_iot_Community_Samples\MDTemplate.cshtml" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -165,11 +217,11 @@
     <Content Include="Views\index1.cshtml" />
     <Content Include="Views\index2.cshtml" />
     <Content Include="Views\default.cshtml" />
-    <Content Include="Views\ms_iot_Community_Samples\ErrorPage.cshtml" />
-    <Content Include="Views\ms_iot_Community_Samples\Index.cshtml" />
-    <Content Include="Views\ms_iot_Community_Samples\IndexList.cshtml" />
-    <Content Include="Views\ms_iot_Community_Samples\login.cshtml" />
-    <Content Include="Views\ms_iot_Community_Samples\ms_iot_Community_Samples.cshtml" />
+    <None Include="Views\ms_iot_Community_Samples\ErrorPage.sshtml" />
+    <None Include="Views\ms_iot_Community_Samples\Index.sshtml" />
+    <None Include="Views\ms_iot_Community_Samples\IndexList.sshtml" />
+    <Content Include="Views\ms_iot_Community_Samples\loginx.cshtml" />
+    <None Include="Views\ms_iot_Community_Samples\ms_iot_Community_Samples.sshtml" />
     <None Include="Properties\PublishProfiles\SportronicsIoT - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\SportronicsIoT - Web Deploy.pubxml" />
     <None Include="Properties\Settings.settings">
@@ -180,7 +232,10 @@
     <Content Include="Views\AList.cshtml" />
     <Content Include="Views\ms_iot_Community_Samples\Test1.cshtml" />
     <Content Include="Views\Test2.cshtml" />
-    <Content Include="Views\ms_iot_Community_Samples\Admin.cshtml" />
+    <None Include="Views\ms_iot_Community_Samples\Admin.sshtml" />
+    <Content Include="Views\Template.cshtml" />
+    <None Include="Views\ms_iot_Community_Samples\login.sshtml" />
+    <None Include="Views\onetwo.sshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -189,9 +244,12 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="assets\img\" />
+    <Folder Include="assets_initializr\img\" />
     <Folder Include="json\" />
     <Folder Include="MD2\" />
     <Folder Include="MD\" />
+    <Folder Include="_root\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,11 +1,11 @@
-﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<ms_iot_community_samples_svc.Models.Errors>
-<!DOCTYPE html>
-<html>
-<head>
+﻿@Master['master.sshtml']
+
+@Section['Header']
     <title>Error Message</title>
 	<meta charset="utf-8" />
-</head>
-<body>
+@EndSection
+
+@Section['Content']
     <h1>Error Message</h1>
     <table>
         <colgroup>
@@ -37,6 +37,4 @@
             <td><a href="/ms_iot_Community_Samples">Samples menu</a></td>
         </tr>
     </table>
-
-</body>
-</html>
+@EndSection
