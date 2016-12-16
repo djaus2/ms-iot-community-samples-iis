@@ -45,7 +45,6 @@
                 Searchtxt = Searchtxt.replace("+", "Z");
                 Searchtxt = Searchtxt.replace("+", "Z");
                 var windowlocation = "/ms_iot_Community_Samples/Filter/" + Searchtxt;
-
                 window.location = windowlocation;
             }
             function OnFilter2() {
@@ -65,12 +64,16 @@
 
 @Section['HeaderNavs']
                 <ul>
+					<li>
+                        <a href="/ms_iot_Community_Samples/Browse" >Browse</a>
+                    </li>
                     <li>				
-                        <a href="javascript:OnFilter1();">Filter</a>
+                        <a href="javascript:OnFilter1();">Apply Filter</a>
                     </li>
                     <li>
-                        <a href="/ms_iot_Community_Samples/Reset" >Clear</a>
+                        <a href="/ms_iot_Community_Samples/Reset" >Clear Filter</a>
                     </li>
+
                 </ul>
 @EndSection
 
@@ -81,11 +84,11 @@
         style="border:0px; width:100%;">
         <tr>
             <th style="width:30px"><a href="/ms_iot_Community_Samples/Sort/Id">Id</a></th>
-            <th><a href="/ms_iot_Community_Samples/Sort/title">Title</a></th>
-            <th><a href="/ms_iot_Community_Samples/Sort/description">Description</a></th>
-            <th><a href="/ms_iot_Community_Samples/Sort/permalink">Github</a></th>
-            <th><a href="/ms_iot_Community_Samples/Sort/samplelink">Code Language/s</a></th>
-            <th><a href="/ms_iot_Community_Samples/Sort/keyword">Tags</a></th>
+            <th><a href="/ms_iot_Community_Samples/Sort/Title">Title</a></th>
+            <th><a href="/ms_iot_Community_Samples/Sort/Description">Description</a></th>
+            <th><a href="/ms_iot_Community_Samples/Sort/GitHub">GitHub</a></th>
+            <th><a href="/ms_iot_Community_Samples/Sort/CodeLanguagez">Code Language/s</a></th>
+            <th><a href="/ms_iot_Community_Samples/Sort/Tagz">Tags</a></th>
         </tr>
 
         <tr>

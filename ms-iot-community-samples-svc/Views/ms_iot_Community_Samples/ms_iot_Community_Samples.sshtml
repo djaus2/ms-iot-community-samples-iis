@@ -19,44 +19,52 @@
 @EndSection
 
 @Section['Content']
-    <table>
-        <colgroup>
-            <col style="font-weight:bold;" />
+<input readonly type="text" id="TextAreaAbout" width="800" ><br/>
+                <article>
+                    <header>
+                        <h1>About</h1>
+                        <p>This site is a directory of Windows 10 IoT GitHub projects as a set of Markdown (.md) files for Microosft IoT Sample projects from the IoT Community&nbsp;...<a href="#About">read&nbsp;more.</a></p>
+                    </header>
+                    <section>
+                        <h2>Index</h2>
+						<p><a href="/ms_iot_Community_Samples/list">View (filtered) list of Sample Projects</a></p>
+						<p><a href="/ms_iot_Community_Samples/reset">Show all</a></p>
+						<p><a href="/ms_iot_Community_Samples/Browse">Browse</a></p>
+						<p><a href="/ms_iot_Community_Samples/SetFilter">Filter</a></p>
+						<p><a href="/ms_iot_Community_Samples/Admin">Admin</a></p>
+						<p><a href="/ms_iot_Community_Samples/MDFileTemplate">MD File Template</a></p>						
+                    </section>
+
+                    <footer>
+						<p><a href="/Default">Sportronics</a></p>
+                    </footer>
+                </article>
+
+	<aside>
+	<table>
+	        <colgroup>
             <col />
         </colgroup>
-        <tr>
-            <td><h2>Samples Menu</h2></td>
-            <td><h2>Other Links</h2></td>
+	    <tr>
+            <td style="color:#fff"><b><i>Other Links</i></b></td>
         </tr>
         <tr>
-            <td><a href="/ms_iot_Community_Samples/list">View (filtered) list of Sample Projects</a></td>
-            <td><a href="https://github.com/ms-iot/Samples">[GitHub]ms-iot/Samples</a></td>
+            <td><a href="https://github.com/ms-iot/Samples" style="color:#fff">[GitHub]ms-iot/Samples</a></td>
         </tr>
         <tr>
-            <td><a href="/ms_iot_Community_Samples/reset">Show all</a></td>
-            <td><a href="https://github.com/djaus2/ms-iot-Community-Samples">[GitHub]ms-iot-Community-Samples</a></td>
+            <td><a href="https://github.com/djaus2/ms-iot-Community-Samples" style="color:#fff">[GitHub]ms-iot-Community-Samples</a></td>
         </tr>
         <tr>
-            <td><a href="/ms_iot_Community_Samples/Admin">Admin</a></td>
-            <td><a href="https://developer.microsoft.com/en-US/windows/iot">Windows IoT Dev Center</a></td>
+            <td><a href="https://developer.microsoft.com/en-US/windows/iot" style="color:#fff">Windows IoT Dev Center</a></td>
         </tr>
             
-        <tr>
-            <td><a href="/ms_iot_Community_Samples/MDFileTemplate">MD File Template</a></td>          
-            <td><a href="https://www.hackster.io">Hackster.IO</a></td>
+        <tr>        
+            <td><a href="https://www.hackster.io" style="color:#fff">Hackster.IO</a></td>
         </tr>
-
-        <tr>
-            <td><a href="/Default">Sportronics</a></td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td id="tdAbout" colspan="2" width="800"><input readonly type="text" id="TextAreaAbout" width="800" ></td>
-        </tr>
-         
-        <tr>
-            <td colspan="2"><iframe id="iframeAbout" src="/Site_Content/ms_iot_Community_Samples/ReadMe" width="800" height="1000" scrolling="no" frameborder="0" /></td>
-        </tr>
-
+		
     </table>
+	</aside>
+        <a name="About"></a><iframe id="iframeAbout" src="/Site_Content/ms_iot_Community_Samples/ReadMe" width="800" height="1000" scrolling="no" frameborder="0" />
+
 @EndSection
+

@@ -86,7 +86,7 @@
         </tr>
         <tr>
             <td>Developer/s</td>
-            <td>Model.Developerz</td>
+            <td>@Model.Developerz</td>
         </tr>
         <tr>
             <td>Blog</td>

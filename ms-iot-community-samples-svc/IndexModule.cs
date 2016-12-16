@@ -16,6 +16,7 @@
     using System.Web.Security;
     using System.Threading.Tasks;
     using System.Collections.ObjectModel;
+    using Nancy.Linker;
 
     public partial class IndexModule : NancyModule
     {
@@ -542,6 +543,7 @@
                                 }
                                 try
                                 {
+                                    //Note must useModels.Project here not Models.IoTProject
                                     var fields = typeof(Models.Project).GetFields(
                                         BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
                                     var field = from n in fields where n.Name.Substring(1).Replace(">k__BackingField", "").ToLower() == vname.ToLower() select n;
@@ -552,7 +554,8 @@
                                         if (fld.FieldType.Name == "List`1")
                                         {
                                             string[] aos = vvalue.Split(new char[] { ',' });
-                                            List<string> los = aos.ToList<string>();
+                                            var trimmedAos = from n in aos select n.Trim();
+                                            List < string > los = trimmedAos.ToList<string>();
                                             fld.SetValue(iotProject, los);
                                             //if (fldName == "CodeLanguages")
                                             //{
@@ -896,6 +899,16 @@
                 else
                     return View["ms_iot_Community_Samples/IndexList", Models.IoTProject.ViewIoTProjects((string)Request.Session["filter"])];
             };
+
+            Get["/ms_iot_Community_Samples/Browse"] = _ =>
+            {
+                string filter = (string)Request.Session["filter"];
+                Models.IoTProject blogPost = Models.IoTProject.GetFirst(filter);
+                if (blogPost != null)
+                    return View["ms_iot_Community_Samples/Index", blogPost];
+                else
+                    return View["ms_iot_Community_Samples/IndexList", Models.IoTProject.ViewIoTProjects((string)Request.Session["filter"])];
+            };
             //Get["/ms_iot_Community_Samples/Previous/{id}"] = parameters =>
             //{
             //    string idStr = parameters.id;
@@ -1078,16 +1091,30 @@
                 Request.Session["filter"] = "";
                 return View["ms_iot_Community_Samples/IndexList", Models.IoTProject.ViewIoTProjects((string)Request.Session["filter"])];
             };
+
+            Get["/ms_iot_Community_Samples/SetFilter"] = _ =>
+            {
+                //Same as reset
+                string filters = (string)Request.Session["filter"];
+                return View["ms_iot_Community_Samples/SetFilter", filters];
+            };
+            
+
             Get["/ms_iot_Community_Samples/Filter/{idfilter}/{titlefilter}/{summaryfilter}/{codefilter}/{tagsfilter}/{tagsfilter2}"] = parameters =>
             {
-                var fields = typeof(Models.Project).GetFields(
-                        BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
-                Models.IoTProject.Fields = new List<string>();
-                foreach (var fld in fields)
+                if (Models.IoTProject.Fields == null)
+                    Models.IoTProject.Fields = new List<string>();
+                if (Models.IoTProject.Fields.Count() == 0)
                 {
-                    
-                    string fldName = fld.Name.Substring(1).Replace(">k__BackingField", "");
-                    Models.IoTProject.Fields.Add(fldName);
+                    var fields = typeof(Models.Project).GetFields(
+                            BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+                    ;
+                    foreach (var fld in fields)
+                    {
+
+                        string fldName = fld.Name.Substring(1).Replace(">k__BackingField", "");
+                        Models.IoTProject.Fields.Add(fldName);
+                    }
                 }
 
                 char[] sep = new char[] { '~' };
@@ -1102,10 +1129,14 @@
                 {
                     tupl = filter.Split(sep);
                     if (tupl.Length == 2)
+                    {
+                        tupl[0] = tupl[0].Trim();
+                        tupl[1] = tupl[1].Trim();
                         if (tupl[0] != "")
-                            if (Models.IoTProject.Fields.Contains(tupl[0]))
+                            //if (Models.IoTProject.Fields.Contains(tupl[0]))
                                 if (tupl[1] != "")
                                     filters.Add(new Tuple<string, string>(tupl[0], tupl[1]));
+                    }
                 }
                 filter = parameters.titlefilter;
                 filter = filter.Replace("Z", "+");
@@ -1115,10 +1146,14 @@
                 {
                     tupl = filter.Split(sep);
                     if (tupl.Length == 2)
+                    {
+                        tupl[0] = tupl[0].Trim();
+                        tupl[1] = tupl[1].Trim();
                         if (tupl[0] != "")
                             if (Models.IoTProject.Fields.Contains(tupl[0]))
                                 if (tupl[1] != "")
                                     filters.Add(new Tuple<string, string>(tupl[0], tupl[1]));
+                    }
                 }
                 filter = parameters.summaryfilter;
                 filter = filter.Replace("Z", "+");
@@ -1128,10 +1163,14 @@
                 {
                     tupl = filter.Split(sep);
                     if (tupl.Length == 2)
+                    {
+                        tupl[0] = tupl[0].Trim();
+                        tupl[1] = tupl[1].Trim();
                         if (tupl[0] != "")
                             if (Models.IoTProject.Fields.Contains(tupl[0]))
                                 if (tupl[1] != "")
                                     filters.Add(new Tuple<string, string>(tupl[0], tupl[1]));
+                    }
                 }
                 filter = parameters.codefilter;
                 filter = filter.Replace("Z", "+");
@@ -1141,11 +1180,15 @@
                 {
                     tupl = filter.Split(sep);
                     if (tupl.Length == 2)
+                    {
+                        tupl[0] = tupl[0].Trim();
+                        tupl[1] = tupl[1].Trim();
                         if (tupl[0] != "")
                             if (Models.IoTProject.Fields.Contains(tupl[0]))
                                 if (tupl[1] != "")
 
                                     filters.Add(new Tuple<string, string>(tupl[0], tupl[1]));
+                    }
                 }
                 filter = parameters.tagsfilter;
                 filter = filter.Replace("Z", "+");
@@ -1155,10 +1198,14 @@
                 {
                     tupl = filter.Split(sep);
                     if (tupl.Length == 2)
+                    {
+                        tupl[0] = tupl[0].Trim();
+                        tupl[1] = tupl[1].Trim();
                         if (tupl[0] != "")
                             if (Models.IoTProject.Fields.Contains(tupl[0]))
                                 if (tupl[1] != "")
                                     filters.Add(new Tuple<string, string>(tupl[0], tupl[1]));
+                    }
                 }
                 filter = parameters.tagsfilter2;
                 filter = filter.Replace("Z", "+");
@@ -1168,10 +1215,14 @@
                 {
                     tupl = filter.Split(sep);
                     if (tupl.Length == 2)
+                    {
+                        tupl[0] = tupl[0].Trim();
+                        tupl[1] = tupl[1].Trim();
                         if (tupl[0] != "")
                             if (Models.IoTProject.Fields.Contains(tupl[0]))
                                 if (tupl[1] != "")
                                     filters.Add(new Tuple<string, string>(tupl[0], tupl[1]));
+                    }
                 }
                 Models.FilterAndSortInfo fi;
                 if ((string)Request.Session["filter"] == null)

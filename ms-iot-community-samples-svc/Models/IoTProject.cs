@@ -216,7 +216,7 @@ namespace ms_iot_community_samples_svc.Models
             get
             {
                 string res="";
-                res = String.Join(",", Tags);
+                res = String.Join(", ", Tags);
 
                 return res;
             }
@@ -227,7 +227,29 @@ namespace ms_iot_community_samples_svc.Models
             get
             {
                 string res = "";
-                res = String.Join(",", CodeLanguages);
+                res = String.Join(", ", CodeLanguages);
+
+                return res;
+            }
+        }
+
+        public string Targetz
+        {
+            get
+            {
+                string res = "";
+                res = String.Join(", ", Targets);
+
+                return res;
+            }
+        }
+
+        public string Developerz
+        {
+            get
+            {
+                string res = "";
+                res = String.Join(", ", Developers);
 
                 return res;
             }
@@ -300,6 +322,16 @@ namespace ms_iot_community_samples_svc.Models
             else
                 return null;
         }
+ 
+
+        internal static IoTProject GetFirst(string filters)
+        {
+            var bp = ViewIoTProjects(filters);
+            if (bp.Count() != 0)
+                return bp.First();
+            else
+                return null;
+        }
 
 
         internal static IoTProject PreviousFiltered(string idStr, string filterStr)
@@ -343,7 +375,8 @@ namespace ms_iot_community_samples_svc.Models
         public static void ClearIoTProjects()
         {
             Count = 0;
-            var fields = typeof(IoTProject).GetFields(
+            //Use Project not IoTProject type here
+            var fields = typeof(Project).GetFields(
 BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
 
             var names = Array.ConvertAll(fields, field => field.Name.Substring(1).Replace(">k__BackingField", ""));

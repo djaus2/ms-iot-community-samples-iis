@@ -92,6 +92,10 @@
       <HintPath>..\packages\Nancy.Hosting.Aspnet.1.4.1\lib\net40\Nancy.Hosting.Aspnet.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Nancy.Linker, Version=0.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Nancy.Linker.0.3.1\lib\net40-Client\Nancy.Linker.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Nancy.ViewEngines.Razor, Version=1.4.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Nancy.Viewengines.Razor.1.4.3\lib\net40\Nancy.ViewEngines.Razor.dll</HintPath>
       <Private>True</Private>
@@ -218,6 +222,7 @@
     <Content Include="Views\index2.cshtml" />
     <Content Include="Views\default.cshtml" />
     <None Include="Views\ms_iot_Community_Samples\ErrorPage.sshtml" />
+    <Content Include="Views\ms_iot_Community_Samples\Setfilter.sshtml" />
     <None Include="Views\ms_iot_Community_Samples\Index.sshtml" />
     <None Include="Views\ms_iot_Community_Samples\IndexList.sshtml" />
     <Content Include="Views\ms_iot_Community_Samples\loginx.cshtml" />

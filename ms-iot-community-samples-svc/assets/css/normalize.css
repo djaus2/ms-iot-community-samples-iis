@@ -1,7 +1,7 @@
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 
 /**
- * 1. Set default font family to sans-serif.
+ * 1. Set default font family to sans-serifnav
  * 2. Prevent iOS text size adjust after orientation change, without disabling
  *    user zoom.
  */
@@ -12,22 +12,7 @@ html {
   -webkit-text-size-adjust: 100%; /* 2 */
 }
 
-.box-shadow-menu {
-  position: relative;
-  padding-left: 1.25em;
-}
-.box-shadow-menu:before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.25em;
-  width: 1em;
-  height: 0.15em;
-  background: black;
-  box-shadow: 
-    0 0.25em 0 0 black,
-    0 0.5em 0 0 black;
-}
+
 
 /**
  * Remove default margin.

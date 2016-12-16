@@ -42,15 +42,17 @@ namespace ms_iot_community_samples_svc.Utilities
                         (propertyInfo.PropertyType.Name == "String")
                     )
                 {
+                    //Case insensitive comparison for strings
                     var propertyValue = (string)propertyInfo.GetValue(item, null);
-                    if (propertyValue.ToString().Contains(filterValue))
+                    if (propertyValue.ToString().ToLower().Contains(filterValue.ToLower()))
                         filteredCollection.Add(item);
                 }
-                else if ( //Id use exact
-                            (propertyInfo.PropertyType.Name == "Int64")
-                            ||
-                            (propertyInfo.PropertyType.Name == "Int32")
-                        )
+                else if 
+                    ( //Id use exact
+                        (propertyInfo.PropertyType.Name == "Int64")
+                        ||
+                        (propertyInfo.PropertyType.Name == "Int32")
+                    )
                 {
                     int propertyValue2 = (int)propertyInfo.GetValue(item, null);
                     if (propertyValue2.ToString() == filterValue)
@@ -58,18 +60,21 @@ namespace ms_iot_community_samples_svc.Utilities
                 }
                 else if (propertyInfo.PropertyType.Name == "List`1")
                 {
-                    if (property == "CodeLanguages")
-                    {
-                        var propertyValue3 = (List<string>)propertyInfo.GetValue(item, null);
-                        if (propertyValue3.Contains(filterValue))
-                            filteredCollection.Add(item);
-                    }
-                    if (property == "Tags")
-                    {
+                    //if (property == "CodeLanguages")
+                    //{
+                    //    var propertyValue3 = (List<string>)propertyInfo.GetValue(item, null);
+                    //    if (propertyValue3.Contains(filterValue))
+                    //        filteredCollection.Add(item);
+                    //}
+                    //else if (property == "Tags") 
+                    //{
+                    // Item value comparison to be case inssnsitive for list.
                         var propertyValue4 = (List<string>)propertyInfo.GetValue(item, null);
-                        if (propertyValue4.Contains(filterValue))
+                        var propertyValue4Lower = from n in propertyValue4 select n.ToLower();
+                        if (propertyValue4Lower.Contains(filterValue.ToLower()))
                             filteredCollection.Add(item);
-                    }
+
+                    //}
 
                 }
             }
