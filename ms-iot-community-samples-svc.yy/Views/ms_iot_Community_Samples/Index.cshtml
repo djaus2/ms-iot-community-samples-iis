@@ -1,0 +1,109 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<ms_iot_community_samples_svc.Models.IoTProject>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>@Model.Title</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+ 
+
+        th {
+            background-color: yellow;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <colgroup>
+            <col style="font-weight:bold;" />
+            <col />
+        </colgroup>
+        <tr>
+            <td>Id:</td>
+            <td>@Model.Id</td>
+        </tr>
+        <tr>
+            <td>Title (Click link for (MD) detail.)</td>
+            <td><a href=@Model.filenameDisp>@Model.Title</a></td>
+        </tr>
+        <tr>
+            <td>Description:</td>
+            <td>@Model.Description</td>
+        </tr>
+        <tr>
+            <td>Target/s</td>
+            <td>@string.Join(", ", Model.Targets)</td>
+        </tr>
+        <tr>
+            <td>Code Language/s</td>
+            <td>@string.Join(", ", Model.CodeLanguages)</td>
+        </tr>
+        <tr>
+            <td>Tags</td>
+            <td>@string.Join(", ", Model.Tags)</td>
+        </tr>
+        <tr>
+            <td>Developer/s</td>
+<<<<<<< HEAD:ms-iot-community-samples-svc/Views/ms_iot_Community_Samples/Index.sshtml
+            <td>@Model.Developerz</td>
+=======
+            <td>@string.Join(", ", Model.Developers)</td>
+>>>>>>> parent of d946754... Nearly done formatting using a template (master.sshtml):ms-iot-community-samples-svc/Views/ms_iot_Community_Samples/Index.cshtml
+        </tr>
+        <tr>
+            <td>Blog</td>
+            <td><a href="@Model.Blog">@Model.Blog</a></td>
+        </tr>
+        <tr>
+            <td>Language</td>
+            <td>@Model.Language</td>
+        </tr>
+        <tr>
+            <td style="color:purple">Project Links</td>
+        </tr>
+        <tr>
+            <td>GitHub Relative Link</td>
+            <td><a href="@Model.GitHubUrl">@Model.GitHub</a></td>
+        </tr>
+        <tr>
+            <td>Hackster.IO Relative Link</td>
+            <td><a href="@Model.HacksterIOUrl">@Model.HacksterIO</a>
+        </tr>
+        <tr>
+            <td>Codeplex Project</td>
+            <td>
+                <a href="@Model.Codeplex">@Model.Codeplex</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="color:purple">Others by Developer</td>
+        </tr>
+        <tr>
+            <td>Other GitHub Projects</td>
+            <td><a href="@Model.OtherGitHubProjectsUrl">@Model.OtherGitHub</a></td>
+        </tr>
+        <tr>
+            <td>Other Hackster.IO Projects</td>
+            <td><a href="@Model.OtherHacksterIOProjectsUrl">@Model.OtherHacksterIO</a>
+            </td>
+        </tr>
+
+    </table>
+    <p>
+        <a href="/ms_iot_Community_Samples/List">Show list</a>
+    </p>
+</body>
+</html>

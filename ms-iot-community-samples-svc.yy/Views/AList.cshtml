@@ -1,0 +1,36 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<List<string>>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>A List</title>
+	<meta charset="utf-8" />
+<script type="text/javascript">
+    function SubmitMe()
+    {
+        var SubDir = document.getElementById("subdir").value;
+
+        var windowlocation = "/Dir/" + SubDir;
+        alert(windowlocation);
+        window.location = windowlocation;
+    }
+    </script>
+</head>
+<body>
+    <h1>Error Message</h1>
+    <table>
+        <colgroup>
+            <col style="font-weight:bold;" />
+            <col />
+        </colgroup>
+        <tr>
+            <td>Directories:</td>
+            <td>@string.Join(", ", Model)</td>
+        </tr>
+        <tr>
+            <td><input type="button" Value="Submit" id="Submit" onclick="Submit"/></td>
+            <td><input type="text" value="" id="subdir"/></td>
+        </tr>
+    </table>
+
+</body>
+</html>

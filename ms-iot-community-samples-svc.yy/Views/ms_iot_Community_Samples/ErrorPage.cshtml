@@ -1,0 +1,42 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<ms_iot_community_samples_svc.Models.Errors>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Error Message</title>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <h1>Error Message</h1>
+    <table>
+        <colgroup>
+            <col style="font-weight:bold;" />
+            <col />
+        </colgroup>
+        <tr>
+            <td>Message:</td>
+            <td>@Model.Message</a></td>
+        </tr>
+        <tr>
+            <td>Source:</td>
+            <td>@Model.Source</a></td>
+        </tr>
+        <tr>
+            <td>Logged in status:</td>
+            <td>@Model.LoggedInStatus</a></td>
+        </tr>
+        <tr>
+            <td><hr /></td>
+        </tr>
+        <tr>
+            <td><a href="/ms_iot_Community_Samples/Admin">Admin</a></td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td><a href="/ms_iot_Community_Samples">Samples menu</a></td>
+        </tr>
+    </table>
+
+</body>
+</html>
