@@ -16,7 +16,7 @@
     using System.Web.Security;
     using System.Threading.Tasks;
     using System.Collections.ObjectModel;
-
+    using Nancy.ModelBinding;
 
     public partial class IndexModule : NancyModule
     {
@@ -258,7 +258,7 @@
 
                     if (!File.Exists(MDDB))
                     {
-                        errorMsg.Message = "No Json File.Do Github and Convert first.<br/>Admin moed required.";
+                        errorMsg.Message = "No Json File.Do Github and Convert first.<br/>Admin mode required.";
                         errorMsg.LoggedInStatus = (bool)Request.Session["LoggedInStatus"];
                         string emptyJsonArray = "[]";
                         File.WriteAllText(MDDB, emptyJsonArray);
@@ -348,28 +348,75 @@
                     return View["ms_iot_Community_Samples/" + referer, Models.IoTProject.ViewIoTProjects((string)Request.Session["filter"])];
                 }
             };
-            Get["/ms_iot_Community_Samples/onlogin/{referer}/{user}/{pwd}"] = parameters =>
+            Get["/ms_iot_Community_Samples/loginPost"] = _ =>
             {
-                string user = parameters.user;
-                string pwd = parameters.pwd;
-                string referer = parameters.referer;
+                return View["ms_iot_Community_Samples/loginPost"];
+            };
+
+
+            Post["/ms_iot_Community_Samples/onloginPost", true] = async (parameters, ct) =>
+            {
+            var CredentialsTruple = this.Bind<Models.AuthenticateTruple>();
+            //    return View["ms_iot_Community_Samples/"];
+            //};
+            //    Get["/ms_iot_Community_Samples/onlogin/{referer}/{user}/{pwd}/{repo}", true] = async (parameters, ct) =>
+            //{
                 Request.Session["filter"] = "";
                 Request.Session["LoggedInStatus"] = false;
+
+                //string user = parameters.user;
+                //string pwd = parameters.pwd;
+                //string referer = parameters.referer;
+                //string repo = parameters.repo;
+
+                string user = CredentialsTruple.User;
+                if (user == null)
+                    user = "";
+                string pwd = CredentialsTruple.Pwd;
+                if (pwd == null)
+                    pwd = "";
+                string referer = "0";
+                string repo = CredentialsTruple.Repo;
+                if (repo == null)
+                    repo = "";
 
                 string admin = (string)ConfigurationManager.AppSettings["Admin.UserName"];
                 string adminPwd = (string)ConfigurationManager.AppSettings["Admin.Pwd"];
 
                 user = user.Trim();
                 pwd = pwd.Trim();
+                repo = repo.Trim();
                 if ((user == admin) && (pwd == adminPwd))
                 {
                     Request.Session["LoggedInStatus"] = true;
+                    errorMsg.Title = "Successful Login.";
                     errorMsg.Message = "Logged in.";
                     errorMsg.Source = "/OnLogin";
                     errorMsg.LoggedInStatus = true;
                 }
+                else if ( (user!="") && (pwd!="") && (repo!=""))
+                {
+                    if (await GitHubLogin(user, pwd, repo))
+                        {
+                            Request.Session["LoggedInStatus"] = true;
+                            errorMsg.Title = "Successful Login.";
+                            errorMsg.Message = "Logged in.";
+                            errorMsg.Source = "/OnLogin";
+                            errorMsg.LoggedInStatus = true;
+                        }
+                    else
+                    {
+
+                        Request.Session["LoggedInStatus"] = false;
+                        errorMsg.Message = "Login failed!";
+                        errorMsg.Source = "/OnLogin";
+                        errorMsg.LoggedInStatus = false;
+                        return View["ms_iot_Community_Samples/ErrorPage", errorMsg];
+                    }
+                }
                 else
                 {
+
                     Request.Session["LoggedInStatus"] = false;
                     errorMsg.Message = "Login failed!";
                     errorMsg.Source = "/OnLogin";
@@ -835,6 +882,7 @@
 
 
                  Request.Session["filter"] = "";
+                 errorMsg.Title = "GitHub Sync";
                  errorMsg.LoggedInStatus = (bool)Request.Session["LoggedInStatus"];
                  if (count ==-1)
                      errorMsg.Message = "No .MD files retreived from GitHub as local copy is in Sync.";
@@ -1248,6 +1296,30 @@
 
                 return View["ms_iot_Community_Samples/IndexList", Models.IoTProject.ViewIoTProjects((string)Request.Session["filter"])];
             };
+        }
+
+        private async Task<bool> GitHubLogin(string githubUsr, string githubPwd, string githubRepo)
+        {
+            //throw new NotImplementedException();
+            string githuUrl = (string)ConfigurationManager.AppSettings["GitHub.Url"];
+            GitHubClient lbasicGitHubClient =
+                new GitHubClient(new ProductHeaderValue(githubRepo), new Uri(githuUrl));
+
+            //https://github.com/octokit/octokit.net
+
+            var basicAuth = new Credentials(githubUsr, githubPwd); // NOTE: not real credentials
+            lbasicGitHubClient.Credentials = basicAuth;
+            User user = null; 
+            try
+            {
+                user = await lbasicGitHubClient.User.Get(githubUsr);
+            } catch (Exception ex)
+            {
+                return false;
+            }
+            if (user == null)
+                return false;
+            return true;
         }
 
         GitHubClient basicGitHubClient;

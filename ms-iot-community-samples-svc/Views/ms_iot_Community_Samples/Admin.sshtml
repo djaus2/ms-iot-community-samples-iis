@@ -1,4 +1,4 @@
-﻿@Master['master.sshtml']
+﻿@Master['ms_iot_Community_Samples/master.sshtml']
 
 @Section['Header']
     <title>Admin</title>
@@ -7,6 +7,14 @@
 
 @Section['Onload']
             var txt = '@Model.Message';
+@EndSection
+
+@Section['HeaderNavs']
+                <ul>
+                    <li>
+						<a href="/ms_iot_Community_Samples/list">List</a>
+					</li>
+				</ul>
 @EndSection
 
 @Section['Content']
@@ -34,12 +42,8 @@
         <tr>
             <td><hr/></td>
         </tr>
-        <tr>
-            <td>* <a href="/ms_iot_Community_Samples/">Main Menu</a></td>
-        </tr>
-        <tr>
-            <td>* <a href="/ms_iot_Community_Samples/list">View (filtered) list of Sample Projects</a></td>
-        </tr>
+
+
         <tr>
             <td>* <a href="/ms_iot_Community_Samples/convert">Convert</a></td>
         </tr>

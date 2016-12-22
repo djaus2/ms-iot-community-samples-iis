@@ -57,7 +57,11 @@
             );
 
             nancyConventions.StaticContentsConventions.Add(
-            StaticContentConventionBuilder.AddDirectory("/", "/_root", new[] { ".png", ".txt" })
+                StaticContentConventionBuilder.AddDirectory("/", "/_root", new[] { ".png", ".txt" })
+            );
+
+            nancyConventions.StaticContentsConventions.Add(
+                StaticContentConventionBuilder.AddDirectory("/","/FootyWhatIf", new[] { ".zip" })
             );
         }
 

@@ -1,7 +1,7 @@
-﻿@Master['master.sshtml']
+﻿@Master['ms_iot_Community_Samples/master.sshtml']
 
 @Section['Header']
-    <title>Error Message</title>
+    <title>@Model.Title</title>
 	<meta charset="utf-8" />
 @EndSection
 

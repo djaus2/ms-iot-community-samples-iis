@@ -26,7 +26,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;ISDEPLOYED</DefineConstants>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -156,6 +156,7 @@
     <Content Include="assets\css\normalize.css" />
     <Content Include="assets\favicon.ico" />
     <Content Include="assets\humans.txt" />
+    <None Include="webconfig.txt" />
     <None Include="assets\template.cshtml" />
     <Content Include="assets\js\main.js" />
     <Content Include="assets\js\vendor\jquery-1.11.2.min.js" />
@@ -163,6 +164,13 @@
     <Content Include="assets\robots.txt" />
     <Content Include="assets\tile-wide.png" />
     <Content Include="assets\tile.png" />
+    <None Include="Content\bluetoothserial2.png" />
+    <Content Include="Content\bluetoothserial3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bluetoothserial5.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\nancy-logo.png" />
     <Content Include="Content\sportronics.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -170,10 +178,13 @@
     <Content Include="Content\ms_iot_Community_Samples\ReadMe.md">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Views\master.sshtml" />
-    <None Include="Views\ms_iot_Community_Samples\About.cshtml">
+    <None Include="Content\TextFile1.txt" />
+    <Content Include="Views\master.sshtml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    </Content>
+    <Content Include="Views\ms_iot_Community_Samples\About.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="assets_initializr\404.html" />
     <Content Include="assets_initializr\apple-touch-icon.png" />
     <Content Include="assets_initializr\browserconfig.xml" />
@@ -189,7 +200,9 @@
     <Content Include="assets_initializr\robots.txt" />
     <Content Include="assets_initializr\tile-wide.png" />
     <Content Include="assets_initializr\tile.png" />
-    <Content Include="Views\ms_iot_Community_Samples\MDTemplate.cshtml" />
+    <Content Include="Views\ms_iot_Community_Samples\MDTemplate.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -204,6 +217,7 @@
     <Compile Include="Models\filter.cs" />
     <Compile Include="Models\layout.cs" />
     <Compile Include="Models\login.cs" />
+    <Compile Include="Models\Truple.cs" />
     <Compile Include="Models\views.cs" />
     <Compile Include="Utilities\MultiFilter.cs" />
     <Compile Include="Utilities\MultiSort.cs" />
@@ -218,32 +232,75 @@
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Views\index1.cshtml" />
-    <Content Include="Views\index2.cshtml" />
-    <None Include="Views\default.cshtml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <Content Include="Views\ms_iot_Community_Samples\default.cshtml" />
-    <None Include="Views\ms_iot_Community_Samples\ErrorPage.sshtml" />
-    <Content Include="Views\ms_iot_Community_Samples\Setfilter.sshtml" />
-    <None Include="Views\ms_iot_Community_Samples\Index.sshtml" />
-    <None Include="Views\ms_iot_Community_Samples\IndexList.sshtml" />
-    <Content Include="Views\ms_iot_Community_Samples\loginx.cshtml" />
-    <None Include="Views\ms_iot_Community_Samples\ms_iot_Community_Samples.sshtml" />
+    <Content Include="Views\index1.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\index2.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\defaultorig.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\ms_iot_Community_Samples\default.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\ms_iot_Community_Samples\ErrorPage.sshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\ms_iot_Community_Samples\Setfilter.sshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\ms_iot_Community_Samples\Index.sshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\ms_iot_Community_Samples\IndexList.sshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\ms_iot_Community_Samples\loginx.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\ms_iot_Community_Samples\ms_iot_Community_Samples.sshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Properties\PublishProfiles\SportronicsIoT - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\SportronicsIoT - Web Deploy.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Content Include="Views\ms_iot_Community_Samples\token.cshtml" />
-    <Content Include="Views\AList.cshtml" />
-    <Content Include="Views\ms_iot_Community_Samples\Test1.cshtml" />
-    <Content Include="Views\Test2.cshtml" />
-    <None Include="Views\ms_iot_Community_Samples\Admin.sshtml" />
-    <Content Include="Views\Template.cshtml" />
-    <None Include="Views\ms_iot_Community_Samples\login.sshtml" />
-    <None Include="Views\onetwo.sshtml" />
+    <Content Include="Views\ms_iot_Community_Samples\token.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\AList.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\ms_iot_Community_Samples\Test1.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Test2.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\ms_iot_Community_Samples\Admin.sshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Template.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\ms_iot_Community_Samples\login.sshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\default.sshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\ms_iot_Community_Samples\master.sshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\defaultxx .sshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\ms_iot_Community_Samples\loginPost.sshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataroot xmlns:od="urn:schemas-microsoft-com:officedata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  xsi:noNamespaceSchemaLocation="games.xsd" generated="2012-08-18T23:19:00">
+<Games>
+<ID>181</ID>
+<Round>20</Round>
+<Team1>Adelaide</Team1>
+<Result1>WIN</Result1>
+<Score1>17.17 (119)</Score1>
+<Team2>Fremantle</Team2>
+<Result2>LOSS</Result2>
+<Score2>14.7 (91)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>182</ID>
+<Round>20</Round>
+<Team1>Carlton</Team1>
+<Result1>WIN</Result1>
+<Score1>14.20 (104)</Score1>
+<Team2>Brisbane</Team2>
+<Result2>LOSS</Result2>
+<Score2>13.6 (84)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>183</ID>
+<Round>20</Round>
+<Team1>Essendon</Team1>
+<Result1>LOSS</Result1>
+<Score1>11.10 (76)</Score1>
+<Team2>North Melbourne</Team2>
+<Result2>WIN</Result2>
+<Score2>15.10 (100)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>184</ID>
+<Round>20</Round>
+<Team1>Gold Coast</Team1>
+<Result1>WIN</Result1>
+<Score1>16.13 (109)</Score1>
+<Team2>Greater Western Sydney</Team2>
+<Result2>LOSS</Result2>
+<Score2>12.7 (79)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>185</ID>
+<Round>20</Round>
+<Team1>Hawthorn</Team1>
+<Result1>WIN</Result1>
+<Score1>24.15 (159)</Score1>
+<Team2>Port Adelaide</Team2>
+<Result2>LOSS</Result2>
+<Score2>13.9 (87)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>186</ID>
+<Round>20</Round>
+<Team1>Richmond</Team1>
+<Result1>WIN</Result1>
+<Score1>22.18 (150)</Score1>
+<Team2>Western Bulldogs</Team2>
+<Result2>LOSS</Result2>
+<Score2>12.8 (80)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>187</ID>
+<Round>20</Round>
+<Team1>St Kilda</Team1>
+<Result1>WIN</Result1>
+<Score1>16.11 (107)</Score1>
+<Team2>Melbourne</Team2>
+<Result2>LOSS</Result2>
+<Score2>12.10 (82)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>188</ID>
+<Round>20</Round>
+<Team1>Sydney</Team1>
+<Result1>LOSS</Result1>
+<Score1>9.16 (70)</Score1>
+<Team2>Collingwood</Team2>
+<Result2>WIN</Result2>
+<Score2>12.6 (78)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>189</ID>
+<Round>20</Round>
+<Team1>West Coast</Team1>
+<Result1>WIN</Result1>
+<Score1>16.6 (102)</Score1>
+<Team2>Geelong</Team2>
+<Result2>LOSS</Result2>
+<Score2>15.7 (97)
+6.12 (48)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+</dataroot>

@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<dataroot xmlns:od="urn:schemas-microsoft-com:officedata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  xsi:noNamespaceSchemaLocation="Games.xsd" generated="2012-07-27T16:05:18">
+  <Games>
+    <ID>215</ID>
+    <Round>23</Round>
+    <Team1>Hawthorn</Team1>
+    <Result1>WIN</Result1>
+    <Score1>14.11 (95)</Score1>
+    <Team2>West Coast</Team2>
+    <Result2>LOSS</Result2>
+    <Score2>10.10 (70)</Score2>
+    <HomeTeam>1</HomeTeam>
+  </Games>
+  <Games>
+    <ID>213</ID>
+    <Round>23</Round>
+    <Team1>Geelong</Team1>
+    <Result1>WIN</Result1>
+    <Score1>17.10 (112)</Score1>
+    <Team2>Sydney</Team2>
+    <Result2>LOSS</Result2>
+    <Score2>11.12 (78)</Score2>
+    <HomeTeam>1</HomeTeam>
+  </Games>
+  <Games>
+    <ID>208</ID>
+    <Round>23</Round>
+    <Team1>Adelaide</Team1>
+    <Result1>WIN</Result1>
+    <Score1>22.21 (153)</Score1>
+    <Team2>Gold Coast</Team2>
+    <Result2>LOSS</Result2>
+    <Score2>9.8 (62)</Score2>
+    <HomeTeam>1</HomeTeam>
+  </Games>
+  <Games>
+    <ID>214</ID>
+    <Round>23</Round>
+    <Team1>Greater Western Sydney</Team1>
+    <Result1>LOSS</Result1>
+    <Score1>11.11 (77)</Score1>
+    <Team2>North Melbourne</Team2>
+    <Result2>WIN</Result2>
+    <Score2>16.9 (105)</Score2>
+    <HomeTeam>1</HomeTeam>
+  </Games>
+  <Games>
+    <ID>212</ID>
+    <Round>23</Round>
+    <Team1>Fremantle</Team1>
+    <Result1>WIN</Result1>
+    <Score1>14.17 (101)</Score1>
+    <Team2>Melbourne</Team2>
+    <Result2>LOSS</Result2>
+    <Score2>5.10 (40)</Score2>
+    <HomeTeam>1</HomeTeam>
+  </Games>
+  <Games>
+    <ID>211</ID>
+    <Round>23</Round>
+    <Team1>Essendon</Team1>
+    <Result1>LOSS</Result1>
+    <Score1>10.12 (72)</Score1>
+    <Team2>Collingwood</Team2>
+    <Result2>WIN</Result2>
+    <Score2>14.20 (104)</Score2>
+    <HomeTeam>1</HomeTeam>
+  </Games>
+  <Games>
+    <ID>210</ID>
+    <Round>23</Round>
+    <Team1>Carlton</Team1>
+    <Result1>LOSS</Result1>
+    <Score1>12.19 (91)</Score1>
+    <Team2>St Kilda</Team2>
+    <Result2>WIN</Result2>
+    <Score2>16.10 (106)</Score2>
+    <HomeTeam>1</HomeTeam>
+  </Games>
+  <Games>
+    <ID>216</ID>
+    <Round>23</Round>
+    <Team1>Richmond</Team1>
+    <Result1>DRAW</Result1>
+    <Score1>16.10 (106)</Score1>
+    <Team2>Port Adelaide</Team2>
+    <Result2>DRAW</Result2>
+    <Score2>16.10 (106)</Score2>
+    <HomeTeam>1</HomeTeam>
+  </Games>
+  <Games>
+    <ID>209</ID>
+    <Round>23</Round>
+    <Team1>Brisbane</Team1>
+    <Result1>WIN</Result1>
+    <Score1>19.14 (128)</Score1>
+    <Team2>Western Bulldogs</Team2>
+    <Result2>LOSS</Result2>
+    <Score2>9.7 (61)</Score2>
+    <HomeTeam>1</HomeTeam>
+  </Games>
+</dataroot>

@@ -1,0 +1,44 @@
+﻿@Master['master.sshtml']
+@Section['Header']
+@EndSection
+
+@Section['ContentNavs']
+                <ul>
+                    <li>
+                        <a href="/ms_iot_Community_Samples" style="width:auto">ms-IoT Community Samples</a>
+                    </li>
+                </ul>
+@EndSection
+
+@Section['Content']
+            <article>
+                <header>
+                    <h1>About</h1>
+                    <p><b style="color:limegreen">Sportronics</b> is a solution provider for Windows IoT and Windows Embedded in product development and refinement.
+                     Located in Australia, Sportronics is uniquely positioned to support customers in the ANZ region. We have an Microsoft Embedded MVP with specific expertise in Windows IoT and Embedded Compact/CE. 
+                      <b style="color:limegreen">Sportronics</b> and can support you at all levels of the software stack (embedded, moble, desktop, and cloud) to do with functionally dedicated devices and systems.
+                      <b style="color:limegreen">Sportronics</b> is a local champion for the Azure IoT Suite.
+                     We also offer Windows Embedded training and consultancy 
+                    and is a member of the Microsoft Windows Embedded Partner program.</p>
+                </header>
+                <section>
+                    <h2>How can Sportronics help you?</h2>
+                    <ul>
+                        <li>Windows 10 IoT-Core systems, peripherals and apps</li>
+                        <li>Windows Embedded Compact/CE systems and apps, training and consulting</li>
+                        <li>Azure IoT Suite</li>
+                        <li>Azure IoT Hub</li>
+                        <li>Custom Windows Phone apps</li>
+                        <li>(Coming) Xamarin</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Location</h2>
+                    <p>Melbourne, Victoria Australia</p>
+                </section>
+                <footer>
+                    <h3>Follow us</h3>
+                    <p>@CEDriverWiz</p>
+                </footer>
+            </article>
+@EndSection

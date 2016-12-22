@@ -6,6 +6,7 @@
 		</sectionGroup>
 	</configSections>
 	<system.web>
+    <customErrors mode="Off" />
 		<compilation debug="true" targetFramework="4.6.1">
 			<buildProviders>
 				<add extension=".cshtml" type="Nancy.ViewEngines.Razor.BuildProviders.NancyCSharpRazorBuildProvider, Nancy.ViewEngines.Razor.BuildProviders" />
@@ -17,18 +18,19 @@
 		</httpHandlers>
 		<pages controlRenderingCompatibilityVersion="4.0" />
 	</system.web>
-	<!-- To encrypt: aspnet_regiis.exe -pe "appSettings" -app "/WebSite" -prov "DataProtectionConfigurationProvider" -->
-		<appSettings>
-		<add key="webPages:Enabled" value="false" />
-		<add key="Admin.UserName" value="web site local user" />
-		<add key="Admin.Pwd" value="web site local pwd" />
-		<add key="GitHub.MDsRepository" value="The GitHub Repo" />
-		<add key="GitHub.UserName" value="my GitHub Name" />
-		<add key="Github.Pwd" value="my Git Hubpwd" />
-		<add key="Github.Url" value="https://github.com/" />
-		<add key="GitHub.LatestCommitSha" value="" />
-		<add key="GitHub.clientId"  value = "The github repo clientid" />
-		<add key="GitHub.clientSecret" value = "Thes github clientsecret6" />
+  <!-- aspnet_regiis.exe -pe "appSettings" -app "/WebSite" -prov "DataProtectionConfigurationProvider"-->
+  <appSettings>
+    <add key="webPages:Enabled" value="false" />
+    <add key="Admin.UserName" value="This uer bypasses GitHub login" />
+    <add key="Admin.Pwd" value="pwd for above" />
+    <add key="GitHub.MDsRepository" value="ms-iot-community-samples" />
+    <add key="GitHub.UserName" value="The user name for the above repo " />
+    <add key="Github.Pwd" value="The pwd for teh repo" />
+    <add key="Github.Url" value="https://github.com/" />
+    <add key="GitHub.LatestCommitSha" value="" />
+    <add key="GitHub.clientId" value="The github repo clientid" />
+    <add key="GitHub.clientSecret" value="Thes github clientsecret6" />
+    <add key ="SummarySubLength" value = "100"/>
   </appSettings>
 	<system.web.webPages.razor>
 		<pages pageBaseType="Nancy.ViewEngines.Razor.NancyRazorViewBase">
@@ -50,6 +52,21 @@
 				<assemblyIdentity name="System.Web.Razor" publicKeyToken="31bf3856ad364e35" culture="neutral" />
 				<bindingRedirect oldVersion="0.0.0.0-3.0.0.0" newVersion="3.0.0.0" />
 			</dependentAssembly>
+			<dependentAssembly>
+				<assemblyIdentity name="System.Web.Helpers" publicKeyToken="31bf3856ad364e35" />
+				<bindingRedirect oldVersion="1.0.0.0-3.0.0.0" newVersion="3.0.0.0" />
+			</dependentAssembly>
+			<dependentAssembly>
+				<assemblyIdentity name="System.Web.WebPages" publicKeyToken="31bf3856ad364e35" />
+				<bindingRedirect oldVersion="1.0.0.0-3.0.0.0" newVersion="3.0.0.0" />
+			</dependentAssembly>
 		</assemblyBinding>
 	</runtime>
+  <location path="assets">
+    <system.webServer>
+      <handlers>
+        <remove name="Nancy" />
+      </handlers>
+    </system.webServer>
+  </location>
 </configuration>

@@ -1,0 +1,2165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataroot xmlns:od="urn:schemas-microsoft-com:officedata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  xsi:noNamespaceSchemaLocation="Games.xsd" generated="2012-07-27T16:05:18">
+<Games>
+<ID>1</ID>
+<Round>1</Round>
+<Team1>Fremantle</Team1>
+<Result1>WIN</Result1>
+<Score1>16.9 (105)</Score1>
+<Team2>Geelong</Team2>
+<Result2>LOSS</Result2>
+<Score2>15.11 (101)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>2</ID>
+<Round>1</Round>
+<Team1>Gold Coast</Team1>
+<Result1>LOSS</Result1>
+<Score1>10.8 (68)</Score1>
+<Team2>Adelaide</Team2>
+<Result2>WIN</Result2>
+<Score2>19.23 (137)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>3</ID>
+<Round>1</Round>
+<Team1>Greater Western Sydney</Team1>
+<Result1>LOSS</Result1>
+<Score1>5.7 (37)</Score1>
+<Team2>Sydney</Team2>
+<Result2>WIN</Result2>
+<Score2>14.16 (100)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>4</ID>
+<Round>1</Round>
+<Team1>Hawthorn</Team1>
+<Result1>WIN</Result1>
+<Score1>20.17 (137)</Score1>
+<Team2>Collingwood</Team2>
+<Result2>LOSS</Result2>
+<Score2>16.19 (115)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>5</ID>
+<Round>1</Round>
+<Team1>Melbourne</Team1>
+<Result1>LOSS</Result1>
+<Score1>11.12 (78)</Score1>
+<Team2>Brisbane</Team2>
+<Result2>WIN</Result2>
+<Score2>17.17 (119)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>6</ID>
+<Round>1</Round>
+<Team1>North Melbourne</Team1>
+<Result1>LOSS</Result1>
+<Score1>15.12 (102)</Score1>
+<Team2>Essendon</Team2>
+<Result2>WIN</Result2>
+<Score2>14.20 (104)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>7</ID>
+<Round>1</Round>
+<Team1>Port Adelaide</Team1>
+<Result1>WIN</Result1>
+<Score1>13.11 (89)</Score1>
+<Team2>St Kilda</Team2>
+<Result2>LOSS</Result2>
+<Score2>13.7 (85)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>8</ID>
+<Round>1</Round>
+<Team1>Richmond</Team1>
+<Result1>LOSS</Result1>
+<Score1>12.9 (81)</Score1>
+<Team2>Carlton</Team2>
+<Result2>WIN</Result2>
+<Score2>18.17 (125)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>9</ID>
+<Round>1</Round>
+<Team1>Western Bulldogs</Team1>
+<Result1>LOSS</Result1>
+<Score1>12.15 (87)</Score1>
+<Team2>West Coast</Team2>
+<Result2>WIN</Result2>
+<Score2>21.10 (136)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>10</ID>
+<Round>2</Round>
+<Team1>Adelaide</Team1>
+<Result1>WIN</Result1>
+<Score1>11.16 (82)</Score1>
+<Team2>Western Bulldogs</Team2>
+<Result2>LOSS</Result2>
+<Score2>9.10 (64)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>11</ID>
+<Round>2</Round>
+<Team1>Brisbane</Team1>
+<Result1>LOSS</Result1>
+<Score1>9.9 (63)</Score1>
+<Team2>Carlton</Team2>
+<Result2>WIN</Result2>
+<Score2>23.16 (154)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>12</ID>
+<Round>2</Round>
+<Team1>Collingwood</Team1>
+<Result1>WIN</Result1>
+<Score1>12.13 (85)</Score1>
+<Team2>Richmond</Team2>
+<Result2>LOSS</Result2>
+<Score2>8.16 (64)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>13</ID>
+<Round>2</Round>
+<Team1>Essendon</Team1>
+<Result1>WIN</Result1>
+<Score1>16.15 (111)</Score1>
+<Team2>Port Adelaide</Team2>
+<Result2>LOSS</Result2>
+<Score2>13.8 (86)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>14</ID>
+<Round>2</Round>
+<Team1>Geelong</Team1>
+<Result1>WIN</Result1>
+<Score1>14.8 (92)</Score1>
+<Team2>Hawthorn</Team2>
+<Result2>LOSS</Result2>
+<Score2>13.12 (90)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>15</ID>
+<Round>2</Round>
+<Team1>North Melbourne</Team1>
+<Result1>WIN</Result1>
+<Score1>28.15 (183)</Score1>
+<Team2>Greater Western Sydney</Team2>
+<Result2>LOSS</Result2>
+<Score2>8.6 (54)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>16</ID>
+<Round>2</Round>
+<Team1>St Kilda</Team1>
+<Result1>WIN</Result1>
+<Score1>21.13 (139)</Score1>
+<Team2>Gold Coast</Team2>
+<Result2>LOSS</Result2>
+<Score2>7.5 (47)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>17</ID>
+<Round>2</Round>
+<Team1>Sydney</Team1>
+<Result1>WIN</Result1>
+<Score1>14.10 (94)</Score1>
+<Team2>Fremantle</Team2>
+<Result2>LOSS</Result2>
+<Score2>12.9 (81)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>18</ID>
+<Round>2</Round>
+<Team1>West Coast</Team1>
+<Result1>WIN</Result1>
+<Score1>25.16 (166)</Score1>
+<Team2>Melbourne</Team2>
+<Result2>LOSS</Result2>
+<Score2>9.4 (58)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>19</ID>
+<Round>3</Round>
+<Team1>Carlton</Team1>
+<Result1>WIN</Result1>
+<Score1>18.14 (122)</Score1>
+<Team2>Collingwood</Team2>
+<Result2>LOSS</Result2>
+<Score2>9.8 (62)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>20</ID>
+<Round>3</Round>
+<Team1>Fremantle</Team1>
+<Result1>WIN</Result1>
+<Score1>8.16 (64)</Score1>
+<Team2>Brisbane</Team2>
+<Result2>LOSS</Result2>
+<Score2>5.5 (35)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>21</ID>
+<Round>3</Round>
+<Team1>Gold Coast</Team1>
+<Result1>LOSS</Result1>
+<Score1>13.10 (88)</Score1>
+<Team2>Essendon</Team2>
+<Result2>WIN</Result2>
+<Score2>15.15 (105)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>22</ID>
+<Round>3</Round>
+<Team1>Greater Western Sydney</Team1>
+<Result1>LOSS</Result1>
+<Score1>10.9 (69)</Score1>
+<Team2>West Coast</Team2>
+<Result2>WIN</Result2>
+<Score2>23.12 (150)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>23</ID>
+<Round>3</Round>
+<Team1>Hawthorn</Team1>
+<Result1>WIN</Result1>
+<Score1>21.14 (140)</Score1>
+<Team2>Adelaide</Team2>
+<Result2>LOSS</Result2>
+<Score2>12.12 (84)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>24</ID>
+<Round>3</Round>
+<Team1>North Melbourne</Team1>
+<Result1>WIN</Result1>
+<Score1>20.11 (131)</Score1>
+<Team2>Geelong</Team2>
+<Result2>LOSS</Result2>
+<Score2>16.18 (114)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>25</ID>
+<Round>3</Round>
+<Team1>Port Adelaide</Team1>
+<Result1>LOSS</Result1>
+<Score1>12.11 (83)</Score1>
+<Team2>Sydney</Team2>
+<Result2>WIN</Result2>
+<Score2>16.9 (105)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>26</ID>
+<Round>3</Round>
+<Team1>Richmond</Team1>
+<Result1>WIN</Result1>
+<Score1>20.13 (133)</Score1>
+<Team2>Melbourne</Team2>
+<Result2>LOSS</Result2>
+<Score2>11.8 (74)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>27</ID>
+<Round>3</Round>
+<Team1>Western Bulldogs</Team1>
+<Result1>LOSS</Result1>
+<Score1>5.10 (40)</Score1>
+<Team2>St Kilda</Team2>
+<Result2>WIN</Result2>
+<Score2>15.13 (103)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>28</ID>
+<Round>4</Round>
+<Team1>Adelaide</Team1>
+<Result1>WIN</Result1>
+<Score1>13.18 (96)</Score1>
+<Team2>Greater Western Sydney</Team2>
+<Result2>LOSS</Result2>
+<Score2>7.8 (50)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>29</ID>
+<Round>4</Round>
+<Team1>Brisbane</Team1>
+<Result1>WIN</Result1>
+<Score1>17.9 (111)</Score1>
+<Team2>Gold Coast</Team2>
+<Result2>LOSS</Result2>
+<Score2>6.10 (46)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>30</ID>
+<Round>4</Round>
+<Team1>Carlton</Team1>
+<Result1>LOSS</Result1>
+<Score1>11.13 (79)</Score1>
+<Team2>Essendon</Team2>
+<Result2>WIN</Result2>
+<Score2>15.19 (109)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>31</ID>
+<Round>4</Round>
+<Team1>Collingwood</Team1>
+<Result1>WIN</Result1>
+<Score1>14.13 (97)</Score1>
+<Team2>Port Adelaide</Team2>
+<Result2>LOSS</Result2>
+<Score2>10.13 (73)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>32</ID>
+<Round>4</Round>
+<Team1>Geelong</Team1>
+<Result1>WIN</Result1>
+<Score1>11.9 (75)</Score1>
+<Team2>Richmond</Team2>
+<Result2>LOSS</Result2>
+<Score2>9.11 (65)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>33</ID>
+<Round>4</Round>
+<Team1>Melbourne</Team1>
+<Result1>LOSS</Result1>
+<Score1>9.13 (67)</Score1>
+<Team2>Western Bulldogs</Team2>
+<Result2>WIN</Result2>
+<Score2>13.10 (88)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>34</ID>
+<Round>4</Round>
+<Team1>St Kilda</Team1>
+<Result1>LOSS</Result1>
+<Score1>11.13 (79)</Score1>
+<Team2>Fremantle</Team2>
+<Result2>WIN</Result2>
+<Score2>14.8 (92)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>35</ID>
+<Round>4</Round>
+<Team1>Sydney</Team1>
+<Result1>WIN</Result1>
+<Score1>17.11 (113)</Score1>
+<Team2>North Melbourne</Team2>
+<Result2>LOSS</Result2>
+<Score2>10.17 (77)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>36</ID>
+<Round>4</Round>
+<Team1>West Coast</Team1>
+<Result1>WIN</Result1>
+<Score1>5.21 (51)</Score1>
+<Team2>Hawthorn</Team2>
+<Result2>LOSS</Result2>
+<Score2>5.16 (46)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>37</ID>
+<Round>5</Round>
+<Team1>Adelaide</Team1>
+<Result1>WIN</Result1>
+<Score1>16.14 (110)</Score1>
+<Team2>Port Adelaide</Team2>
+<Result2>LOSS</Result2>
+<Score2>14.7 (91)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>38</ID>
+<Round>5</Round>
+<Team1>Brisbane</Team1>
+<Result1>LOSS</Result1>
+<Score1>4.17 (41)</Score1>
+<Team2>Geelong</Team2>
+<Result2>WIN</Result2>
+<Score2>12.7 (79)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>39</ID>
+<Round>5</Round>
+<Team1>Collingwood</Team1>
+<Result1>WIN</Result1>
+<Score1>11.14 (80)</Score1>
+<Team2>Essendon</Team2>
+<Result2>LOSS</Result2>
+<Score2>11.13 (79)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>40</ID>
+<Round>5</Round>
+<Team1>Fremantle</Team1>
+<Result1>LOSS</Result1>
+<Score1>7.15 (57)</Score1>
+<Team2>Carlton</Team2>
+<Result2>WIN</Result2>
+<Score2>10.5 (65)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>41</ID>
+<Round>5</Round>
+<Team1>Greater Western Sydney</Team1>
+<Result1>LOSS</Result1>
+<Score1>9.8 (62)</Score1>
+<Team2>Western Bulldogs</Team2>
+<Result2>WIN</Result2>
+<Score2>15.14 (104)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>42</ID>
+<Round>5</Round>
+<Team1>Hawthorn</Team1>
+<Result1>LOSS</Result1>
+<Score1>10.9 (69)</Score1>
+<Team2>Sydney</Team2>
+<Result2>WIN</Result2>
+<Score2>16.10 (106)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>43</ID>
+<Round>5</Round>
+<Team1>Melbourne</Team1>
+<Result1>LOSS</Result1>
+<Score1>10.6 (66)</Score1>
+<Team2>St Kilda</Team2>
+<Result2>WIN</Result2>
+<Score2>12.12 (84)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>44</ID>
+<Round>5</Round>
+<Team1>North Melbourne</Team1>
+<Result1>WIN</Result1>
+<Score1>17.25 (127)</Score1>
+<Team2>Gold Coast</Team2>
+<Result2>LOSS</Result2>
+<Score2>13.15 (93)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>45</ID>
+<Round>5</Round>
+<Team1>Richmond</Team1>
+<Result1>LOSS</Result1>
+<Score1>14.13 (97)</Score1>
+<Team2>West Coast</Team2>
+<Result2>WIN</Result2>
+<Score2>16.11 (107)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>46</ID>
+<Round>6</Round>
+<Team1>Carlton</Team1>
+<Result1>WIN</Result1>
+<Score1>15.20 (110)</Score1>
+<Team2>Greater Western Sydney</Team2>
+<Result2>LOSS</Result2>
+<Score2>6.7 (43)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>47</ID>
+<Round>6</Round>
+<Team1>Essendon</Team1>
+<Result1>WIN</Result1>
+<Score1>19.15 (129)</Score1>
+<Team2>Brisbane</Team2>
+<Result2>LOSS</Result2>
+<Score2>9.8 (62)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>48</ID>
+<Round>6</Round>
+<Team1>Geelong</Team1>
+<Result1>WIN</Result1>
+<Score1>17.17 (119)</Score1>
+<Team2>Melbourne</Team2>
+<Result2>LOSS</Result2>
+<Score2>11.10 (76)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>49</ID>
+<Round>6</Round>
+<Team1>Gold Coast</Team1>
+<Result1>LOSS</Result1>
+<Score1>14.3 (87)</Score1>
+<Team2>Fremantle</Team2>
+<Result2>WIN</Result2>
+<Score2>14.10 (94)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>50</ID>
+<Round>6</Round>
+<Team1>Port Adelaide</Team1>
+<Result1>LOSS</Result1>
+<Score1>8.6 (54)</Score1>
+<Team2>Richmond</Team2>
+<Result2>WIN</Result2>
+<Score2>13.13 (91)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>51</ID>
+<Round>6</Round>
+<Team1>St Kilda</Team1>
+<Result1>LOSS</Result1>
+<Score1>13.10 (88)</Score1>
+<Team2>Hawthorn</Team2>
+<Result2>WIN</Result2>
+<Score2>18.15 (123)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>52</ID>
+<Round>6</Round>
+<Team1>Sydney</Team1>
+<Result1>LOSS</Result1>
+<Score1>14.10 (94)</Score1>
+<Team2>Adelaide</Team2>
+<Result2>WIN</Result2>
+<Score2>15.9 (99)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>53</ID>
+<Round>6</Round>
+<Team1>West Coast</Team1>
+<Result1>WIN</Result1>
+<Score1>17.18 (120)</Score1>
+<Team2>North Melbourne</Team2>
+<Result2>LOSS</Result2>
+<Score2>15.5 (95)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>54</ID>
+<Round>6</Round>
+<Team1>Western Bulldogs</Team1>
+<Result1>LOSS</Result1>
+<Score1>11.11 (77)</Score1>
+<Team2>Collingwood</Team2>
+<Result2>WIN</Result2>
+<Score2>15.8 (98)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>55</ID>
+<Round>7</Round>
+<Team1>Adelaide</Team1>
+<Result1>WIN</Result1>
+<Score1>19.8 (122)</Score1>
+<Team2>Geelong</Team2>
+<Result2>LOSS</Result2>
+<Score2>10.12 (72)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>56</ID>
+<Round>7</Round>
+<Team1>Brisbane</Team1>
+<Result1>LOSS</Result1>
+<Score1>8.10 (58)</Score1>
+<Team2>Collingwood</Team2>
+<Result2>WIN</Result2>
+<Score2>17.14 (116)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>57</ID>
+<Round>7</Round>
+<Team1>Essendon</Team1>
+<Result1>WIN</Result1>
+<Score1>16.17 (113)</Score1>
+<Team2>West Coast</Team2>
+<Result2>LOSS</Result2>
+<Score2>7.10 (52)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>58</ID>
+<Round>7</Round>
+<Team1>Fremantle</Team1>
+<Result1>WIN</Result1>
+<Score1>12.15 (87)</Score1>
+<Team2>Port Adelaide</Team2>
+<Result2>LOSS</Result2>
+<Score2>7.5 (47)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>59</ID>
+<Round>7</Round>
+<Team1>Greater Western Sydney</Team1>
+<Result1>WIN</Result1>
+<Score1>13.16 (94)</Score1>
+<Team2>Gold Coast</Team2>
+<Result2>LOSS</Result2>
+<Score2>9.13 (67)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>60</ID>
+<Round>7</Round>
+<Team1>Melbourne</Team1>
+<Result1>LOSS</Result1>
+<Score1>6.13 (49)</Score1>
+<Team2>Hawthorn</Team2>
+<Result2>WIN</Result2>
+<Score2>15.25 (115)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>61</ID>
+<Round>7</Round>
+<Team1>North Melbourne</Team1>
+<Result1>LOSS</Result1>
+<Score1>12.11 (83)</Score1>
+<Team2>Western Bulldogs</Team2>
+<Result2>WIN</Result2>
+<Score2>15.11 (101)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>62</ID>
+<Round>7</Round>
+<Team1>Richmond</Team1>
+<Result1>WIN</Result1>
+<Score1>13.13 (91)</Score1>
+<Team2>Sydney</Team2>
+<Result2>LOSS</Result2>
+<Score2>8.14 (62)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>63</ID>
+<Round>7</Round>
+<Team1>St Kilda</Team1>
+<Result1>WIN</Result1>
+<Score1>19.8 (122)</Score1>
+<Team2>Carlton</Team2>
+<Result2>LOSS</Result2>
+<Score2>14.14 (98)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>64</ID>
+<Round>8</Round>
+<Team1>Brisbane</Team1>
+<Result1>WIN</Result1>
+<Score1>19.18 (132)</Score1>
+<Team2>Greater Western Sydney</Team2>
+<Result2>LOSS</Result2>
+<Score2>5.10 (40)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>65</ID>
+<Round>8</Round>
+<Team1>Carlton</Team1>
+<Result1>LOSS</Result1>
+<Score1>8.7 (55)</Score1>
+<Team2>Adelaide</Team2>
+<Result2>WIN</Result2>
+<Score2>19.10 (124)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>66</ID>
+<Round>8</Round>
+<Team1>Collingwood</Team1>
+<Result1>WIN</Result1>
+<Score1>14.12 (96)</Score1>
+<Team2>Geelong</Team2>
+<Result2>LOSS</Result2>
+<Score2>11.18 (84)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>67</ID>
+<Round>8</Round>
+<Team1>Essendon</Team1>
+<Result1>WIN</Result1>
+<Score1>19.14 (128)</Score1>
+<Team2>Richmond</Team2>
+<Result2>LOSS</Result2>
+<Score2>15.19 (109)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>68</ID>
+<Round>8</Round>
+<Team1>Hawthorn</Team1>
+<Result1>WIN</Result1>
+<Score1>17.17 (119)</Score1>
+<Team2>Fremantle</Team2>
+<Result2>LOSS</Result2>
+<Score2>9.9 (63)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>69</ID>
+<Round>8</Round>
+<Team1>Port Adelaide</Team1>
+<Result1>WIN</Result1>
+<Score1>14.11 (95)</Score1>
+<Team2>North Melbourne</Team2>
+<Result2>LOSS</Result2>
+<Score2>14.9 (93)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>70</ID>
+<Round>8</Round>
+<Team1>Sydney</Team1>
+<Result1>WIN</Result1>
+<Score1>21.12 (138)</Score1>
+<Team2>Melbourne</Team2>
+<Result2>LOSS</Result2>
+<Score2>5.7 (37)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>71</ID>
+<Round>8</Round>
+<Team1>West Coast</Team1>
+<Result1>WIN</Result1>
+<Score1>18.13 (121)</Score1>
+<Team2>St Kilda</Team2>
+<Result2>LOSS</Result2>
+<Score2>13.13 (91)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>72</ID>
+<Round>8</Round>
+<Team1>Western Bulldogs</Team1>
+<Result1>WIN</Result1>
+<Score1>9.18 (72)</Score1>
+<Team2>Gold Coast</Team2>
+<Result2>LOSS</Result2>
+<Score2>4.10 (34)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>73</ID>
+<Round>9</Round>
+<Team1>Adelaide</Team1>
+<Result1>LOSS</Result1>
+<Score1>6.11 (49)</Score1>
+<Team2>Collingwood</Team2>
+<Result2>WIN</Result2>
+<Score2>10.15 (75)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>74</ID>
+<Round>9</Round>
+<Team1>Carlton</Team1>
+<Result1>WIN</Result1>
+<Score1>15.17 (107)</Score1>
+<Team2>Melbourne</Team2>
+<Result2>LOSS</Result2>
+<Score2>6.13 (49)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>75</ID>
+<Round>9</Round>
+<Team1>Gold Coast</Team1>
+<Result1>LOSS</Result1>
+<Score1>10.10 (70)</Score1>
+<Team2>Port Adelaide</Team2>
+<Result2>WIN</Result2>
+<Score2>17.16 (118)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>76</ID>
+<Round>9</Round>
+<Team1>Greater Western Sydney</Team1>
+<Result1>LOSS</Result1>
+<Score1>7.11 (53)</Score1>
+<Team2>Essendon</Team2>
+<Result2>WIN</Result2>
+<Score2>18.11 (119)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>77</ID>
+<Round>9</Round>
+<Team1>North Melbourne</Team1>
+<Result1>WIN</Result1>
+<Score1>17.10 (112)</Score1>
+<Team2>Brisbane</Team2>
+<Result2>LOSS</Result2>
+<Score2>15.6 (96)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>78</ID>
+<Round>9</Round>
+<Team1>Richmond</Team1>
+<Result1>WIN</Result1>
+<Score1>21.11 (137)</Score1>
+<Team2>Hawthorn</Team2>
+<Result2>LOSS</Result2>
+<Score2>10.15 (75)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>79</ID>
+<Round>9</Round>
+<Team1>St Kilda</Team1>
+<Result1>WIN</Result1>
+<Score1>16.15 (111)</Score1>
+<Team2>Sydney</Team2>
+<Result2>LOSS</Result2>
+<Score2>12.11 (83)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>80</ID>
+<Round>9</Round>
+<Team1>West Coast</Team1>
+<Result1>WIN</Result1>
+<Score1>11.18 (84)</Score1>
+<Team2>Fremantle</Team2>
+<Result2>LOSS</Result2>
+<Score2>5.6 (36)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>81</ID>
+<Round>9</Round>
+<Team1>Western Bulldogs</Team1>
+<Result1>LOSS</Result1>
+<Score1>11.9 (75)</Score1>
+<Team2>Geelong</Team2>
+<Result2>WIN</Result2>
+<Score2>14.11 (95)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>82</ID>
+<Round>10</Round>
+<Team1>Brisbane</Team1>
+<Result1>WIN</Result1>
+<Score1>16.6 (102)</Score1>
+<Team2>West Coast</Team2>
+<Result2>LOSS</Result2>
+<Score2>15.10 (100)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>83</ID>
+<Round>10</Round>
+<Team1>Collingwood</Team1>
+<Result1>WIN</Result1>
+<Score1>23.11 (149)</Score1>
+<Team2>Gold Coast</Team2>
+<Result2>LOSS</Result2>
+<Score2>7.10 (52)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>84</ID>
+<Round>10</Round>
+<Team1>Essendon</Team1>
+<Result1>LOSS</Result1>
+<Score1>6.16 (52)</Score1>
+<Team2>Melbourne</Team2>
+<Result2>WIN</Result2>
+<Score2>8.10 (58)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>85</ID>
+<Round>10</Round>
+<Team1>Fremantle</Team1>
+<Result1>LOSS</Result1>
+<Score1>12.10 (82)</Score1>
+<Team2>Adelaide</Team2>
+<Result2>WIN</Result2>
+<Score2>17.9 (111)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>86</ID>
+<Round>10</Round>
+<Team1>Geelong</Team1>
+<Result1>WIN</Result1>
+<Score1>19.12 (126)</Score1>
+<Team2>Greater Western Sydney</Team2>
+<Result2>LOSS</Result2>
+<Score2>9.7 (61)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>87</ID>
+<Round>10</Round>
+<Team1>Hawthorn</Team1>
+<Result1>WIN</Result1>
+<Score1>27.12 (174)</Score1>
+<Team2>North Melbourne</Team2>
+<Result2>LOSS</Result2>
+<Score2>9.5 (59)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>88</ID>
+<Round>10</Round>
+<Team1>Port Adelaide</Team1>
+<Result1>WIN</Result1>
+<Score1>14.15 (99)</Score1>
+<Team2>Carlton</Team2>
+<Result2>LOSS</Result2>
+<Score2>6.9 (45)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>89</ID>
+<Round>10</Round>
+<Team1>St Kilda</Team1>
+<Result1>LOSS</Result1>
+<Score1>16.17 (113)</Score1>
+<Team2>Richmond</Team2>
+<Result2>WIN</Result2>
+<Score2>18.13 (121)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>90</ID>
+<Round>10</Round>
+<Team1>Sydney</Team1>
+<Result1>WIN</Result1>
+<Score1>20.12 (132)</Score1>
+<Team2>Western Bulldogs</Team2>
+<Result2>LOSS</Result2>
+<Score2>5.10 (40)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>91</ID>
+<Round>11</Round>
+<Team1>Adelaide</Team1>
+<Result1>BYE</Result1>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>92</ID>
+<Round>11</Round>
+<Team1>Brisbane</Team1>
+<Result1>BYE</Result1>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>93</ID>
+<Round>11</Round>
+<Team1>Carlton</Team1>
+<Result1>LOSS</Result1>
+<Score1>11.19 (85)</Score1>
+<Team2>Geelong</Team2>
+<Result2>WIN</Result2>
+<Score2>14.13 (97)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>94</ID>
+<Round>11</Round>
+<Team1>Essendon</Team1>
+<Result1>LOSS</Result1>
+<Score1>11.16 (82)</Score1>
+<Team2>Sydney</Team2>
+<Result2>WIN</Result2>
+<Score2>13.8 (86)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>95</ID>
+<Round>11</Round>
+<Team1>Gold Coast</Team1>
+<Result1>LOSS</Result1>
+<Score1>7.7 (49)</Score1>
+<Team2>St Kilda</Team2>
+<Result2>WIN</Result2>
+<Score2>21.18 (144)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>96</ID>
+<Round>11</Round>
+<Team1>Greater Western Sydney</Team1>
+<Result1>BYE</Result1>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>97</ID>
+<Round>11</Round>
+<Team1>Melbourne</Team1>
+<Result1>LOSS</Result1>
+<Score1>13.9 (87)</Score1>
+<Team2>Collingwood</Team2>
+<Result2>WIN</Result2>
+<Score2>19.15 (129)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>98</ID>
+<Round>11</Round>
+<Team1>North Melbourne</Team1>
+<Result1>BYE</Result1>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>99</ID>
+<Round>11</Round>
+<Team1>Port Adelaide</Team1>
+<Result1>LOSS</Result1>
+<Score1>9.8 (62)</Score1>
+<Team2>Hawthorn</Team2>
+<Result2>WIN</Result2>
+<Score2>16.12 (108)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>100</ID>
+<Round>11</Round>
+<Team1>Richmond</Team1>
+<Result1>LOSS</Result1>
+<Score1>9.12 (66)</Score1>
+<Team2>Fremantle</Team2>
+<Result2>WIN</Result2>
+<Score2>12.6 (78)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>101</ID>
+<Round>11</Round>
+<Team1>West Coast</Team1>
+<Result1>BYE</Result1>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>102</ID>
+<Round>11</Round>
+<Team1>Western Bulldogs</Team1>
+<Result1>BYE</Result1>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>103</ID>
+<Round>12</Round>
+<Team1>Collingwood</Team1>
+<Result1>BYE</Result1>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>104</ID>
+<Round>12</Round>
+<Team1>Adelaide</Team1>
+<Result1>WIN</Result1>
+<Score1>17.13 (115)</Score1>
+<Team2>St Kilda</Team2>
+<Result2>LOSS</Result2>
+<Score2>16.15 (111)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>105</ID>
+<Round>12</Round>
+<Team1>Essendon</Team1>
+<Result1>BYE</Result1>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>106</ID>
+<Round>12</Round>
+<Team1>Fremantle</Team1>
+<Result1>BYE</Result1>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>107</ID>
+<Round>12</Round>
+<Team1>Geelong</Team1>
+<Result1>BYE</Result1>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>108</ID>
+<Round>12</Round>
+<Team1>Gold Coast</Team1>
+<Result1>LOSS</Result1>
+<Score1>12.8 (80)</Score1>
+<Team2>North Melbourne</Team2>
+<Result2>WIN</Result2>
+<Score2>11.21 (87)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>109</ID>
+<Round>12</Round>
+<Team1>Greater Western Sydney</Team1>
+<Result1>LOSS</Result1>
+<Score1>12.2 (74)</Score1>
+<Team2>Richmond</Team2>
+<Result2>WIN</Result2>
+<Score2>11.20 (86)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>110</ID>
+<Round>12</Round>
+<Team1>Hawthorn</Team1>
+<Result1>WIN</Result1>
+<Score1>19.21 (135)</Score1>
+<Team2>Brisbane</Team2>
+<Result2>LOSS</Result2>
+<Score2>11.4 (70)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>111</ID>
+<Round>12</Round>
+<Team1>Melbourne</Team1>
+<Result1>BYE</Result1>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>112</ID>
+<Round>12</Round>
+<Team1>Sydney</Team1>
+<Result1>BYE</Result1>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>113</ID>
+<Round>12</Round>
+<Team1>West Coast</Team1>
+<Result1>WIN</Result1>
+<Score1>10.19 (79)</Score1>
+<Team2>Carlton</Team2>
+<Result2>LOSS</Result2>
+<Score2>10.9 (69)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>114</ID>
+<Round>12</Round>
+<Team1>Western Bulldogs</Team1>
+<Result1>WIN</Result1>
+<Score1>13.17 (95)</Score1>
+<Team2>Port Adelaide</Team2>
+<Result2>LOSS</Result2>
+<Score2>8.9 (57)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>115</ID>
+<Round>13</Round>
+<Team1>Carlton</Team1>
+<Result1>BYE</Result1>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>116</ID>
+<Round>13</Round>
+<Team1>Collingwood</Team1>
+<Result1>WIN</Result1>
+<Score1>12.13 (85)</Score1>
+<Team2>West Coast</Team2>
+<Result2>LOSS</Result2>
+<Score2>12.10 (82)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>117</ID>
+<Round>13</Round>
+<Team1>Fremantle</Team1>
+<Result1>LOSS</Result1>
+<Score1>14.5 (89)</Score1>
+<Team2>Essendon</Team2>
+<Result2>WIN</Result2>
+<Score2>17.11 (113)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>118</ID>
+<Round>13</Round>
+<Team1>Gold Coast</Team1>
+<Result1>BYE</Result1>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>119</ID>
+<Round>13</Round>
+<Team1>Hawthorn</Team1>
+<Result1>BYE</Result1>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>120</ID>
+<Round>13</Round>
+<Team1>Melbourne</Team1>
+<Result1>WIN</Result1>
+<Score1>20.15 (135)</Score1>
+<Team2>Greater Western Sydney</Team2>
+<Result2>LOSS</Result2>
+<Score2>9.3 (57)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>121</ID>
+<Round>13</Round>
+<Team1>North Melbourne</Team1>
+<Result1>WIN</Result1>
+<Score1>17.19 (121)</Score1>
+<Team2>Adelaide</Team2>
+<Result2>LOSS</Result2>
+<Score2>13.11 (89)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>122</ID>
+<Round>13</Round>
+<Team1>Port Adelaide</Team1>
+<Result1>BYE</Result1>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>123</ID>
+<Round>13</Round>
+<Team1>Richmond</Team1>
+<Result1>BYE</Result1>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>124</ID>
+<Round>13</Round>
+<Team1>St Kilda</Team1>
+<Result1>BYE</Result1>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>125</ID>
+<Round>13</Round>
+<Team1>Sydney</Team1>
+<Result1>WIN</Result1>
+<Score1>12.8 (80)</Score1>
+<Team2>Geelong</Team2>
+<Result2>LOSS</Result2>
+<Score2>11.8 (74)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>126</ID>
+<Round>13</Round>
+<Team1>Western Bulldogs</Team1>
+<Result1>LOSS</Result1>
+<Score1>7.14 (56)</Score1>
+<Team2>Brisbane</Team2>
+<Result2>WIN</Result2>
+<Score2>18.6 (114)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>127</ID>
+<Round>14</Round>
+<Team1>Adelaide</Team1>
+<Result1>WIN</Result1>
+<Score1>17.4 (106)</Score1>
+<Team2>Richmond</Team2>
+<Result2>LOSS</Result2>
+<Score2>13.9 (87)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>128</ID>
+<Round>14</Round>
+<Team1>Brisbane</Team1>
+<Result1>WIN</Result1>
+<Score1>18.14 (122)</Score1>
+<Team2>Melbourne</Team2>
+<Result2>LOSS</Result2>
+<Score2>8.13 (61)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>129</ID>
+<Round>14</Round>
+<Team1>Carlton</Team1>
+<Result1>LOSS</Result1>
+<Score1>10.10 (70)</Score1>
+<Team2>Hawthorn</Team2>
+<Result2>WIN</Result2>
+<Score2>18.12 (120)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>130</ID>
+<Round>14</Round>
+<Team1>Collingwood</Team1>
+<Result1>WIN</Result1>
+<Score1>15.17 (107)</Score1>
+<Team2>Fremantle</Team2>
+<Result2>LOSS</Result2>
+<Score2>12.6 (78)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>131</ID>
+<Round>14</Round>
+<Team1>Essendon</Team1>
+<Result1>WIN</Result1>
+<Score1>21.14 (140)</Score1>
+<Team2>Western Bulldogs</Team2>
+<Result2>LOSS</Result2>
+<Score2>8.8 (56)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>132</ID>
+<Round>14</Round>
+<Team1>Geelong</Team1>
+<Result1>WIN</Result1>
+<Score1>14.15 (99)</Score1>
+<Team2>Port Adelaide</Team2>
+<Result2>LOSS</Result2>
+<Score2>8.13 (61)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>133</ID>
+<Round>14</Round>
+<Team1>St Kilda</Team1>
+<Result1>LOSS</Result1>
+<Score1>15.13 (103)</Score1>
+<Team2>North Melbourne</Team2>
+<Result2>WIN</Result2>
+<Score2>21.10 (136)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>134</ID>
+<Round>14</Round>
+<Team1>Sydney</Team1>
+<Result1>WIN</Result1>
+<Score1>19.18 (132)</Score1>
+<Team2>Greater Western Sydney</Team2>
+<Result2>LOSS</Result2>
+<Score2>5.8 (38)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>135</ID>
+<Round>14</Round>
+<Team1>West Coast</Team1>
+<Result1>WIN</Result1>
+<Score1>25.16 (166)</Score1>
+<Team2>Gold Coast</Team2>
+<Result2>LOSS</Result2>
+<Score2>5.10 (40)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>136</ID>
+<Round>15</Round>
+<Team1>Collingwood</Team1>
+<Result1>LOSS</Result1>
+<Score1>8.14 (62)</Score1>
+<Team2>Carlton</Team2>
+<Result2>WIN</Result2>
+<Score2>12.13 (85)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>137</ID>
+<Round>15</Round>
+<Team1>Fremantle</Team1>
+<Result1>WIN</Result1>
+<Score1>14.11 (95)</Score1>
+<Team2>Western Bulldogs</Team2>
+<Result2>LOSS</Result2>
+<Score2>8.9 (57)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>138</ID>
+<Round>15</Round>
+<Team1>Gold Coast</Team1>
+<Result1>LOSS</Result1>
+<Score1>13.18 (96)</Score1>
+<Team2>Geelong</Team2>
+<Result2>WIN</Result2>
+<Score2>15.20 (110)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>139</ID>
+<Round>15</Round>
+<Team1>Hawthorn</Team1>
+<Result1>WIN</Result1>
+<Score1>28.25 (193)</Score1>
+<Team2>Greater Western Sydney</Team2>
+<Result2>LOSS</Result2>
+<Score2>4.7 (31)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>140</ID>
+<Round>15</Round>
+<Team1>Melbourne</Team1>
+<Result1>LOSS</Result1>
+<Score1>11.12 (78)</Score1>
+<Team2>Richmond</Team2>
+<Result2>WIN</Result2>
+<Score2>13.23 (101)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>141</ID>
+<Round>15</Round>
+<Team1>North Melbourne</Team1>
+<Result1>LOSS</Result1>
+<Score1>13.6 (84)</Score1>
+<Team2>West Coast</Team2>
+<Result2>WIN</Result2>
+<Score2>12.14 (86)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>142</ID>
+<Round>15</Round>
+<Team1>Port Adelaide</Team1>
+<Result1>LOSS</Result1>
+<Score1>8.10 (58)</Score1>
+<Team2>Adelaide</Team2>
+<Result2>WIN</Result2>
+<Score2>17.14 (116)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>143</ID>
+<Round>15</Round>
+<Team1>St Kilda</Team1>
+<Result1>WIN</Result1>
+<Score1>21.7 (133)</Score1>
+<Team2>Essendon</Team2>
+<Result2>LOSS</Result2>
+<Score2>8.14 (62)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>144</ID>
+<Round>15</Round>
+<Team1>Sydney</Team1>
+<Result1>WIN</Result1>
+<Score1>16.14 (110)</Score1>
+<Team2>Brisbane</Team2>
+<Result2>LOSS</Result2>
+<Score2>9.9 (63)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>145</ID>
+<Round>16</Round>
+<Team1>Brisbane</Team1>
+<Result1>LOSS</Result1>
+<Score1>14.8 (92)</Score1>
+<Team2>St Kilda</Team2>
+<Result2>WIN</Result2>
+<Score2>16.9 (105)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>146</ID>
+<Round>16</Round>
+<Team1>Geelong</Team1>
+<Result1>LOSS</Result1>
+<Score1>10.19 (79)</Score1>
+<Team2>Collingwood</Team2>
+<Result2>WIN</Result2>
+<Score2>17.8 (110)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>147</ID>
+<Round>16</Round>
+<Team1>Greater Western Sydney</Team1>
+<Result1>LOSS</Result1>
+<Score1>8.11 (59)</Score1>
+<Team2>Adelaide</Team2>
+<Result2>WIN</Result2>
+<Score2>27.16 (178)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>148</ID>
+<Round>16</Round>
+<Team1>Melbourne</Team1>
+<Result1>LOSS</Result1>
+<Score1>12.11 (83)</Score1>
+<Team2>Fremantle</Team2>
+<Result2>WIN</Result2>
+<Score2>18.9 (117)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>149</ID>
+<Round>16</Round>
+<Team1>North Melbourne</Team1>
+<Result1>WIN</Result1>
+<Score1>24.5 (149)</Score1>
+<Team2>Carlton</Team2>
+<Result2>LOSS</Result2>
+<Score2>14.12 (96)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>150</ID>
+<Round>16</Round>
+<Team1>Port Adelaide</Team1>
+<Result1>LOSS</Result1>
+<Score1>11.11 (77)</Score1>
+<Team2>Essendon</Team2>
+<Result2>WIN</Result2>
+<Score2>19.13 (127)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>151</ID>
+<Round>16</Round>
+<Team1>Richmond</Team1>
+<Result1>LOSS</Result1>
+<Score1>13.10 (88)</Score1>
+<Team2>Gold Coast</Team2>
+<Result2>WIN</Result2>
+<Score2>13.12 (90)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>152</ID>
+<Round>16</Round>
+<Team1>West Coast</Team1>
+<Result1>LOSS</Result1>
+<Score1>10.9 (69)</Score1>
+<Team2>Sydney</Team2>
+<Result2>WIN</Result2>
+<Score2>18.13 (121)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>153</ID>
+<Round>16</Round>
+<Team1>Western Bulldogs</Team1>
+<Result1>LOSS</Result1>
+<Score1>6.8 (44)</Score1>
+<Team2>Hawthorn</Team2>
+<Result2>WIN</Result2>
+<Score2>17.14 (116)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>154</ID>
+<Round>17</Round>
+<Team1>Adelaide</Team1>
+<Result1>WIN</Result1>
+<Score1>19.10 (124)</Score1>
+<Team2>West Coast</Team2>
+<Result2>LOSS</Result2>
+<Score2>11.9 (75)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>155</ID>
+<Round>17</Round>
+<Team1>Collingwood</Team1>
+<Result1>LOSS</Result1>
+<Score1>13.13 (91)</Score1>
+<Team2>Hawthorn</Team2>
+<Result2>WIN</Result2>
+<Score2>21.12 (138)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>156</ID>
+<Round>17</Round>
+<Team1>Fremantle</Team1>
+<Result1>WIN</Result1>
+<Score1>18.24 (132)</Score1>
+<Team2>Greater Western Sydney</Team2>
+<Result2>LOSS</Result2>
+<Score2>5.7 (37)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>157</ID>
+<Round>17</Round>
+<Team1>Geelong</Team1>
+<Result1>WIN</Result1>
+<Score1>20.14 (134)</Score1>
+<Team2>Essendon</Team2>
+<Result2>LOSS</Result2>
+<Score2>10.7 (67)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>158</ID>
+<Round>17</Round>
+<Team1>Gold Coast</Team1>
+<Result1>LOSS</Result1>
+<Score1>5.18 (48)</Score1>
+<Team2>Brisbane</Team2>
+<Result2>WIN</Result2>
+<Score2>8.11 (59)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>159</ID>
+<Round>17</Round>
+<Team1>Melbourne</Team1>
+<Result1>LOSS</Result1>
+<Score1>8.8 (56)</Score1>
+<Team2>Port Adelaide</Team2>
+<Result2>WIN</Result2>
+<Score2>12.12 (84)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>160</ID>
+<Round>17</Round>
+<Team1>Richmond</Team1>
+<Result1>LOSS</Result1>
+<Score1>14.15 (99)</Score1>
+<Team2>North Melbourne</Team2>
+<Result2>WIN</Result2>
+<Score2>15.13 (103)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>161</ID>
+<Round>17</Round>
+<Team1>Sydney</Team1>
+<Result1>WIN</Result1>
+<Score1>15.15 (105)</Score1>
+<Team2>St Kilda</Team2>
+<Result2>LOSS</Result2>
+<Score2>10.16 (76)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>162</ID>
+<Round>17</Round>
+<Team1>Western Bulldogs</Team1>
+<Result1>LOSS</Result1>
+<Score1>12.12 (84)</Score1>
+<Team2>Carlton</Team2>
+<Result2>WIN</Result2>
+<Score2>16.6 (102)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>163</ID>
+<Round>18</Round>
+<Team1>Carlton</Team1>
+<Result1>WIN</Result1>
+<Score1>14.11 (95)</Score1>
+<Team2>Richmond</Team2>
+  <Result2>LOSS</Result2>
+  <Score2>13.13 (91)</Score2>
+<HomeTeam>1</HomeTeam>
+
+</Games>
+<Games>
+<ID>164</ID>
+<Round>18</Round>
+<Team1>Essendon</Team1>
+  <Result1>LOSS</Result1>
+  <Score1>12.14 (86)</Score1>
+<Team2>Hawthorn</Team2>
+  <Result2>WIN</Result2>
+  <Score2>27.18 (180)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>165</ID>
+<Round>18</Round>
+<Team1>Geelong</Team1>
+  <Result1>WIN</Result1>
+  <Score1>15.12 (102)</Score1>
+<Team2>Adelaide</Team2>
+  <Result2>LOSS</Result2>
+  <Score2>11.9 (75)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>166</ID>
+<Round>18</Round>
+<Team1>Gold Coast</Team1>
+  <Result1>LOSS</Result1>
+  <Score1>8.6 (54)</Score1>
+<Team2>Sydney</Team2>
+  <Result2>WIN</Result2>
+  <Score2>19.12 (126)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>167</ID>
+<Round>18</Round>
+<Team1>Greater Western Sydney</Team1>
+  <Result1>LOSS</Result1>
+  <Score1>7.12 (54)</Score1>
+<Team2>Collingwood</Team2>
+  <Result2>WIN</Result2>
+  <Score2>26.18 (174)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>168</ID>
+<Round>18</Round>
+<Team1>North Melbourne</Team1>
+  <Result1>WIN</Result1>
+  <Score1>19.13 (127)</Score1>
+<Team2>Melbourne</Team2>
+  <Result2>LOSS</Result2>
+  <Score2>11.7 (73)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>169</ID>
+<Round>18</Round> 
+<Team1>Port Adelaide</Team1>
+  <Result1>LOSS</Result1>
+  <Score1>6.12 (48)</Score1>
+<Team2>Fremantle</Team2>
+  <Result2>WIN</Result2>
+  <Score2>11.9 (75)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>170</ID>
+<Round>18</Round>
+<Team1>St Kilda</Team1>
+  <Result1>WIN</Result1>
+  <Score1>16.22 (118)</Score1>
+<Team2>Western Bulldogs</Team2>
+  <Result2>LOSS</Result2>
+  <Score2>6.6 (42)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>171</ID>
+<Round>18</Round>
+<Team1>West Coast</Team1>
+  <Result1>WIN</Result1>
+  <Score1>28.7 (175)</Score1>
+<Team2>Brisbane</Team2>
+  <Result2>LOSS</Result2>
+  <Score2>12.5 (77)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>172</ID>
+<Round>19</Round>
+<Team1>Adelaide</Team1>
+  <Result1>WIN</Result1>
+  <Score1>16.8 (104</Score1>
+<Team2>Essendon</Team2>
+  <Result2>LOSS</Result2>
+  <Score2>15.10 (100)</Score2>
+<HomeTeam>1</HomeTeam>
+
+</Games>
+<Games>
+<ID>173</ID>
+<Round>19</Round>
+<Team1>Brisbane</Team1>
+  <Result1>LOSS</Result1>
+  <Score1>12.12 (84)</Score1>
+<Team2>Richmond</Team2>
+  <Result2>WIN</Result2>
+  <Score2>20.12 (132</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>174</ID>
+<Round>19</Round>
+<Team1>Carlton</Team1>
+  <Result1>LOSS</Result1>
+  <Score1>10.11 (71)</Score1>
+<Team2>Sydney</Team2>
+  <Result2>WIN</Result2>
+  <Score2>14.9 (93)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>175</ID>
+<Round>19</Round>
+<Team1>Collingwood</Team1>
+  <Result1>WIN</Result1>
+  <Score1>12.19 (91)</Score1>
+<Team2>St Kilda</Team2>
+  <Result2>LOSS</Result2>
+  <Score2>13.7 (85)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>176</ID>
+<Round>19</Round>
+<Team1>Fremantle</Team1>
+  <Result1>WIN</Result1>
+  <Score1>17.11 (113)</Score1>
+<Team2>West Coast</Team2>
+  <Result2>LOSS</Result2>
+  <Score2>6.12 (48)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>177</ID>
+<Round>19</Round>
+<Team1>Greater Western Sydney</Team1>
+  <Result1>WIN</Result1>
+  <Score1>16.11 (107)</Score1>
+<Team2>Port Adelaide</Team2>
+  <Result2>LOSS</Result2>
+  <Score2>10.13 (73)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>178</ID>
+<Round>19</Round>
+<Team1>Hawthorn</Team1>
+  <Result1>LOSS</Result1>
+  <Score1>17.14 (116)</Score1>
+<Team2>Geelong</Team2>
+  <Result2>WIN</Result2>
+  <Score2>18.10 (118)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>179</ID>
+<Round>19</Round>
+<Team1>Melbourne</Team1>
+  <Result1>WIN</Result1>
+  <Score1>16.12 (108)</Score1>
+<Team2>Gold Coast</Team2>
+  <Result2>LOSS</Result2>
+  <Score2>9.12 (66)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>180</ID>
+<Round>19</Round>
+<Team1>Western Bulldogs</Team1>
+  <Result1>LOSS</Result1>
+  <Score1>8.13 (61)</Score1>
+<Team2>North Melbourne</Team2>
+  <Result2>WIN</Result2>
+  <Score2>18.7 (115)</Score2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>181</ID>
+<Round>20</Round>
+<Team1>Adelaide</Team1>
+<Team2>Fremantle</Team2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>182</ID>
+<Round>20</Round>
+<Team1>Carlton</Team1>
+<Team2>Brisbane</Team2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>183</ID>
+<Round>20</Round>
+<Team1>Essendon</Team1>
+<Team2>North Melbourne</Team2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>184</ID>
+<Round>20</Round>
+<Team1>Gold Coast</Team1>
+<Team2>Greater Western Sydney</Team2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>185</ID>
+<Round>20</Round>
+<Team1>Hawthorn</Team1>
+<Team2>Port Adelaide</Team2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>186</ID>
+<Round>20</Round>
+<Team1>Richmond</Team1>
+<Team2>Western Bulldogs</Team2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>187</ID>
+<Round>20</Round>
+<Team1>St Kilda</Team1>
+<Team2>Melbourne</Team2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>188</ID>
+<Round>20</Round>
+<Team1>Sydney</Team1>
+<Team2>Collingwood</Team2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>189</ID>
+<Round>20</Round>
+<Team1>West Coast</Team1>
+<Team2>Geelong</Team2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>190</ID>
+<Round>21</Round>
+<Team1>Brisbane</Team1>
+<Team2>Adelaide</Team2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>191</ID>
+<Round>21</Round>
+<Team1>Collingwood</Team1>
+<Team2>North Melbourne</Team2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>192</ID>
+<Round>21</Round>
+<Team1>Essendon</Team1>
+<Team2>Carlton</Team2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>193</ID>
+<Round>21</Round>
+<Team1>Fremantle</Team1>
+<Team2>Richmond</Team2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>194</ID>
+<Round>21</Round>
+<Team1>Geelong</Team1>
+<Team2>St Kilda</Team2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>195</ID>
+<Round>21</Round>
+<Team1>Greater Western Sydney</Team1>
+<Team2>Melbourne</Team2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>196</ID>
+<Round>21</Round>
+<Team1>Hawthorn</Team1>
+<Team2>Gold Coast</Team2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>197</ID>
+<Round>21</Round>
+<Team1>Port Adelaide</Team1>
+<Team2>West Coast</Team2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>198</ID>
+<Round>21</Round>
+<Team1>Western Bulldogs</Team1>
+<Team2>Sydney</Team2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>199</ID>
+<Round>22</Round>
+<Team1>Geelong</Team1>
+<Team2>Western Bulldogs</Team2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>200</ID>
+<Round>22</Round>
+<Team1>Gold Coast</Team1>
+<Team2>Carlton</Team2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>201</ID>
+<Round>22</Round>
+<Team1>Melbourne</Team1>
+<Team2>Adelaide</Team2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>202</ID>
+<Round>22</Round>
+<Team1>North Melbourne</Team1>
+<Team2>Fremantle</Team2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>203</ID>
+<Round>22</Round>
+<Team1>Port Adelaide</Team1>
+<Team2>Brisbane</Team2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>204</ID>
+<Round>22</Round>
+<Team1>Richmond</Team1>
+<Team2>Essendon</Team2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>205</ID>
+<Round>22</Round>
+<Team1>St Kilda</Team1>
+<Team2>Greater Western Sydney</Team2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>206</ID>
+<Round>22</Round>
+<Team1>Sydney</Team1>
+<Team2>Hawthorn</Team2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>207</ID>
+<Round>22</Round>
+<Team1>West Coast</Team1>
+<Team2>Collingwood</Team2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>208</ID>
+<Round>23</Round>
+<Team1>Adelaide</Team1>
+<Team2>Gold Coast</Team2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>209</ID>
+<Round>23</Round>
+<Team1>Brisbane</Team1>
+<Team2>Western Bulldogs</Team2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>210</ID>
+<Round>23</Round>
+<Team1>Carlton</Team1>
+<Team2>St Kilda</Team2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>211</ID>
+<Round>23</Round>
+<Team1>Essendon</Team1>
+<Team2>Collingwood</Team2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>212</ID>
+<Round>23</Round>
+<Team1>Fremantle</Team1>
+<Team2>Melbourne</Team2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>213</ID>
+<Round>23</Round>
+<Team1>Geelong</Team1>
+<Team2>Sydney</Team2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>214</ID>
+<Round>23</Round>
+<Team1>Greater Western Sydney</Team1>
+<Team2>North Melbourne</Team2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>215</ID>
+<Round>23</Round>
+<Team1>Hawthorn</Team1>
+<Team2>West Coast</Team2>
+<HomeTeam>1</HomeTeam>
+</Games>
+<Games>
+<ID>216</ID>
+<Round>23</Round>
+<Team1>Richmond</Team1>
+<Team2>Port Adelaide</Team2>
+<HomeTeam>1</HomeTeam>
+</Games>
+</dataroot>

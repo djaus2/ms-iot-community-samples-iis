@@ -7,6 +7,7 @@ namespace ms_iot_community_samples_svc.Models
 {
     public class Errors
     {
+        public string Title { get; set; } = "Error Message";
         public string Message { get; set; } = "";
         public string Source { get; set; } = "";
         public bool LoggedInStatus { get; set; } = false;
@@ -19,7 +20,7 @@ namespace ms_iot_community_samples_svc.Models
         public string GetLogLink(bool loggedInStatus)
         {
             if (!LoggedInStatus)
-                return "/ms_iot_Community_Samples/Login/0";
+                return "/ms_iot_Community_Samples/LoginPost";
             else
                 return "/ms_iot_Community_Samples/Logout/0";
         }
@@ -28,7 +29,7 @@ namespace ms_iot_community_samples_svc.Models
         {
             get {
                 if (!LoggedInStatus)
-                    return "/ms_iot_Community_Samples/Login/0";
+                    return "/ms_iot_Community_Samples/LoginPost";
                 else
                     return "/ms_iot_Community_Samples/Logout/0";
             }

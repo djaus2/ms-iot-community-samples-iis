@@ -6,6 +6,7 @@ using ms_iot_community_samples_svc.Utilities;
 using System.Reflection;
 using Nancy;
 using Newtonsoft.Json;
+using System.Configuration;
 
 namespace ms_iot_community_samples_svc.Models
 {
@@ -143,7 +144,7 @@ namespace ms_iot_community_samples_svc.Models
         //public string Title { get; set; }
         //public string Summary { get; set; }
 
-        private const int SummarySubLength = 50;
+        private int SummarySubLength = -1;
 
         public string SummarySub
         {
@@ -196,6 +197,17 @@ namespace ms_iot_community_samples_svc.Models
             if (IoTProjects == null)
             {
                 ClearIoTProjects();
+            }
+
+            if (SummarySubLength==-1)
+            {
+                string SummarySubLengthstr = (string)ConfigurationManager.AppSettings["SummarySubLength"];
+                bool res = false;
+
+                res = int.TryParse(SummarySubLengthstr, out SummarySubLength);
+
+                if (!res)
+                    SummarySubLength = 50;
             }
             Id = Count++;
             IoTProjects.Add(this);

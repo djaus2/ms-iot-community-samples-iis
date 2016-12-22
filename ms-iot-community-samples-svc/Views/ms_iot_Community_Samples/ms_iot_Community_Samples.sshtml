@@ -1,4 +1,4 @@
-﻿@Master['master.sshtml']
+﻿@Master['ms_iot_Community_Samples/master.sshtml']
 
 @Section['Header']
     <title>ms-IoT Community Samples</title>
@@ -27,12 +27,14 @@
                     </header>
                     <section>
                         <h2>Index</h2>
-						<p><a href="/ms_iot_Community_Samples/list">View (filtered) list of Sample Projects</a></p>
-						<p><a href="/ms_iot_Community_Samples/reset">Show all</a></p>
-						<p><a href="/ms_iot_Community_Samples/Browse">Browse</a></p>
-						<p><a href="/ms_iot_Community_Samples/SetFilter">Filter</a></p>
-						<p><a href="/ms_iot_Community_Samples/Admin">Admin</a></p>
-						<p><a href="/ms_iot_Community_Samples/MDFileTemplate">MD File Template</a></p>						
+						<a href="/ms_iot_Community_Samples/list">View (filtered) list of Sample Projects</a><br/>
+						<a href="/ms_iot_Community_Samples/reset">Show all</a><br/>
+						<a href="/ms_iot_Community_Samples/Browse">Browse</a><br/>
+						<a href="/ms_iot_Community_Samples/SetFilter">Filter</a><br/>
+						<a href="/ms_iot_Community_Samples/MDFileTemplate">MD File Template</a><br/>
+						<hr/>
+						<a href="/ms_iot_Community_Samples/Admin">Admin</a><br/>
+												
                     </section>
 
                     <footer>

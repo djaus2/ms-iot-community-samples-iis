@@ -4,17 +4,7 @@
     <title>login</title>
 	<meta charset="utf-8" />
     <script type="text/javascript">
-    function OnLogin()
-    {
 
-        var user = "user~" +document.getElementById("txtuser").value;
-        var pwd = "pwd~" +document.getElementById("txtpwd").value;
-		var repo = "repo~" +document.getElementById("txtrepo").value;
-		alert (repo);
-        var referer = "@Model"; 
-        var windowlocation = "/ms_iot_Community_Samples/onlogin/" + referer + "/" + user +"/" + pwd  +"/" + repo;
-        window.location = windowlocation;
-    }
     function OnCancel()
     {
         var referer = "@Model";
@@ -29,7 +19,7 @@
 
 @Section['Content']
     <h1>Login</h1>
-    <form>
+    <form method='post' action="/ms_iot_Community_Samples/onloginPost"/>
         <table>
             <colgroup>
                 <col style="font-weight:bold;" />
@@ -37,18 +27,18 @@
 				<col />
             </colgroup>
             <tr>
-                <td align="right">User:&nbsp;</td>
-                <td><input type="text" id="txtuser" value="" /></td>
+                <td align="right">xxUser:&nbsp;</td>
+                <td><input type="text" name="User" id="txtuser" value="" /></td>
 				<td><i>&nbsp;GitHub Username</i></td>
             </tr>
             <tr>
                 <td align="right">Password:&nbsp;</td>
-                <td><input type="password" id="txtpwd" value="" /></td>
+                <td><input type="password" id="txtpwd" name="Pwd" value="" /></td>
 				<td><i>&nbsp;GitHub Password</i></td>
             </tr>
 			<tr>
                 <td align="right">GitHub Repository:&nbsp;</td>
-                <td><input type="text" id="txtrepo" value="" /></td>
+                <td><input type="text" id="txtrepo" name="Repo" value="" /></td>
 				<td><i>One (any) of your GitHub Prtoject Names</i></td>
             </tr>
 			<tr>
@@ -57,9 +47,9 @@
 			</tr>
 			<tr>
 			<td  align="right">FYI:&nbsp;</td>
-			<td colspan="2"><i>Basic Authentication is used with the GitHub API and Get is used to submit this information.</i></td>
+			<td colspan="2"><i>Basic Authentication is used with the GitHub API.</i></td>
             <tr>
-                <td align="right"><input type="button"  value="Login" id="btnlogin" onclick="OnLogin()" />&nbsp;</td>
+                <td align="right"><input type="submit"  value="Login" id="btnlogin"  />&nbsp;</td>
                 <td style="text-align:center"><input type="button" value="Cancel" id="btncancel" onclick="OnCancel()" /></td>
 				<td><input type="reset" value="Clear" /></td>
             </tr>
