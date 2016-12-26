@@ -1,7 +1,7 @@
 ﻿@Master['ms_iot_Community_Samples/master.sshtml']
 
 @Section['Header']
-    <title>login</title>
+    <title>Create your Project's GitHub Markdown (MD) file.</title>
 	<meta charset="utf-8" />
     <script type="text/javascript">
 
@@ -30,7 +30,7 @@
 
 
 @Section['Content']
-    <h1>Create your GitHub's Markdown (MD) file.</h1>
+    <h1>Create your Project's GitHub Markdown (MD) file.</h1>
     <form method='post' action="/ms_iot_Community_Samples/GitHubPostFile"/>
         <table >
             <colgroup>
@@ -51,7 +51,7 @@
             <tr hidden="true" >
                 <td>Password:&nbsp;</td>
                 <td><input type="text" id="txtpwd" name="Pwd" value="This is ignored" /></td>
-				<td>&nbsp.></td>
+				<td>&nbsp.</td>
             </tr>
 		</table>
 		<table >

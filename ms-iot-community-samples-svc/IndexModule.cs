@@ -717,6 +717,122 @@
                 var converter = new MarkdownService(contentProvider);
                 var document = converter.GetDocument(parameters.name);
                 return document.Content;
+            }; 
+
+            Get["/ms_iot_Community_Samples/GetGitHubMDfromYourRepo"] = _ =>
+            {
+                if (!(bool)Request.Session["LoggedInStatus"])
+                {
+                    errorMsg.Message = "Not logged in!";
+                    errorMsg.Source = "/GitHubGetFile";
+                    return View["/ms_iot_Community_Samples/ErrorPage", errorMsg];
+                }
+
+                return View["ms_iot_Community_Samples/GetMDfromUrRepo"];
+            };
+
+            Post["/ms_iot_Community_Samples/PostGetGitHubMDfromYourRepo", true] = async (parameters, ct) =>
+            {
+                if (!(bool)Request.Session["LoggedInStatus"])
+                {
+                    errorMsg.Message = "Not logged in!";
+                    errorMsg.Source = "/GitHubPostFile";
+                    return View["/ms_iot_Community_Samples/ErrorPage", errorMsg];
+                }
+                DoStrings();
+
+                var CredentialsTruple = this.Bind<Models.GetRepoMDQuaduple>();
+
+                string githubRepo = CredentialsTruple.Repo;
+                string gitHubFileName = CredentialsTruple.Filename;
+
+
+                string githuUrl = (string)ConfigurationManager.AppSettings["GitHub.Url"];
+                //string githubRepo = (string)ConfigurationManager.AppSettings["GitHub.MDsRepository"];
+                string githubUsr = CredentialsTruple.User;
+                string githubPwd = CredentialsTruple.Pwd;
+                string githubLatestCommitSha = ""; // (string)ConfigurationManager.AppSettings["GitHub.LatestCommitSha"];
+                //ClientId = (string)ConfigurationManager.AppSettings["GitHub.ClientId"];
+                //ClientSecret = (string)ConfigurationManager.AppSettings["GitHub.ClientSecret"];
+
+                //if (githubLatestCommitSha == null)
+                //    githubLatestCommitSha = "";
+
+                errorMsg.Message = "Repository not found.";
+
+                basicGitHubClient =
+                       new GitHubClient(new ProductHeaderValue(githubRepo), new Uri(githuUrl));
+
+                //https://github.com/octokit/octokit.net
+                //GitHubClient github = new GitHubClient(new ProductHeaderValue(githubRepo));
+                var user = await basicGitHubClient.User.Get(githubUsr);
+
+                //var client = new GitHubClient(new ProductHeaderValue(githubRepo));
+                var basicAuth = new Credentials(githubUsr, githubPwd); // NOTE: not real credentials
+                basicGitHubClient.Credentials = basicAuth;
+                var repos = await basicGitHubClient.Repository.GetAllForCurrent();
+                var repo = from n in repos where n.Name == githubRepo select n;
+                int count = 0;
+
+                string filecomtents = "";
+                if (repo.Count() == 1)
+                {
+                    errorMsg.Message = "File not found.";
+                    var theRepo = repo.First();
+                    var commits = await basicGitHubClient.Repository.Commit.GetAll(theRepo.Id);
+                    if (commits.Count() != 0)
+                    {
+                        var latest = commits.OrderByDescending(t => t.Commit.Author.Date);
+
+                        //group n by n.Commit.Author.Date into g
+                        //select n OrderByDescending(t => t.Commit.Author.Date);
+                        //var lat = latest.First();
+                        //string latestCommit = commits.First().Sha;
+                        //int commitCount = commits.Count();
+                        //var com = await basicGitHubClient.Repository.Commit.Get(theRepo.Id, commits.First().Sha);
+                        //if (commitCount > githubLatestCommitCount)
+                        //{
+                        //if (commitCount > githubLatestCommitCount)
+                        if (latest.Count() != 0)
+                        {
+                            var last = latest.First();
+                            if (1==1) //(last.Sha != githubLatestCommitSha)
+                            {
+                                var AllContent = await basicGitHubClient.Repository.Content.GetAllContents(theRepo.Id);//.GetAllContent(repos[0].Owner.Login, repos[0].Name);
+
+
+                                var file = from n in AllContent where n.Name.ToLower() == gitHubFileName.ToLower() select n;
+                                if (file != null)
+                                if (file.Count() ==1)
+                                {
+                                        //if (++cntr > 3)
+                                        //    break;
+                                        string textOfFirstFileName = file.First().Name;
+                                    var content = await basicGitHubClient.Repository.Content.GetAllContents(theRepo.Id, textOfFirstFileName);
+                                    if (content.Count() != 0)
+                                    {
+                                        filecomtents = content[0].Content;
+                                            filecomtents = filecomtents.Replace("\r\n", "\r");
+                                            filecomtents = filecomtents.Replace("\n", "\r");
+                                            filecomtents = filecomtents.Replace("\r", "\\r");
+                                        }
+                                }
+                            }
+                        }
+                    }
+                }
+                if (filecomtents == "")
+                {
+                    errorMsg.Source = @"/ms_iot_Community_Samples/PostGetGitHubMDfromYourRepo";
+                    return View["ms_iot_Community_Samples/ErrorPage", errorMsg];
+                }
+
+                DoStrings();
+                string templatemd = "";
+                templatemd = File.ReadAllText(Path.Combine(ContentCommunityDir, "template.md"));
+                templatemd += "\\r" + filecomtents;
+
+                return View["ms_iot_Community_Samples/postMD", templatemd];
             };
 
             Get["/ms_iot_Community_Samples/GitHubGetFile"] = _ =>
@@ -772,7 +888,9 @@
                 basicGitHubClient.Credentials = basicAuth;
                 var repos = await basicGitHubClient.Repository.GetAllForCurrent();
                 var repo = from n in repos where n.Name == githubRepo select n;
-                int count = 0;
+
+
+
                 if (repo.Count() == 1)
                 {
                     try
@@ -780,7 +898,7 @@
                         var theRepo = repo.First();
 
                         string filename = projectName + ".md";
-                        UpdateFileRequest ufr = new UpdateFileRequest("Adding " + filename, md, githubLatestCommitSha);
+                        UpdateFileRequest ufr = new UpdateFileRequest("Adding " + filename, md, githubLatestCommitSha,"Pending");
                         var res = await basicGitHubClient.Repository.Content.UpdateFile(theRepo.Id, filename, ufr);
                         //theRepo.Id, textOfFirstFileName, ufr);
                         errorMsg.Title = "Adding " + filename;
@@ -791,7 +909,7 @@
                     catch (Exception ex)
                     {
                         errorMsg.Message = ex.Message;
-                        errorMsg.Source = @"/ms_iot_Community_Samples/GitHub/PostFile";
+                        errorMsg.Source = @"/ms_iot_Community_Samples/GitHubPostFile";
                         return View["ms_iot_Community_Samples/ErrorPage", errorMsg];
                     }
                 }
@@ -801,8 +919,8 @@
             };
 
 
-                Get["/ms_iot_Community_Samples/GitHub/{Mode}", true] = async (parameters, ct) =>
-             {
+            Get["/ms_iot_Community_Samples/GitHub/{Mode}", true] = async (parameters, ct) =>
+            {
                  
                  if (!(bool)Request.Session["LoggedInStatus"])
                  {

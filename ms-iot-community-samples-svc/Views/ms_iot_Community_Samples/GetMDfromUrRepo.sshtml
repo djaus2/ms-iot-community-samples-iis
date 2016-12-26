@@ -1,0 +1,65 @@
+﻿@Master['ms_iot_Community_Samples/master.sshtml']
+
+@Section['Header']
+    <title>Get your Project's GitHub Markdown (MD) file.</title>
+	<meta charset="utf-8" />
+    <script type="text/javascript">
+
+    function OnCancel()
+    {
+        
+        var windowlocation = "/ms_iot_Community_Samples/";
+        window.location = windowlocation;
+    }
+
+	function OnClear()
+    {
+            document.getElementById("txtrepo").value = "";
+			document.getElementById("txtrepo").value = txt;
+    }
+
+
+    </script>
+@EndSection
+
+
+
+
+
+@Section['Content']
+    <h1>Get your Project's GitHub Markdown (MD) file.</h1>
+    <form method='post' action="/ms_iot_Community_Samples/PostGetGitHubMDfromYourRepo"/>
+        <table >
+            <colgroup>
+                <col style="font-weight:bold;" />
+                <col />
+				<col />
+            </colgroup>
+			<tr>
+                <td align="right"><input type="submit"  value="Submit" id="btnlogin"  />&nbsp;</td>
+                <td style="text-align:center"><input type="button" value="Cancel" id="btncancel" onclick="OnCancel()" /></td>
+				<td align="left"><input type="button" value="Clear" id="btnclear" onclick="OnClear()" /></td>
+            </tr>
+			<tr >
+                <td align="right">Your GitHub Project Name:&nbsp;</td>
+                <td><input type="text" name="User" id="txtuser" value="djaus" /></td>
+				<td align="left"><i>.MD</i></td>
+            </tr>
+            <tr  >
+                <td align="right">GitHub Password:&nbsp;</td>
+                <td><input type="text" id="txtpwd" name="Pwd" value="" /></td>
+				<td>&nbsp.</td>
+            </tr>
+			<tr  >
+                <td align="right">Your GitHub Project Name:&nbsp;</td>
+                <td><input type="text" id="txtrepo" name="Repo" value="" /></td>
+				<td>&nbsp.</td>
+            </tr>
+			<tr  >
+                <td align="right">MD Filename (must be in root):&nbsp;</td>
+                <td><input type="text" id="txtfilename" name="Filename" value=".MD" />.MD</td>
+				<td>&nbsp.</td>
+            </tr>
+		</table>
+    </form>
+@EndSection

@@ -165,6 +165,9 @@
     <Content Include="Content\ms_iot_Community_Samples\template.md">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Views\ms_iot_Community_Samples\GetMDfromUrRepo.sshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="webconfig.txt" />
     <None Include="assets\template.cshtml" />
     <Content Include="assets\js\main.js" />
@@ -216,15 +219,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
-    <Compile Include="IndexModel_GitHub2.cs" />
+    <None Include="IndexModel_GitHub2.cs" />
     <Compile Include="IndexModule.cs" />
     <Compile Include="IndexModule1.cs" />
     <Compile Include="IndexModule2.cs" />
-    <Compile Include="IndexModule_Convert.cs" />
+    <None Include="IndexModule_Convert.cs" />
     <Compile Include="Models\IoTProject.cs" />
     <Compile Include="Models\Errors.cs" />
     <Compile Include="Models\filter.cs" />
-    <Compile Include="Models\layout.cs" />
+    <Compile Include="Views\ms_iot_Community_Samples\layout.cs" />
     <Compile Include="Models\login.cs" />
     <Compile Include="Models\Truple.cs" />
     <Compile Include="Models\views.cs" />
