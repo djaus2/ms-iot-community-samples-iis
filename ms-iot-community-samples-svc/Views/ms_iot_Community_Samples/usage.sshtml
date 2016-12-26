@@ -1,0 +1,79 @@
+﻿@Master['ms_iot_Community_Samples/master.sshtml']
+
+@Section['Header']
+    <title>ms-IoT Community Samples Usage</title>
+	<meta charset="utf-8" />
+@EndSection
+
+@Section['Onload']
+            var txt = '@Model.Message';
+            var ch = txt.charAt(0);
+            if (ch == '$') {
+                txt = txt.split("&lt;").join("<");
+                txt = txt.split("&gt;").join(">");
+                txt = txt.substr(1, txt.length - 1);
+                document.getElementById("tdAbout").innerHTML = txt;
+            }
+            else
+                document.getElementById("TextAreaAbout").value = txt;
+@EndSection
+
+@Section['Content']
+<input readonly type="text" id="TextAreaAbout" width="800" ><br/>
+                <article>
+                    <header>
+                        <h1>Using this site</h1>
+                        <p>This site is a directory of Windows 10 IoT GitHub projects as a set of Markdown (.md) files for Microosft IoT Sample projects from the IoT Community</p>
+						<p>Looking for an existing IoT or just looking for ideas? You can checkout the listed projects, or contribute your own.</p>
+
+                    </header>
+                    <section>
+                        <h2>Checking out the listed projects</h2>
+						<p>In the box above you will see the number of listed projects. These start out as Markdown (.md) format file on the GitHub <b>ms-iot-Community-Samples</b> repository. Each is description of an IoT GitHub project.</p>
+						<p>These files are imported (actually synced) and then parsed for listed properties which go into a searchable database.</p>
+						<p>Listed projects can then viwed in short form on the listing page, or browsed for full details (properties). In the browse mode there is a link to listed project's MD file for its viewing.</p>
+						<p>Listed projects can sorted and searched. The sort/filter remains throughout browsing and listing until it is cleared.</p>
+					</section>
+					<section>
+						<h2>Contributing</h2>
+						<p>You need to create a Markdown format file for your project and get it into the <b>ms-iot-Community-Samples</b> repository</p>
+						<p>You can create it directly in your GitHub project, on GitHub (Add File).</p>
+						<p>It needs database information (project properties) at the top. Each property is a colon separated name value pair on a separate line.<br/>
+						The database starts and ends with a line consisting only of three dashes<br/>
+						The database must have a Title and must have a link to the project's GitHub or Codeplex project or to its hackster.io listing.<br/>
+						See the MDTemplate link below.</p>
+						<p>When done you can do a pull request on <b>ms-iot-Community-Samples</b> or email it to me</p>
+						<p>Once in <b>ms-iot-Community-Samples</b> and approved, it gets uploaded via the Admin page <b>"Sync with GitHub"</b><br/>
+						You then run <b>"Convert"</b> on the Admin page to get its properties in to the database.<br/>
+						Anyone can perform the latter two functions but you need to be logged in with your GitHub credentials (including one for your GitHub project names).</p>												
+                    </section>
+
+                    <footer>
+						<p><a href="/ms_iot_Community_Samples/MDFileTemplate">MDTemplate</a></p>
+                    </footer>
+                </article>
+
+	<aside>
+	<table>
+	        <colgroup>
+            <col />
+        </colgroup>
+	    <tr>
+            <td style="color:#fff"><b><i>Other Links</i></b></td>
+        </tr>
+        <tr>
+            <td><a href="https://github.com/ms-iot/Samples" style="color:#fff">[GitHub]ms-iot/Samples</a></td>
+        </tr>
+        <tr>
+            <td><a href="https://github.com/djaus2/ms-iot-Community-Samples" style="color:#fff">[GitHub]ms-iot-Community-Samples</a></td>
+        </tr>
+        <tr>
+            <td><a href="https://github.com/djaus2/ms-iot-Community-Samples-svc" style="color:#fff">[GitHub]Source code repository for this site</a></td>
+        </tr>
+
+		
+    </table>
+	</aside>
+
+@EndSection
+

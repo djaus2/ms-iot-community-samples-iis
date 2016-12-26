@@ -156,6 +156,15 @@
     <Content Include="assets\css\normalize.css" />
     <Content Include="assets\favicon.ico" />
     <Content Include="assets\humans.txt" />
+    <Content Include="Views\ms_iot_Community_Samples\usage.sshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\ms_iot_Community_Samples\postMD.sshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\ms_iot_Community_Samples\template.md">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="webconfig.txt" />
     <None Include="assets\template.cshtml" />
     <Content Include="assets\js\main.js" />

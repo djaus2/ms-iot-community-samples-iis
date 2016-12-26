@@ -114,6 +114,7 @@
                 return View["onetwo"];
             };
 
+
             Get["/Dirs"] = _ =>
             {
                 string appRoot = Environment.GetEnvironmentVariable("Home");
@@ -202,13 +203,24 @@
                 List<string> directories = dirs.ToList<string>();
                 return View["AList", directories];
             };
-            Get["/ms_iot_Community_Samples/Test2"] = _ =>
+
+            Get["/ms_iot_Community_Samples/Usage"] = _ =>
             {
-                return View["Test2"];
-            };
-            Get["/ms_iot_Community_Samples/Test1"] = _ =>
-            {
-                return View["ms_iot_Community_Samples/Test1"];
+                var cnt = 0;
+                if (Models.IoTProject.IoTProjects == null)
+                {
+
+                }
+                else if (Models.IoTProject.IoTProjects.Count() == 0)
+                {
+                }
+                else
+                {
+                    cnt = Models.IoTProject.IoTProjects.Count();
+                }
+                errorMsg.Message = "Loaded " + cnt.ToString() + " project/s";
+                errorMsg.LoggedInStatus = (bool)Request.Session["LoggedInStatus"];
+                return View["ms_iot_Community_Samples/Usage", errorMsg];
             };
             Get["/"] = _ =>
             {
@@ -423,10 +435,10 @@
                     errorMsg.LoggedInStatus = false;
                     return View["ms_iot_Community_Samples/ErrorPage", errorMsg];
                 }
-                if (referer == "ms_iot_Community_Samples_Admin")
+                //if (referer == "ms_iot_Community_Samples_Admin")
                     return View["ms_iot_Community_Samples/Admin" , errorMsg];
-                else
-                    return View["ms_iot_Community_Samples/IndexList", Models.IoTProject.ViewIoTProjects((string)Request.Session["filter"])];
+                //else
+                //    return View["ms_iot_Community_Samples/IndexList", Models.IoTProject.ViewIoTProjects((string)Request.Session["filter"])];
             };
 
 
@@ -707,8 +719,89 @@
                 return document.Content;
             };
 
+            Get["/ms_iot_Community_Samples/GitHubGetFile"] = _ =>
+            {
+                if (!(bool)Request.Session["LoggedInStatus"])
+                {
+                    errorMsg.Message = "Not logged in!";
+                    errorMsg.Source = "/GitHubGetFile";
+                    return View["/ms_iot_Community_Samples/ErrorPage", errorMsg];
+                }
+                DoStrings();
+                string templatemd = "";
+                templatemd = File.ReadAllText(Path.Combine(ContentCommunityDir, "template.md"));
+                return View["ms_iot_Community_Samples/postMD", templatemd];
+            };
 
-            Get["/ms_iot_Community_Samples/GitHub/{Mode}", true] = async (parameters, ct) =>
+            Post["/ms_iot_Community_Samples/GitHubPostFile", true] = async (parameters, ct) =>
+            {
+                if (!(bool)Request.Session["LoggedInStatus"])
+                {
+                    errorMsg.Message = "Not logged in!";
+                    errorMsg.Source = "/GitHubPostFile";
+                    return View["/ms_iot_Community_Samples/ErrorPage", errorMsg];
+                }
+                DoStrings();
+
+                var CredentialsTruple = this.Bind<Models.AuthenticateTruple>();
+                string md = CredentialsTruple.Repo;
+                string projectName = CredentialsTruple.User;
+                string misc = CredentialsTruple.Pwd;
+
+
+                string githuUrl = (string)ConfigurationManager.AppSettings["GitHub.Url"];
+                string githubRepo = (string)ConfigurationManager.AppSettings["GitHub.MDsRepository"];
+                string githubUsr = (string)ConfigurationManager.AppSettings["GitHub.UserName"];
+                string githubPwd = (string)ConfigurationManager.AppSettings["GitHub.Pwd"];
+                string githubLatestCommitSha = (string)ConfigurationManager.AppSettings["GitHub.LatestCommitSha"];
+                ClientId = (string)ConfigurationManager.AppSettings["GitHub.ClientId"];
+                ClientSecret = (string)ConfigurationManager.AppSettings["GitHub.ClientSecret"];
+
+                if (githubLatestCommitSha == null)
+                    githubLatestCommitSha = "";
+
+                basicGitHubClient =
+                       new GitHubClient(new ProductHeaderValue(githubRepo), new Uri(githuUrl));
+
+                //https://github.com/octokit/octokit.net
+                //GitHubClient github = new GitHubClient(new ProductHeaderValue(githubRepo));
+                var user = await basicGitHubClient.User.Get(githubUsr);
+
+                //var client = new GitHubClient(new ProductHeaderValue(githubRepo));
+                var basicAuth = new Credentials(githubUsr, githubPwd); // NOTE: not real credentials
+                basicGitHubClient.Credentials = basicAuth;
+                var repos = await basicGitHubClient.Repository.GetAllForCurrent();
+                var repo = from n in repos where n.Name == githubRepo select n;
+                int count = 0;
+                if (repo.Count() == 1)
+                {
+                    try
+                    {
+                        var theRepo = repo.First();
+
+                        string filename = projectName + ".md";
+                        UpdateFileRequest ufr = new UpdateFileRequest("Adding " + filename, md, githubLatestCommitSha);
+                        var res = await basicGitHubClient.Repository.Content.UpdateFile(theRepo.Id, filename, ufr);
+                        //theRepo.Id, textOfFirstFileName, ufr);
+                        errorMsg.Title = "Adding " + filename;
+                        errorMsg.Message = "OK.";
+                        errorMsg.Source = @"/ms_iot_Community_Samples/GitHub/PostFile";
+                        return View["ms_iot_Community_Samples/ErrorPage", errorMsg];
+                    }
+                    catch (Exception ex)
+                    {
+                        errorMsg.Message = ex.Message;
+                        errorMsg.Source = @"/ms_iot_Community_Samples/GitHub/PostFile";
+                        return View["ms_iot_Community_Samples/ErrorPage", errorMsg];
+                    }
+                }
+                errorMsg.Message = "Repository not found.";
+                errorMsg.Source = @"/ms_iot_Community_Samples/GitHub/PostFile";
+                return View["ms_iot_Community_Samples/ErrorPage", errorMsg];
+            };
+
+
+                Get["/ms_iot_Community_Samples/GitHub/{Mode}", true] = async (parameters, ct) =>
              {
                  
                  if (!(bool)Request.Session["LoggedInStatus"])
@@ -726,7 +819,7 @@
                  }
                  DoStrings();
 
-
+                 
 
                  string githuUrl = (string)ConfigurationManager.AppSettings["GitHub.Url"];
                  string githubRepo = (string)ConfigurationManager.AppSettings["GitHub.MDsRepository"];

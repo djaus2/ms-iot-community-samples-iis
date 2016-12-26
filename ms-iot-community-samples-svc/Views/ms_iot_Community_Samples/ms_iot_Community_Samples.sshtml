@@ -24,6 +24,8 @@
                     <header>
                         <h1>About</h1>
                         <p>This site is a directory of Windows 10 IoT GitHub projects as a set of Markdown (.md) files for Microosft IoT Sample projects from the IoT Community&nbsp;...<a href="#About">read&nbsp;more.</a></p>
+						<p><i><u>FYI</u> On other pages, clicking the "Hamburger" icon (top left) brings you back to this page.</i></p>
+
                     </header>
                     <section>
                         <h2>Index</h2>
@@ -33,6 +35,7 @@
 						<a href="/ms_iot_Community_Samples/SetFilter">Filter</a><br/>
 						<a href="/ms_iot_Community_Samples/MDFileTemplate">MD File Template</a><br/>
 						<hr/>
+						<a href="/ms_iot_Community_Samples/Usage">Using this site</a><br/>
 						<a href="/ms_iot_Community_Samples/Admin">Admin</a><br/>
 												
                     </section>
@@ -62,6 +65,9 @@
             
         <tr>        
             <td><a href="https://www.hackster.io" style="color:#fff">Hackster.IO</a></td>
+        </tr>
+		<tr>        
+            <td><a href="http://embedded101.com" style="color:#fff">embedded101.com</a></td>
         </tr>
 		
     </table>

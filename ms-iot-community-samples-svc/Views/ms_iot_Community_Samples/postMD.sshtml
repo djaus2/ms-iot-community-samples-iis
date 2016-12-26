@@ -1,0 +1,69 @@
+﻿@Master['ms_iot_Community_Samples/master.sshtml']
+
+@Section['Header']
+    <title>login</title>
+	<meta charset="utf-8" />
+    <script type="text/javascript">
+
+    function OnCancel()
+    {
+        
+        var windowlocation = "/ms_iot_Community_Samples/";
+        window.location = windowlocation;
+    }
+
+	function OnClear()
+    {
+            var txt  = "@Model";
+            document.getElementById("txtrepo").value = txt;
+    }
+
+
+    </script>
+@EndSection
+
+@Section['Onload']
+            var txt  = "@Model";
+            document.getElementById("txtrepo").value = txt;
+@EndSection
+
+
+
+@Section['Content']
+    <h1>Create your GitHub's Markdown (MD) file.</h1>
+    <form method='post' action="/ms_iot_Community_Samples/GitHubPostFile"/>
+        <table >
+            <colgroup>
+                <col style="font-weight:bold;" />
+                <col />
+				<col />
+            </colgroup>
+			<tr>
+                <td align="right"><input type="submit"  value="Submit" id="btnlogin"  />&nbsp;</td>
+                <td style="text-align:center"><input type="button" value="Cancel" id="btncancel" onclick="OnCancel()" /></td>
+				<td align="left"><input type="button" value="Clear" id="btnclear" onclick="OnClear()" /></td>
+            </tr>
+			<tr >
+                <td align="right">Projec(File)tName:&nbsp;</td>
+                <td><input type="text" name="User" id="txtuser" value="" /></td>
+				<td align="left"><i>.MD</i></td>
+            </tr>
+            <tr hidden="true" >
+                <td>Password:&nbsp;</td>
+                <td><input type="text" id="txtpwd" name="Pwd" value="This is ignored" /></td>
+				<td>&nbsp.></td>
+            </tr>
+		</table>
+		<table >
+            <colgroup>
+                <col style="font-weight:bold;" />
+            </colgroup>
+			<tr>
+				<td>Content:</td>
+			</tr>
+			<tr>
+                <td><textarea rows="30" cols="120" id="txtrepo" name="Repo" value="" /></td>
+            </tr>
+        </table>
+    </form>
+@EndSection
