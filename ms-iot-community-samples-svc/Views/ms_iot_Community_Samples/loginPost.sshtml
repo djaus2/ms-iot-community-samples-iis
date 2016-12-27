@@ -27,7 +27,7 @@
 				<col />
             </colgroup>
             <tr>
-                <td align="right">xxUser:&nbsp;</td>
+                <td align="right">User:&nbsp;</td>
                 <td><input type="text" name="User" id="txtuser" value="" /></td>
 				<td><i>&nbsp;GitHub Username</i></td>
             </tr>

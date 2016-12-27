@@ -47,7 +47,7 @@
 						This only provides a raw text editor so you will probably still want to create it in GitHub or a MD editor and copy it paste it here.<br/>
 						But the form here has the database template ready and waiting.<br/>
 						You will need to be logged in here with your GitHub credentials<br/>
-						<u>Coming&nbsp;</u>Download you MD file to the form from your GitHub site directly.</p>
+						<u>Now available&nbsp;</u>Download you MD file to the form from your GitHub site directly. Couldn't be easier! <a href="/ms_iot_Community_Samples/GetGitHubMDfromYourRepo">Here</a></p>
 						<p>Once in <b>ms-iot-Community-Samples</b> Pending Branch it needs to get approved.<br/>
 						Raise an Issue on GitHub or email me once uploaded,so as to get approval.</p>
 						<p> Once and approved, it gets uploaded via the Admin page <b>"Sync with GitHub"</b><br/>

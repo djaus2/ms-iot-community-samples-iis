@@ -270,7 +270,7 @@
 
                     if (!File.Exists(MDDB))
                     {
-                        errorMsg.Message = "No Json File.Do Github and Convert first.<br/>Admin mode required.";
+                        errorMsg.Message = "Do Github and Convert first.";
                         errorMsg.LoggedInStatus = (bool)Request.Session["LoggedInStatus"];
                         string emptyJsonArray = "[]";
                         File.WriteAllText(MDDB, emptyJsonArray);
@@ -313,19 +313,19 @@
                 return View["default"];
             };
 
-            Get["/ms_iot_Community_Samples/Admin"] = _ =>
+            Get["/ms_iot_Community_Samples/Contribute"] = _ =>
             {
                 errorMsg.Message = "Logging in";
                 errorMsg.LoggedInStatus = (bool)Request.Session["LoggedInStatus"];
-                errorMsg.Source = "/ms_iot_Community_Samples/Admin";
-                return View["ms_iot_Community_Samples/Admin", errorMsg];
+                errorMsg.Source = "/ms_iot_Community_Samples/Contribute";
+                return View["ms_iot_Community_Samples/Contribute", errorMsg];
             };
 
             Get["/ms_iot_Community_Samples/login/{referer}"] = parameters =>
             {
                 string referer = parameters.referer;
                 if (referer == "0")
-                    referer = "ms_iot_Community_Samples_Admin";
+                    referer = "ms_iot_Community_Samples_Contribute";
                 else
                     referer = "IndexList";
                 return View["ms_iot_Community_Samples/login", referer];
@@ -334,7 +334,7 @@
             {
                 string referer = parameters.referer;
                 if (referer == "0")
-                    referer = "ms_iot_Community_Samples_Admin";
+                    referer = "ms_iot_Community_Samples_Contribute";
                 else
                     referer = "IndexList";
                 return View["ms_iot_Community_Samples/login2", referer];
@@ -344,7 +344,7 @@
             {
                 string referer = parameters.referer;
                 if (referer == "0")
-                    referer = "ms_iot_Community_Samples_Admin";
+                    referer = "ms_iot_Community_Samples_Contribute";
                 else
                     referer = "IndexList";
                 //Models.Errors.LoggedInStatus = false;
@@ -353,7 +353,7 @@
                 errorMsg.Message = "Logged out.";
                 errorMsg.Source = "/Logout";
                 errorMsg.LoggedInStatus = false;
-                if (referer == "ms_iot_Community_Samples_Admin")
+                if (referer == "ms_iot_Community_Samples_Contribute")
                     return View["ms_iot_Community_Samples/" + "ms_iot_Community_Samples", errorMsg];
                 else
                 {
@@ -436,7 +436,7 @@
                     return View["ms_iot_Community_Samples/ErrorPage", errorMsg];
                 }
                 //if (referer == "ms_iot_Community_Samples_Admin")
-                    return View["ms_iot_Community_Samples/Admin" , errorMsg];
+                    return View["ms_iot_Community_Samples/Contribute" , errorMsg];
                 //else
                 //    return View["ms_iot_Community_Samples/IndexList", Models.IoTProject.ViewIoTProjects((string)Request.Session["filter"])];
             };
@@ -800,14 +800,12 @@
                             {
                                 var AllContent = await basicGitHubClient.Repository.Content.GetAllContents(theRepo.Id);//.GetAllContent(repos[0].Owner.Login, repos[0].Name);
 
-
-                                var file = from n in AllContent where n.Name.ToLower() == gitHubFileName.ToLower() select n;
+                                //Alow for user not adding .md to filename
+                                var file = from n in AllContent where ( (n.Name.ToLower() == gitHubFileName.ToLower()) || (n.Name.ToLower() == (gitHubFileName + ".md").ToLower())) select n;
                                 if (file != null)
-                                if (file.Count() ==1)
+                                if (file.Count() >0)
                                 {
-                                        //if (++cntr > 3)
-                                        //    break;
-                                        string textOfFirstFileName = file.First().Name;
+                                    string textOfFirstFileName = file.First().Name;
                                     var content = await basicGitHubClient.Repository.Content.GetAllContents(theRepo.Id, textOfFirstFileName);
                                     if (content.Count() != 0)
                                     {
@@ -815,6 +813,7 @@
                                             filecomtents = filecomtents.Replace("\r\n", "\r");
                                             filecomtents = filecomtents.Replace("\n", "\r");
                                             filecomtents = filecomtents.Replace("\r", "\\r");
+                                            filecomtents = filecomtents.Replace("\t", "\\t");
                                         }
                                 }
                             }
@@ -1098,7 +1097,7 @@
                  if (count ==-1)
                      errorMsg.Message = "No .MD files retreived from GitHub as local copy is in Sync.";
                  else if (count != 0)
-                     errorMsg.Message = "Retrieved " + count.ToString() + ".MD files from GitHub\r\nNow run 'Convert' on Admin page to process the downloaded files.";
+                     errorMsg.Message = "Retrieved " + count.ToString() + ".MD files from GitHub\r\nNow run 'Convert' on Contribute page to process the downloaded files.";
                  else
                      errorMsg.Message = "No .MD files retreived from GitHub. Either the repository had no .MD files, or there was an error.";
                  errorMsg.Source = "/GitHub";

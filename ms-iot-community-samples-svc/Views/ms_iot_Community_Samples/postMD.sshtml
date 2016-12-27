@@ -43,6 +43,9 @@
                 <td style="text-align:center"><input type="button" value="Cancel" id="btncancel" onclick="OnCancel()" /></td>
 				<td align="left"><input type="button" value="Clear" id="btnclear" onclick="OnClear()" /></td>
             </tr>
+			<tr>
+				<td colspan="3"><a href="/ms_iot_Community_Samples/GetGitHubMDfromYourRepo">(Now available)Upload your MD file from your GitHub repository to here.</a></td>
+            </tr>
 			<tr >
                 <td align="right">Projec(File)tName:&nbsp;</td>
                 <td><input type="text" name="User" id="txtuser" value="" /></td>

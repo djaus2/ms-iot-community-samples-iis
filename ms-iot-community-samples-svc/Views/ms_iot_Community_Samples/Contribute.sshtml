@@ -1,0 +1,67 @@
+﻿@Master['ms_iot_Community_Samples/master.sshtml']
+
+@Section['Header']
+    <title>Contribute</title>
+	<meta charset="utf-8" />
+@EndSection
+
+@Section['Onload']
+            var txt = '@Model.Message';
+@EndSection
+
+@Section['HeaderNavs']
+                <ul>
+                    <li>
+						<a href="/ms_iot_Community_Samples/list">List</a>
+					</li>
+				</ul>
+@EndSection
+
+@Section['Content']
+
+    <h1>Contribute</h1>
+    <table>
+        <colgroup>
+            <col style="font-weight:bold;" />
+            <col />
+        </colgroup>
+		<tr>
+            <td colspan="2"><a href="/ms_iot_Community_Samples">Community Samples Index</a></td>
+        </tr>
+        <tr>
+            <td colspan="2"><a href="/Default">Sportronics</a></td>
+        </tr>
+		<tr>
+			<td>&nbsp;</td><td>&nbsp;</td>
+		</tr>
+        <tr>
+            <td  colspan="2">You need to be logged in with GitHub credentials.</td>
+        </tr>
+        <tr>
+            @If.LoggedInStatus
+                <td colspan="2">Logged in:&nbsp;<a href=@Model.LogLink>@Model.LogLabel</a></td>
+            @EndIf
+            @IfNot.LoggedInStatus
+                <td  colspan="2">Not logged in:&nbsp;<a href=@Model.LogLink>@Model.LogLabel</a></td>
+            @EndIf            
+        </tr>
+        <tr>
+            <td  colspan="2"><hr/></td>
+        </tr>
+		<tr>
+			<td colspan="2">1.&nbsp;<a href="/ms_iot_Community_Samples/GitHubGetFile">Create MD file</a></td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td><td>1a.&nbsp;<a href="/ms_iot_Community_Samples/GetGitHubMDfromYourRepo">(Now available)Upload MD file from your GitHub repository ... The easiest way to do this!</a></td>
+		</tr>
+        <tr>
+            <td colspan="2">2.&nbsp;<a href="/ms_iot_Community_Samples/GitHub/0">Sync with GitHub</a></td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td><td>2a.&nbsp;<a href="/ms_iot_Community_Samples/GitHub/1">ReSync with GitHub</a></td>
+        </tr>
+		<tr>
+            <td colspan="2">3.&nbsp;<a href="/ms_iot_Community_Samples/convert">Convert</a></td>
+        </tr>
+    </table>
+@EndSection

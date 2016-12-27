@@ -42,14 +42,15 @@
             </tr>
 			<tr >
                 <td align="right">Your GitHub Project Name:&nbsp;</td>
-                <td><input type="text" name="User" id="txtuser" value="djaus" /></td>
+                <td><input type="text" name="User" id="txtuser" value="" /></td>
 				<td align="left"><i>.MD</i></td>
             </tr>
             <tr  >
                 <td align="right">GitHub Password:&nbsp;</td>
-                <td><input type="text" id="txtpwd" name="Pwd" value="" /></td>
+                <td><input type="password" id="txtpwd" name="Pwd" value="" /></td>
 				<td>&nbsp.</td>
             </tr>
+			<tr><td colspan="3"><i>Yeah, I did say we don't retain your credentials post login, so you do need to reeneter your GitHub credentials.</i></td>
 			<tr  >
                 <td align="right">Your GitHub Project Name:&nbsp;</td>
                 <td><input type="text" id="txtrepo" name="Repo" value="" /></td>

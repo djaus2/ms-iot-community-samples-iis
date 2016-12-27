@@ -28,13 +28,13 @@
             <td><hr /></td>
         </tr>
         <tr>
-            <td><a href="/ms_iot_Community_Samples/Admin">Admin</a></td>
+            <td><a href="/ms_iot_Community_Samples/Contribute">Contribute</a></td>
         </tr>
         <tr>
             <td>&nbsp;</td>
         </tr>
         <tr>
-            <td><a href="/ms_iot_Community_Samples">Samples menu</a></td>
+            <td><a href="/ms_iot_Community_Samples">Community Samples Index</a></td>
         </tr>
     </table>
 @EndSection
