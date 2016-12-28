@@ -724,8 +724,8 @@
                 if (!(bool)Request.Session["LoggedInStatus"])
                 {
                     errorMsg.Message = "Not logged in!";
-                    errorMsg.Source = "/GitHubGetFile";
-                    return View["/ms_iot_Community_Samples/ErrorPage", errorMsg];
+                    errorMsg.Source = "/GetGitHubMDfromYourRepo";
+                    return View["ms_iot_Community_Samples/ErrorPage", errorMsg];
                 }
 
                 return View["ms_iot_Community_Samples/GetMDfromUrRepo"];
@@ -737,7 +737,7 @@
                 {
                     errorMsg.Message = "Not logged in!";
                     errorMsg.Source = "/GitHubPostFile";
-                    return View["/ms_iot_Community_Samples/ErrorPage", errorMsg];
+                    return View["ms_iot_Community_Samples/ErrorPage", errorMsg];
                 }
                 DoStrings();
 
@@ -840,7 +840,7 @@
                 {
                     errorMsg.Message = "Not logged in!";
                     errorMsg.Source = "/GitHubGetFile";
-                    return View["/ms_iot_Community_Samples/ErrorPage", errorMsg];
+                    return View["ms_iot_Community_Samples/ErrorPage", errorMsg];
                 }
                 DoStrings();
                 string templatemd = "";
@@ -854,7 +854,7 @@
                 {
                     errorMsg.Message = "Not logged in!";
                     errorMsg.Source = "/GitHubPostFile";
-                    return View["/ms_iot_Community_Samples/ErrorPage", errorMsg];
+                    return View["ms_iot_Community_Samples/ErrorPage", errorMsg];
                 }
                 DoStrings();
 
@@ -920,15 +920,17 @@
 
             Get["/ms_iot_Community_Samples/GitHub/{Mode}", true] = async (parameters, ct) =>
             {
-                 
-                 if (!(bool)Request.Session["LoggedInStatus"])
+                string mode = parameters.Mode;
+                string mmode = "Re-GetAll";
+                if (mode == "1")
+                    mmode = "SyncOnly";
+                if (!(bool)Request.Session["LoggedInStatus"])
                  {
-                     errorMsg.Message = "Not logged in!";
-                     errorMsg.Source = "/GitHub";
-                     return View["/ms_iot_Community_Samples/ErrorPage", errorMsg];
+                    errorMsg.Message = "Not logged in!";
+                    errorMsg.Source = "/GitHub/" + mmode;
+                    return View["ms_iot_Community_Samples/ErrorPage", errorMsg];
                  }
 
-                 string mode = parameters.Mode;
                  if (mode=="1")
                  {
                     //Reget repository
