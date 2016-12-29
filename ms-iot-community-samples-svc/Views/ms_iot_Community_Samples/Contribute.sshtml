@@ -49,19 +49,33 @@
             <td  colspan="2"><hr/></td>
         </tr>
 		<tr>
-			<td colspan="2">1.&nbsp;<a href="/ms_iot_Community_Samples/GitHubGetFile">Create MD file</a></td>
+			<td colspan="2"><h2>How to contribute</h2></td>
 		</tr>
 		<tr>
-			<td>&nbsp;</td><td>1a.&nbsp;<a href="/ms_iot_Community_Samples/GetGitHubMDfromYourRepo">(Now available)Upload MD file from your GitHub repository ... The easiest way to do this!</a></td>
+			<td colspan="2">1.&nbsp;Login</td>
 		</tr>
-        <tr>
-            <td colspan="2">2.&nbsp;<a href="/ms_iot_Community_Samples/GitHub/0">Sync with GitHub</a></td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td><td>2a.&nbsp;<a href="/ms_iot_Community_Samples/GitHub/1">ReSync with GitHub</a></td>
+		<tr>
+			<td colspan="2">2.&nbsp;<a href="/ms_iot_Community_Samples/GitHubGetFile">Create MD file</a>&nbsp;<i>Gets uploaded to Pending branch of repository when submitted.</i></td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td><td>2a.&nbsp;<a href="/ms_iot_Community_Samples/GetGitHubMDfromYourRepo">(Now available)Upload MD file from your GitHub repository ... The easiest way to do this!</a></td>
+		</tr>
+		
+		<tr>
+			<td colspan="2">3.&nbsp;<a href="https://github.com/djaus2/ms-iot-community-samples/issues/new" target="_blank">Post an issue to indicate your submission</a><i>&nbsp;You may need to login to GitHub additionally.</i></td>
+		</tr>
+		<tr>
+            <td colspan="2">4.&nbsp;<i>(Wait)</i>SysAdmin approves:&nbsp;<i>Is merged to Master in repository</i></td>
         </tr>
 		<tr>
-            <td colspan="2">3.&nbsp;<a href="/ms_iot_Community_Samples/convert">Convert</a></td>
+            <td colspan="2">5.&nbsp;<a href="/ms_iot_Community_Samples/GitHub/1">Sync with GitHub</a></td>
+        </tr>
+        <tr>
+            <td >&nbsp;</td><td>5a.&nbsp;<a href="/ms_iot_Community_Samples/GitHub/0">Get all from GitHub</a>&nbsp;<i>(Not normally necessary)</i></td>
+        </tr>
+
+		<tr>
+            <td colspan="2">6.&nbsp;<a href="/ms_iot_Community_Samples/convert">Convert</a>&nbsp;<i>Add synced projects MDs to list.</i></td>
         </tr>
     </table>
 @EndSection
