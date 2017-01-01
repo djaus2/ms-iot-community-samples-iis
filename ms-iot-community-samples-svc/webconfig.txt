@@ -31,6 +31,8 @@
     <add key="GitHub.clientId" value="The github repo clientid" />
     <add key="GitHub.clientSecret" value="Thes github clientsecret6" />
     <add key ="SummarySubLength" value = "100"/>
+	    <add key ="FB.appId" value="YYYYYYYYYYYYYYY"/>
+    <add key ="GoogleAnalytics.appId" value="UA-XXXXXXXX-X"/>
   </appSettings>
 	<system.web.webPages.razor>
 		<pages pageBaseType="Nancy.ViewEngines.Razor.NancyRazorViewBase">
