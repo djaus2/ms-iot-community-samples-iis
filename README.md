@@ -1,7 +1,7 @@
 # ms-iot-community-samples-svc
 A Nancy-Razor based IIS website project to host aggregated information about Microsoft IoT sample communnity projects hosted on GitHub.
 
-This is the code for http://Sportronics.com.au including that for http://www.sportronics.com.au/ms_iot_Community_Samples(ms-iot Community Samples) site.
+This is the code for http://Sportronics.com.au including that for [http://www.sportronics.com.au/ms_iot_Community_Samples][ms-iot Community Samples] site.
 
 
 #Use
