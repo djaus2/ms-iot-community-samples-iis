@@ -831,7 +831,7 @@
                 DoStrings();
                 string templatemd = "";
                 templatemd = File.ReadAllText(Path.Combine(ContentCommunityDir, "template.md"));
-                templatemd = templatemd.Replace("\"", "\\\"");
+                //templatemd = templatemd.Replace("\"", "\\\"");
 
                 string [] HeaderAsLines = templatemd.Split(new char[] { '\r', '\n' });
                 string[] AllContentAsLines = HeaderAsLines.Concat(MDContentAsLines).ToArray<string>();
