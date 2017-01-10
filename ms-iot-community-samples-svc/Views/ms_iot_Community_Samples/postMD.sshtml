@@ -23,8 +23,10 @@
 @EndSection
 
 @Section['Onload']
-            var txt  = "@Model";
-            document.getElementById("txtrepo").value = txt;
+        document.getElementById("txtrepo").value = "";
+		@Each
+            document.getElementById("txtrepo").value +="@Current" + "\n";
+        @EndEach
 @EndSection
 
 

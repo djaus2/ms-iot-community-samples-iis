@@ -41,7 +41,7 @@
 				<td align="left"><input type="button" value="Clear" id="btnclear" onclick="OnClear()" /></td>
             </tr>
 			<tr >
-                <td align="right">Your GitHub Project Name:&nbsp;</td>
+                <td align="right">Your GitHub Name:&nbsp;</td>
                 <td><input type="text" name="User" id="txtuser" value="" /></td>
 				<td align="left"><i>.MD</i></td>
             </tr>

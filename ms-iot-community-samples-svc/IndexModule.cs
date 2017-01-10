@@ -376,11 +376,6 @@
                 Request.Session["filter"] = "";
                 Request.Session["LoggedInStatus"] = false;
 
-                //string user = parameters.user;
-                //string pwd = parameters.pwd;
-                //string referer = parameters.referer;
-                //string repo = parameters.repo;
-
                 string user = CredentialsTruple.User;
                 if (user == null)
                     user = "";
@@ -408,7 +403,8 @@
                 }
                 else if ( (user!="") && (pwd!="") && (repo!=""))
                 {
-                    if (await GitHubLogin(user, pwd, repo))
+                    User gitHubUser = await AnyGitHubLogin(user, pwd, repo);
+                    if (gitHubUser!=null)
                         {
                             Request.Session["LoggedInStatus"] = true;
                             errorMsg.Title = "Successful Login.";
@@ -751,30 +747,34 @@
                 //string githubRepo = (string)ConfigurationManager.AppSettings["GitHub.MDsRepository"];
                 string githubUsr = CredentialsTruple.User;
                 string githubPwd = CredentialsTruple.Pwd;
-                string githubLatestCommitSha = ""; // (string)ConfigurationManager.AppSettings["GitHub.LatestCommitSha"];
-                //ClientId = (string)ConfigurationManager.AppSettings["GitHub.ClientId"];
-                //ClientSecret = (string)ConfigurationManager.AppSettings["GitHub.ClientSecret"];
+                ////////string githubLatestCommitSha = ""; // (string)ConfigurationManager.AppSettings["GitHub.LatestCommitSha"];
+                //////////ClientId = (string)ConfigurationManager.AppSettings["GitHub.ClientId"];
+                //////////ClientSecret = (string)ConfigurationManager.AppSettings["GitHub.ClientSecret"];
 
-                //if (githubLatestCommitSha == null)
-                //    githubLatestCommitSha = "";
+                //////////if (githubLatestCommitSha == null)
+                //////////    githubLatestCommitSha = "";
 
-                errorMsg.Message = "Repository not found.";
+                ////////errorMsg.Message = "Repository not found.";
 
-                basicGitHubClient =
-                       new GitHubClient(new ProductHeaderValue(githubRepo), new Uri(githuUrl));
+                ////////basicGitHubClient =
+                ////////       new GitHubClient(new ProductHeaderValue(githubRepo), new Uri(githuUrl));
 
-                //https://github.com/octokit/octokit.net
-                //GitHubClient github = new GitHubClient(new ProductHeaderValue(githubRepo));
-                var user = await basicGitHubClient.User.Get(githubUsr);
+                //////////https://github.com/octokit/octokit.net
+                //////////GitHubClient github = new GitHubClient(new ProductHeaderValue(githubRepo));
+                ////////var user = await basicGitHubClient.User.Get(githubUsr);
+            
+                //////////var client = new GitHubClient(new ProductHeaderValue(githubRepo));
+                ////////var basicAuth = new Credentials(githubUsr, githubPwd); 
+                ////////basicGitHubClient.Credentials = basicAuth;
 
-                //var client = new GitHubClient(new ProductHeaderValue(githubRepo));
-                var basicAuth = new Credentials(githubUsr, githubPwd); // NOTE: not real credentials
-                basicGitHubClient.Credentials = basicAuth;
+                basicGitHubClient = await GetGitHubClient(githubUsr, githubPwd, githubRepo);
+
                 var repos = await basicGitHubClient.Repository.GetAllForCurrent();
-                var repo = from n in repos where n.Name == githubRepo select n;
+                var repo = from n in repos where n.Name.ToLower() == githubRepo.ToLower() select n;
                 int count = 0;
 
                 string filecomtents = "";
+                string[] MDContentAsLines =null;
                 if (repo.Count() == 1)
                 {
                     errorMsg.Message = "File not found.";
@@ -810,6 +810,8 @@
                                     if (content.Count() != 0)
                                     {
                                         filecomtents = content[0].Content;
+                                            filecomtents = filecomtents.Replace("\"", "\\\"");
+                                            MDContentAsLines = filecomtents.Split(new char[] {'\r','\n'});
                                             filecomtents = filecomtents.Replace("\r\n", "\r");
                                             filecomtents = filecomtents.Replace("\n", "\r");
                                             filecomtents = filecomtents.Replace("\r", "\\r");
@@ -829,9 +831,12 @@
                 DoStrings();
                 string templatemd = "";
                 templatemd = File.ReadAllText(Path.Combine(ContentCommunityDir, "template.md"));
-                templatemd += "\\r" + filecomtents;
+                templatemd = templatemd.Replace("\"", "\\\"");
 
-                return View["ms_iot_Community_Samples/postMD", templatemd];
+                string [] HeaderAsLines = templatemd.Split(new char[] { '\r', '\n' });
+                string[] AllContentAsLines = HeaderAsLines.Concat(MDContentAsLines).ToArray<string>();
+
+                return View["ms_iot_Community_Samples/postMD", AllContentAsLines]; //templatemd];
             };
 
             Get["/ms_iot_Community_Samples/GitHubGetFile"] = _ =>
@@ -1510,29 +1515,7 @@
             };
         }
 
-        private async Task<bool> GitHubLogin(string githubUsr, string githubPwd, string githubRepo)
-        {
-            //throw new NotImplementedException();
-            string githuUrl = (string)ConfigurationManager.AppSettings["GitHub.Url"];
-            GitHubClient lbasicGitHubClient =
-                new GitHubClient(new ProductHeaderValue(githubRepo), new Uri(githuUrl));
-
-            //https://github.com/octokit/octokit.net
-
-            var basicAuth = new Credentials(githubUsr, githubPwd); // NOTE: not real credentials
-            lbasicGitHubClient.Credentials = basicAuth;
-            User user = null; 
-            try
-            {
-                user = await lbasicGitHubClient.User.Get(githubUsr);
-            } catch (Exception ex)
-            {
-                return false;
-            }
-            if (user == null)
-                return false;
-            return true;
-        }
+ 
 
         GitHubClient basicGitHubClient;
         GitHubClient clientg;

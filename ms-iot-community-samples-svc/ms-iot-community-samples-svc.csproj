@@ -225,6 +225,7 @@
     <Compile Include="IndexModule1.cs" />
     <Compile Include="IndexModule2.cs" />
     <None Include="IndexModule_Convert.cs" />
+    <Compile Include="IndexModule_GitHubBasicLogin.cs" />
     <Compile Include="Models\IoTProject.cs" />
     <Compile Include="Models\Errors.cs" />
     <Compile Include="Models\filter.cs" />
